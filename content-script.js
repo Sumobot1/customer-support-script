@@ -982,7 +982,7 @@ for (var i = 0;i<listOfTools.length;i++){
                                         //window.open(contentOfList[j].children[k].getAttribute("href"), "_blank");
                                         //chrome.tabs.create({url: contentOfList[j].children[k].getAttribute("href")}, function(){});
                                          //chrome.tabs.create({url: "http://www.stackoverflow.com"});
-                                         //chrome.runtime.sendMessage({greeting: "hello"});
+                                         chrome.runtime.sendMessage({url: contentOfList[j].children[k].getAttribute("href")}, function(){console.log("done");});
                                          //chrome.extension.getBackgroundPage().sayHello();
                                 }
                         }

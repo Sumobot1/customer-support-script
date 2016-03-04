@@ -88,12 +88,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     } else if (request.state === "ready") {
         console.log("state is ready...");
         var myVar = window.setInterval(function() {
-            if (!translating) {
-                var dank = queue.shift();
-                console.log("dank: ", dank, "queue: ", queue, " sender: ", sender, "request: ", request);
-                chrome.tabs.sendMessage(sender.tab.id, { job: "solve", string: dank[0], origin: dank[1], type: dank[2] }, function() { console.log("done bro") });
-                translating = true;
+            if (queue.length <= 0) {
+                clearInterval(myVar);
+            } else {
+                if (!translating) {
+                    var dank = queue.shift();
+                    console.log("dank: ", dank, "queue: ", queue, " sender: ", sender, "request: ", request);
+                    chrome.tabs.sendMessage(sender.tab.id, { job: "solve", string: dank[0], origin: dank[1], type: dank[2] }, function() { console.log("done bro") });
+                    translating = true;
+                }
             }
+
         }, 500);
 
         /*        console.log(senderTranslate.tab.id);

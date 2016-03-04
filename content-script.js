@@ -4,44 +4,44 @@
 
 /*=====================================================================  KEYWORDS  =====================================================================*/
 var arsWords = [
-['service'],
-['other'],
-['credit'],
-['buy'],
-['purchase'],
-['able'],
-['repeat'],
-['loop'],
-['browse'],
-['size'],
-['recognized', 'recognizing'],
-['issue'],
-['available'],
-['unavailable'],
-['remove'],
-['delete'],
-['uninstall'],
-['rid'],
-['web'],
-['couldnt'],
-['end'],
-['recurring', 'recurrent'],
-['media'],
-['linked'],
+        ['service'],
+        ['other'],
+        ['credit'],
+        ['buy'],
+        ['purchase'],
+        ['able'],
+        ['repeat'],
+        ['loop'],
+        ['browse'],
+        ['size'],
+        ['recognized', 'recognizing'],
+        ['issue'],
+        ['available'],
+        ['unavailable'],
+        ['remove'],
+        ['delete'],
+        ['uninstall'],
+        ['rid'],
+        ['web'],
+        ['couldnt'],
+        ['end'],
+        ['recurring', 'recurrent'],
+        ['media'],
+        ['linked'],
         ['how'],
-['help'],
-['pc'],
-['normalization'],
-['mobile'],
-['scanning'],
-['repeated'],
-['m2ts'],
-['cancelled'],
-['money'],
-['with'],
-['smartphone'],
-['cell'],
-['watch'],
+        ['help'],
+        ['pc'],
+        ['normalization'],
+        ['mobile'],
+        ['scanning'],
+        ['repeated'],
+        ['m2ts'],
+        ['cancelled'],
+        ['money'],
+        ['with'],
+        ['smartphone'],
+        ['cell'],
+        ['watch'],
         ['charge', 'charges'],
         ['annual', "annually"],
         ['yearly'],
@@ -201,7 +201,7 @@ var arsWords = [
         ['itunes', 'tunes', 'iunes', 'itnes', 'itues', 'ituns', 'itune', 'iitunes', 'ittunes', 'ituunes', 'itunnes', 'itunees', 'ituness', 'tiunes', 'iutnes', 'itnues', 'ituens', 'itunse', 'utunes', '8tunes', '9tunes', 'otunes', 'ltunes', 'ktunes', 'jtunes', 'irunes', 'i5unes', 'i6unes', 'iyunes', 'ihunes', 'igunes', 'ifunes', 'itynes', 'it7nes', 'it8nes', 'itines', 'itknes', 'itjnes', 'ithnes', 'itubes', 'ituhes', 'itujes', 'itumes', 'itunws', 'itun3s', 'itun4s', 'itunrs', 'itunfs', 'itunds', 'itunss', 'itunea', 'itunew', 'itunee', 'ituned', 'itunex', 'itunez', 'uitunes', 'iutunes', '8itunes', 'i8tunes', '9itunes', 'i9tunes', 'oitunes', 'iotunes', 'litunes', 'iltunes', 'kitunes', 'iktunes', 'jitunes', 'ijtunes', 'irtunes', 'itrunes', 'i5tunes', 'it5unes', 'i6tunes', 'it6unes', 'iytunes', 'ityunes', 'ihtunes', 'ithunes', 'igtunes', 'itgunes', 'iftunes', 'itfunes', 'ityunes', 'ituynes', 'it7unes', 'itu7nes', 'it8unes', 'itu8nes', 'itiunes', 'ituines', 'itkunes', 'ituknes', 'itjunes', 'itujnes', 'ithunes', 'ituhnes', 'itubnes', 'itunbes', 'ituhnes', 'itunhes', 'itujnes', 'itunjes', 'itumnes', 'itunmes', 'itunwes', 'itunews', 'itun3es', 'itune3s', 'itun4es', 'itune4s', 'itunres', 'ituners', 'itunfes', 'itunefs', 'itundes', 'ituneds', 'itunses', 'ituness', 'ituneas', 'itunesa', 'itunews', 'itunesw', 'itunees', 'itunese', 'ituneds', 'itunesd', 'itunexs', 'itunesx', 'itunezs', 'itunesz'],
         ['dvd'],
         ['home', 'ome', 'hme', 'hoe', 'hom', 'hhome', 'hoome', 'homme', 'homee', 'ohme', 'hmoe', 'hoem', 'gome', 'yome', 'uome', 'jome', 'nome', 'bome', 'hime', 'h9me', 'h0me', 'hpme', 'hlme', 'hkme', 'hone', 'hoje', 'hoke', 'homw', 'hom3', 'hom4', 'homr', 'homf', 'homd', 'homs', 'ghome', 'hgome', 'yhome', 'hyome', 'uhome', 'huome', 'jhome', 'hjome', 'nhome', 'hnome', 'bhome', 'hbome', 'hiome', 'hoime', 'h9ome', 'ho9me', 'h0ome', 'ho0me', 'hpome', 'hopme', 'hlome', 'holme', 'hkome', 'hokme', 'honme', 'homne', 'hojme', 'homje', 'hokme', 'homke', 'homwe', 'homew', 'hom3e', 'home3', 'hom4e', 'home4', 'homre', 'homer', 'homfe', 'homef', 'homde', 'homed', 'homse', 'homes'],
-                ['movie', 'ovie', 'mvie', 'moie', 'move', 'movi', 'mmovie', 'moovie', 'movvie', 'moviie', 'moviee', 'omvie', 'mvoie', 'moive', 'movei', 'novie', 'jovie', 'kovie', 'mivie', 'm9vie', 'm0vie', 'mpvie', 'mlvie', 'mkvie', 'mocie', 'mofie', 'mogie', 'mobie', 'movue', 'mov8e', 'mov9e', 'movoe', 'movle', 'movke', 'movje', 'moviw', 'movi3', 'movi4', 'movir', 'movif', 'movid', 'movis', 'nmovie', 'mnovie', 'jmovie', 'mjovie', 'kmovie', 'mkovie', 'miovie', 'moivie', 'm9ovie', 'mo9vie', 'm0ovie', 'mo0vie', 'mpovie', 'mopvie', 'mlovie', 'molvie', 'mkovie', 'mokvie', 'mocvie', 'movcie', 'mofvie', 'movfie', 'mogvie', 'movgie', 'mobvie', 'movbie', 'movuie', 'moviue', 'mov8ie', 'movi8e', 'mov9ie', 'movi9e', 'movoie', 'movioe', 'movlie', 'movile', 'movkie', 'movike', 'movjie', 'movije', 'moviwe', 'moview', 'movi3e', 'movie3', 'movi4e', 'movie4', 'movire', 'movier', 'movife', 'movief', 'movide', 'movied', 'movise', 'movies'],
+        ['movie', 'ovie', 'mvie', 'moie', 'move', 'movi', 'mmovie', 'moovie', 'movvie', 'moviie', 'moviee', 'omvie', 'mvoie', 'moive', 'movei', 'novie', 'jovie', 'kovie', 'mivie', 'm9vie', 'm0vie', 'mpvie', 'mlvie', 'mkvie', 'mocie', 'mofie', 'mogie', 'mobie', 'movue', 'mov8e', 'mov9e', 'movoe', 'movle', 'movke', 'movje', 'moviw', 'movi3', 'movi4', 'movir', 'movif', 'movid', 'movis', 'nmovie', 'mnovie', 'jmovie', 'mjovie', 'kmovie', 'mkovie', 'miovie', 'moivie', 'm9ovie', 'mo9vie', 'm0ovie', 'mo0vie', 'mpovie', 'mopvie', 'mlovie', 'molvie', 'mkovie', 'mokvie', 'mocvie', 'movcie', 'mofvie', 'movfie', 'mogvie', 'movgie', 'mobvie', 'movbie', 'movuie', 'moviue', 'mov8ie', 'movi8e', 'mov9ie', 'movi9e', 'movoie', 'movioe', 'movlie', 'movile', 'movkie', 'movike', 'movjie', 'movije', 'moviwe', 'moview', 'movi3e', 'movie3', 'movi4e', 'movie4', 'movire', 'movier', 'movife', 'movief', 'movide', 'movied', 'movise', 'movies'],
         ['movies', 'ovies', 'mvies', 'moies', 'moves', 'movis', 'movie', 'mmovies', 'moovies', 'movvies', 'moviies', 'moviees', 'moviess', 'omvies', 'mvoies', 'moives', 'moveis', 'movise', 'novies', 'jovies', 'kovies', 'mivies', 'm9vies', 'm0vies', 'mpvies', 'mlvies', 'mkvies', 'mocies', 'mofies', 'mogies', 'mobies', 'movues', 'mov8es', 'mov9es', 'movoes', 'movles', 'movkes', 'movjes', 'moviws', 'movi3s', 'movi4s', 'movirs', 'movifs', 'movids', 'moviss', 'moviea', 'moview', 'moviee', 'movied', 'moviex', 'moviez', 'nmovies', 'mnovies', 'jmovies', 'mjovies', 'kmovies', 'mkovies', 'miovies', 'moivies', 'm9ovies', 'mo9vies', 'm0ovies', 'mo0vies', 'mpovies', 'mopvies', 'mlovies', 'molvies', 'mkovies', 'mokvies', 'mocvies', 'movcies', 'mofvies', 'movfies', 'mogvies', 'movgies', 'mobvies', 'movbies', 'movuies', 'moviues', 'mov8ies', 'movi8es', 'mov9ies', 'movi9es', 'movoies', 'movioes', 'movlies', 'moviles', 'movkies', 'movikes', 'movjies', 'movijes', 'moviwes', 'moviews', 'movi3es', 'movie3s', 'movi4es', 'movie4s', 'movires', 'moviers', 'movifes', 'moviefs', 'movides', 'movieds', 'movises', 'moviess', 'movieas', 'moviesa', 'moviews', 'moviesw', 'moviees', 'moviese', 'movieds', 'moviesd', 'moviexs', 'moviesx', 'moviezs', 'moviesz'],
         ['deleted', 'eleted', 'dleted', 'deeted', 'delted', 'deleed', 'deletd', 'delete', 'ddeleted', 'deeleted', 'delleted', 'deleeted', 'deletted', 'deleteed', 'deletedd', 'edleted', 'dleeted', 'deelted', 'delteed', 'deleetd', 'deletde', 'seleted', 'eeleted', 'releted', 'feleted', 'celeted', 'xeleted', 'dwleted', 'd3leted', 'd4leted', 'drleted', 'dfleted', 'ddleted', 'dsleted', 'deketed', 'deoeted', 'depeted', 'delwted', 'del3ted', 'del4ted', 'delrted', 'delfted', 'deldted', 'delsted', 'delered', 'dele5ed', 'dele6ed', 'deleyed', 'delehed', 'deleged', 'delefed', 'deletwd', 'delet3d', 'delet4d', 'deletrd', 'deletfd', 'deletdd', 'deletsd', 'deletes', 'deletee', 'deleter', 'deletef', 'deletec', 'deletex', 'sdeleted', 'dseleted', 'edeleted', 'deeleted', 'rdeleted', 'dreleted', 'fdeleted', 'dfeleted', 'cdeleted', 'dceleted', 'xdeleted', 'dxeleted', 'dweleted', 'dewleted', 'd3eleted', 'de3leted', 'd4eleted', 'de4leted', 'dreleted', 'derleted', 'dfeleted', 'defleted', 'ddeleted', 'dedleted', 'dseleted', 'desleted', 'dekleted', 'delketed', 'deoleted', 'deloeted', 'depleted', 'delpeted', 'delweted', 'delewted', 'del3eted', 'dele3ted', 'del4eted', 'dele4ted', 'delreted', 'delerted', 'delfeted', 'delefted', 'deldeted', 'deledted', 'delseted', 'delested', 'delerted', 'deletred', 'dele5ted', 'delet5ed', 'dele6ted', 'delet6ed', 'deleyted', 'deletyed', 'delehted', 'delethed', 'delegted', 'deletged', 'delefted', 'deletfed', 'deletwed', 'deletewd', 'delet3ed', 'delete3d', 'delet4ed', 'delete4d', 'deletred', 'deleterd', 'deletfed', 'deletefd', 'deletded', 'deletedd', 'deletsed', 'deletesd', 'deletesd', 'deleteds', 'deleteed', 'deletede', 'deleterd', 'deletedr', 'deletefd', 'deletedf', 'deletecd', 'deletedc', 'deletexd', 'deletedx'],
         ['greyed', 'reyed', 'geyed', 'gryed', 'greed', 'greyd', 'greye', 'ggreyed', 'grreyed', 'greeyed', 'greyyed', 'greyeed', 'greyedd', 'rgeyed', 'geryed', 'gryeed', 'greeyd', 'greyde', 'freyed', 'treyed', 'yreyed', 'hreyed', 'breyed', 'vreyed', 'geeyed', 'g4eyed', 'g5eyed', 'gteyed', 'ggeyed', 'gfeyed', 'gdeyed', 'grwyed', 'gr3yed', 'gr4yed', 'grryed', 'grfyed', 'grdyed', 'grsyed', 'greted', 'gre6ed', 'gre7ed', 'greued', 'grejed', 'grehed', 'greged', 'greywd', 'grey3d', 'grey4d', 'greyrd', 'greyfd', 'greydd', 'greysd', 'greyes', 'greyee', 'greyer', 'greyef', 'greyec', 'greyex', 'fgreyed', 'gfreyed', 'tgreyed', 'gtreyed', 'ygreyed', 'gyreyed', 'hgreyed', 'ghreyed', 'bgreyed', 'gbreyed', 'vgreyed', 'gvreyed', 'gereyed', 'greeyed', 'g4reyed', 'gr4eyed', 'g5reyed', 'gr5eyed', 'gtreyed', 'grteyed', 'ggreyed', 'grgeyed', 'gfreyed', 'grfeyed', 'gdreyed', 'grdeyed', 'grweyed', 'grewyed', 'gr3eyed', 'gre3yed', 'gr4eyed', 'gre4yed', 'grreyed', 'greryed', 'grfeyed', 'grefyed', 'grdeyed', 'gredyed', 'grseyed', 'gresyed', 'gretyed', 'greyted', 'gre6yed', 'grey6ed', 'gre7yed', 'grey7ed', 'greuyed', 'greyued', 'grejyed', 'greyjed', 'grehyed', 'greyhed', 'gregyed', 'greyged', 'greywed', 'greyewd', 'grey3ed', 'greye3d', 'grey4ed', 'greye4d', 'greyred', 'greyerd', 'greyfed', 'greyefd', 'greyded', 'greyedd', 'greysed', 'greyesd', 'greyesd', 'greyeds', 'greyeed', 'greyede', 'greyerd', 'greyedr', 'greyefd', 'greyedf', 'greyecd', 'greyedc', 'greyexd', 'greyedx'],
@@ -307,7 +307,9 @@ var sDRMiTunes = "Super sorry! Any iTunes tv or movie content you purchase is en
 
 var sDVD = "Super sorry! We don't officially support streaming DVDs because many have DRM (Digital Rights Management) that lock many programs out of being able to play it or directly access the underlying video file. Videostream works best with video files, maybe try finding a file version of the DVD you're trying to play! Please let me know if that helps :) \n"
 
-var sHomeMovies = "Home videos are really tough for the chromecast to play. They are usually super uncompressed (lots of data per second) and we can't convert them fast enough into something manageable for the chromecast on most consumer-grade computers :(  \nApologies!!  \nWhen this happens could you do me a huge favour so I can look more into your specific case? Hit help and then contact - this will download a log file to your computer that you can send to me that will help a TON!!!! \n";
+var sHomeMovies = "Home videos are really tough for the chromecast to play. They are usually super uncompressed (lots of data per second) and we can't convert them fast enough into something manageable for the chromecast on most consumer-grade computers :(  \nApologies!!";
+var sHomeMovies2 = "\nWhen this happens could you do me a huge favour so I can look more into your specific case? Hit help and then contact - this will download a log file to your computer that you can send to me that will help a TON!!!! \n";
+var arsHomeMovies = [sHomeMovies, sHomeMovies2];
 
 var sVideoNoAudio1 = "Super sorry you're having some issues with the audio not streaming!! Couple things so I can better help you:  \n";
 var sVideoNoAudio2 = "- Next time the video file has an issue, could you do me a huge favour so we can fix it? Hit 'Help' then 'Click to email the Team' - that'll download a log file to your computer that you can send to me that'll help a TON!!!! Make sure you do it after you get the problem :) \n";
@@ -464,599 +466,737 @@ var sGooglePlayCredit = "Super sorry!  Right now we unfortunately don't support 
 var bCheck = true;
 var sAns = "";
 var arsKeyWords = [];
-/*=====================================================================  PRINTANSWER FUNCTION  =====================================================================*/
-
-function printAnswer(sAns) {
-    var lol = document.getElementById("TicketPseudoReply").children;
-    lol.FwdButton.click();
-    var derp = document.getElementsByClassName("redactor_editor")[0].children;
-    derp[1].children[2].innerText = sAns;
-}
-
-/*=====================================================================  TESTWORDS FUNCTION  =====================================================================*/
-
-function testwords(arsKeyWords) {
-    var sMaxLetterPos = Math.max(arsKeyWords.indexOf("queue"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("playlist"));
-    console.log("doth this worketh");
-    console.log("arsKeyWords: " + arsKeyWords);
-    console.log(arsKeyWords.indexOf("internet"));
-    console.log(arsKeyWords.indexOf("usage"));
-    /*========  BUFFERING  ========*/
-    if (arsKeyWords.indexOf("buffering") > -1 || arsKeyWords.indexOf("buffers") > -1) {
-        console.log("dankbuffer");
-        if (arsKeyWords.indexOf("constant") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("frequent") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("stuck") < arsKeyWords.indexOf("buffering") || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("forever") > arsKeyWords.indexOf("buffers")) || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("buffers"))) {
-            for (var i = 0; i < arsBuffering.length; i++) {
-                sAns += arsBuffering[i];
-            }
-            //console.log("hello");
-            //LOOK FOR IN SAME ROOM, ACCROSS ROOM, RIGHT BESIDE EACH OTHER, ETC.        COULD BE IN A DIFFERENT SENTENCE.  MAKE EACH RESPONSE AN ARRAY, TOGGLE BTWN 1 AND 0, HAVE A FINAL PRINT FUNCTION...
-            //printAnswer(sAns);
-        }
-        if (arsKeyWords.indexOf("loading") > -1) {
-            sAns += "Just making sure here, are you stuck on the buffering screen or the loading screen?";
-        }
-    }
 
 
+//chrome.runtime.sendMessage({ action: "open", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
 
-    /*========  FIREWALL BLOCKING VIDEOSTREAM  ========*/
-    else if (arsKeyWords.indexOf("firewall") > -1 && (Math.max(arsKeyWords.indexOf("blocking"), arsKeyWords.indexOf("blocks")) > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("blocked") > -1 || (arsKeyWords.indexOf("get") > -1 && arsKeyWords.indexOf("fixed") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("blocking") > -1 && arsKeyWords.indexOf("content") > -1) || arsKeyWords.indexOf("repair") > -1 && Math.max(arsKeyWords.indexOf("freezing"), arsKeyWords.indexOf("stuck"))) || (arsKeyWords.indexOf("help")>-1 && arsKeyWords.indexOf("with")>-1)) {
-        console.log("dankfirewall");
+chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
+        console.log("type: ", type);
+    if (type === "ticketlist") {
+        console.log("dlkjflakjdflakjfa;ldjdklg herp derp");
+        var arTickets = document.getElementsByClassName("subject_style"); //document.getElementById("ticket-list").children[0].children[0].children;
+        for (var i = 0; i < arTickets.length; i++) {
+            if (!(arTickets[i].classList.contains("customer_responded") || arTickets[i].classList.contains("customer_responded_overdue"))) {
+                console.log("Conversation Start: ", i);
+                var item = arTickets[i].parentNode.parentNode.children;
+                console.log(arTickets[i].parentNode.parentNode.children);
+                for (var j = 0; j < item.length; j++) {
+                    if (item[j].classList.contains("td-ticket-details")) {
+                        console.log(item[j].children[0].children);
+                        var details = item[j].children[0].children;
+                        for (var k = 0; k < details.length; k++) {
+                            if (details[k].classList.contains("ticket-description-tip")) {
+                                console.log(details[k].children[0].getAttribute("href"));
+                                chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
 
-        if ((arsKeyWords.indexOf("mac") > -1 || arsKeyWords.indexOf("osx") > -1 || (arsKeyWords.indexOf("os") > -1 && arsKeyWords[arsKeyWords.indexOf("os") + 1] === "x") || arsKeyWords.indexOf("macbook") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone"))>-1)) {
-            sAns += sFirewall;
-            sAns += sFirewall2;
-            for (var i = 1; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
-            }
-        }
-        if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac"))&& (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone"))>-1)) {
-            sAns += sFirewall;
-            sAns += sFirewall2;
-            for (var i = 1; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
-        }
-    }
-
-    /*========  REFUND  ========*/
-    else if (arsKeyWords.indexOf("refund") > -1 || (arsKeyWords.indexOf("money")>-1 && arsKeyWords[arsKeyWords.indexOf("money")+1] === "back")) {
-        console.log("dankrefund");
-        sAns += sRefund;
-    }
-
-    /*========  UPGRADE TO LIFETIME  ========*/
-    else if ((arsKeyWords.indexOf("upgrade") > -1 && arsKeyWords.indexOf("lifetime") > arsKeyWords.indexOf("upgrade")) || Math.max(arsKeyWords.indexOf("monthly"), arsKeyWords.indexOf("yearly"), arsKeyWords.indexOf("annual"))>-1 && arsKeyWords.indexOf("lifetime")>-1) {
-        console.log("dankupgrade");
-        sAns += sToLifetimeNoSale;
-    }
-
-
-    /*========  CANCEL SUBSCRIPTION  ========*/
-    else if ((Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) > -1 && (arsKeyWords.indexOf("subscription") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("premium") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("charge") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")))) || Math.max(arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end"), arsKeyWords.indexOf("cancel")) > -1 && arsKeyWords.indexOf("payment") > -1 || Math.max(arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("membership"), arsKeyWords.indexOf("service")) > -1 && arsKeyWords.indexOf("cancel") > -1) {
-        console.log("dankcancel");
-        sAns += sCancelPremium;
-    }
-    //return sAns;
-
-    /*========  PREMIUM FEATURES/UPGRADE  ========*/
-    // else if  &&  {
-    // console.log("dankpremium");
-    else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && ((arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("detected"), arsKeyWords.indexOf("detecting"), arsKeyWords.indexOf("recognized")) > -1) || (arsKeyWords.indexOf("greyed") > -1 && Math.max(arsKeyWords.indexOf("features"), arsKeyWords.indexOf("choices")) > -1) || (Math.max(arsKeyWords.indexOf("change"), arsKeyWords.indexOf("new"), arsKeyWords.indexOf("other")) > -1 && arsKeyWords.indexOf("computer") > -1) || arsKeyWords.indexOf("doesnt") > -1 && arsKeyWords.indexOf("work") > -1 || arsKeyWords.indexOf("how")>-1 && arsKeyWords.indexOf("linked")>-1)) {
-        console.log("premiumnotworking: ", arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("not"))
-        sAns += sPremiumNotWorking;
-    } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(Math.max(arsKeyWords.indexOf("issue"), arsKeyWords.indexOf("problem"))>-1) && !(arsKeyWords.indexOf("subtitle")>-1) && !(arsKeyWords.indexOf("would") > -1 && arsKeyWords.indexOf("be") === arsKeyWords.indexOf("would") + 1)) && (arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("advantages") > -1 || arsKeyWords.indexOf("difference") > -1)) {
-        console.log("sPremiumFeatures");
-        sAns += sPremiumFeatures
-    } else if ((((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(arsKeyWords.indexOf("subtitle")>-1) && !(Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound")) > -1) && !(arsKeyWords.indexOf("opensubtitles")>-1))) && (arsKeyWords.indexOf("how") > -1 || Math.max(arsKeyWords.indexOf("upgrade"), arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("get")) > -1)) {
-        console.log("sGetPremium");
-        sAns += sGetPremium;
-    } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1)) && (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1)) {
-        console.log("sDisplayContentSuggestions");
-        sAns += sDisplayContentSuggestions;
-    }
-    // else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && arsKeyWords.indexOf("new")>-1 && arsKeyWords.indexOf("computer")>-1) //else if (arsKeyWords.indexOf("email") > -1) {
-
-    //     }
-
-    //   }
-
-    /*========  INSTALL CAST EXTENSION  ========*/
-    else if ((arsKeyWords.indexOf("google") < arsKeyWords.indexOf("cast") && arsKeyWords.indexOf("google") > -1) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords.indexOf("extension") > -1)) {
-        console.log("dankcast");
-        sAns += sInstallCast;
-    }
-
-    /*========  VIDDIT  ========*/
-    else if (arsKeyWords.indexOf("viddit") > -1) {
-        console.log("dankviddit");
-        sAns += sViddit;
-    }
-
-    /*========  ITUNES DRM  ========*/ //MAYBE MAKE ARRAY OF STUFF WITH DRM ON IT AND LOOP THROUGH?
-    else if (arsKeyWords.indexOf("itunes") > -1 && arsKeyWords.indexOf("play") > -1) {
-        console.log("dankdrm");
-        sAns += sDRMiTunes;
-    }
-
-    /*========  AUDIO THROUGH HEADPHONES OR CHROMECAST AUDIO, VIDEO THROUGH CHROMECAST  ========*/
-    else if (((Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound"), arsKeyWords.indexOf("listen")) > -1 && (arsKeyWords.indexOf("headphones") > -1 || Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("laptop")) > -1 || arsKeyWords.indexOf("phone") > -1 || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("chromecast"))))) || ((arsKeyWords.indexOf("connect") > -1 && arsKeyWords.indexOf("stereo") > -1 && arsKeyWords.indexOf("headphones") > -1))) {
-        console.log("dankaudio");
-        sAns += sHeadphoneAudio;
-    }
-
-    /*========  VIDEO BUT NO AUDIO  ========*/
-    else if ((arsKeyWords.indexOf("no") > -1 || (Math.max(arsKeyWords.indexOf("doesnt"), arsKeyWords.indexOf("wont"))>-1 && Math.max(arsKeyWords.indexOf("cast"), arsKeyWords.indexOf("play"))>-1)) && (arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("no") || arsKeyWords.indexOf("sound") > arsKeyWords.indexOf("no"))) {
-        console.log("dankvideo");
-        for (var i = 0; i < arsVideoNoAudio.length; i++) {
-            sAns += arsVideoNoAudio[i];
-        }
-    }
-    /*========  SELECT MULTIPLE VIDEOS  ========*/
-    else if (Math.max(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) > -1 && Math.max(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several")) > Math.min(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("episodes")) > Math.min(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several"))) {
-        console.log("dankmultiple");
-        sAns += sSelectMultipleVideos;
-    }
-
-
-
-
-    /*========  ANDROID APP SKIPPING BACK TO TOP  ========*/
-    else if ((Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")) > -1 && arsKeyWords.indexOf("back") > -1 && ((arsKeyWords.indexOf("top") > -1) || arsKeyWords.indexOf("beginnning") > Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")))) || (Math.max(arsKeyWords.indexOf("repeated"), arsKeyWords.indexOf("constant"), arsKeyWords.indexOf("frequent"))>-1 && arsKeyWords.indexOf("scanning")>-1)) {
-        console.log("dankandroidbug");
-        sAns += sSearchBackToTop;
-    }
-
-
-    //console.log("alkdfjakljfakldfalkakjla");
-    /*========  DVD  ========*/
-    else if (arsKeyWords.indexOf("dvd") > -1 || arsKeyWords.indexOf("iso") > -1) {
-        console.log("kdlfajdkjfaldfjakfjd0");
-        sAns += sDVD;
-    }
-
-
-    /*========  VIDEOSTREAM WINDOWS APPLICATION  ========*/
-    else if (arsKeyWords.indexOf("videostream") > -1 && (arsKeyWords.indexOf("windows") > -1 && arsKeyWords.indexOf("application") > arsKeyWords.indexOf("windows")) || arsKeyWords.indexOf("standalone") > -1) {
-        console.log("wndowsapp");
-        sAns += sWindowsApp;
-    }
-    /*========  VIDEOSTREAM RIGHT CLICK MENU  ========*/
-    else if (arsKeyWords.indexOf("videostream") > -1 && arsKeyWords.indexOf("right") > -1 && arsKeyWords.indexOf("click") === arsKeyWords[arsKeyWords.indexOf("right") + 1]) {
-        console.log("dankrightclick");
-        sAns += sWindowsRightClick;
-    }
-
-
-
-
-    /*========  RESOLUTION GRAINY  ========*/
-    else if ((arsKeyWords.indexOf("resolution") > -1 || arsKeyWords.indexOf("video") > -1) && arsKeyWords.indexOf("grainy") > -1) {
-        console.log("dankres");
-        sAns += sBitrateProblem;
-    }
-
-    /*========  SIGN IN TAB OPENS VIDEOSTREAM  ========*/
-    else if (arsKeyWords.indexOf("sign") > -1 && arsKeyWords.indexOf("in") === arsKeyWords.indexOf("sign") + 1 && (arsKeyWords.indexOf("tab") > arsKeyWords.indexOf("in") || arsKeyWords.indexOf("window") > arsKeyWords.indexOf("in")) && arsKeyWords.indexOf("open") > -1) {
-        console.log("sSignInTabOpens");
-        sAns += sSignInTabOpens;
-    }
-    /*========  COMPUTER SLEEP STOPS VIDEO  ========*/
-    else if (arsKeyWords.indexOf("computer") > -1 && arsKeyWords.indexOf("sleep") > -1 && arsKeyWords.indexOf("stops") > -1 && arsKeyWords.indexOf("videos") > -1) {
-        console.log(sComputerSleepsStopsVideo);
-        sAns += sComputerSleepsStopsVideo;
-    }
-    /*========  ADD SUBTITLE FILES  ========*/
-    else if (arsKeyWords.indexOf("add") > -1 && arsKeyWords.indexOf("subtitle") > arsKeyWords.indexOf("add") && !(arsKeyWords.indexOf("ads") > -1)) {
-        console.log("sAddSubtitleFiles");
-        sAns += sAddSubtitleFiles;
-    }
-    /*========  PLAYLIST SUPPORT  ========*/
-    else if (((sMaxLetterPos > -1 && (arsKeyWords.indexOf("support") > sMaxLetterPos || arsKeyWords.indexOf("for") > sMaxLetterPos && arsKeyWords[arsKeyWords.indexOf("for") + 1] === "premium")) || (arsKeyWords.indexOf("videos") > arsKeyWords.indexOf("play") && arsKeyWords.indexOf("play") > -1) || (arsKeyWords.indexOf("multiple") > sMaxLetterPos && (arsKeyWords.indexOf("files") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("video") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("movie")>arsKeyWords.indexOf("multiple")))) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("iphone")>-1)) {
-        console.log("sPlaylistSupport");
-        sAns += sPlaylistSupport;
-    }
-    /*========  PLAYLIST NOT WORKING  ========*/
-    else if (arsKeyWords.indexOf("playlist") > -1 && Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("wont")) > -1 && (Math.max(arsKeyWords.indexOf("working"), arsKeyWords.indexOf("showing")) > -1 || arsKeyWords.indexOf("show") > -1 && arsKeyWords[arsKeyWords.indexOf("show") + 1] === "up")) {
-        for (var i = 0; i < arsPlaylistNotShowing.length; i++) {
-            sAns += arsPlaylistNotShowing[i];
-        }
-
-    }
-    /*========  UPNP/DLNA  ========*/
-    else if (arsKeyWords.indexOf("upnp") > -1 || arsKeyWords.indexOf("dlna") > -1) {
-        console.log("sUPNPDLNA");
-        sAns += sUPNPDLNA;
-    }
-
-
-
-    /*========  IOS LIKE ANDROID  ========*/
-    else if ((arsKeyWords.indexOf("iphone") > -1 || arsKeyWords.indexOf("ios") > -1) && ((arsKeyWords.indexOf("android") > -1 || arsKeyWords.indexOf("android") > -1) || (Math.max(arsKeyWords.indexOf("video"), arsKeyWords.indexOf("media"), arsKeyWords.indexOf("browse")) > -1 && arsKeyWords.indexOf("library") > Math.max(arsKeyWords.indexOf("video"), arsKeyWords.indexOf("media"))) || arsKeyWords.indexOf("playlist")>-1 || (Math.max(arsKeyWords.indexOf("connect"), arsKeyWords.indexOf("pair"))>-1 && Math.max(arsKeyWords.indexOf("desktop"), arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("mac"))>-1)) || (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("ios"))>-1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("start"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("find"))>-1 && Math.max(arsKeyWords.indexOf("files"), arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("movie"), arsKeyWords.indexOf("film"))>-1)) { // && ((arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("like") > -1)
-        console.log("here butts lie");
-        //if  {
-        sAns += sIOSAndroid;
-        //}
-    }
-
-    /*========  INTERNET USAGE  ========*/
-    else if ((arsKeyWords.indexOf("internet") > -1 && arsKeyWords.indexOf("usage") > arsKeyWords.indexOf("internet")) || (arsKeyWords.indexOf("data") > -1 && arsKeyWords.indexOf("cap") > arsKeyWords.indexOf("data"))) {
-        sAns += sDownloadCap;
-        console.log("poop");
-    }
-
-    /*========  DELETED FILES STILL SHOWING UP  ========*/
-    else if (Math.max(arsKeyWords.indexOf("deleted"), arsKeyWords.indexOf("removed")) > -1 && Math.max(arsKeyWords.indexOf("files"), arsKeyWords.indexOf("videos")) > -1 && arsKeyWords.indexOf("android") > -1) {
-        for (var i = 0; i < arsDeletedOnAndroidStillThere.length; i++) {
-            sAns += arsDeletedOnAndroidStillThere[i];
-        }
-        console.log("poossss");
-    }
-    /*========  PHONE VIDEOS ON SIDE WHEN VIEWED WITH VIDEOSTREAM  ========*/
-    else if (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("phone")) > -1 && arsKeyWords.indexOf("videos") > -1 && arsKeyWords.indexOf("side") > -1) {
-        console.log("sPhoneVideosOnSide");
-        sAns += sPhoneVideosOnSide;
-    }
-
-    /*========  CHROMECAST EXTEND TIMEOUT  ========*/
-    else if (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("extend") > -1 && arsKeyWords.indexOf("timeout") > arsKeyWords.indexOf("extend")) {
-        console.log("sChromecastTimeout");
-        sAns += sChromecastTimeout;
-    }
-
-    /*========  CHROMECAST NOT IN DROPDOWN  ========*/
-    else if ((arsKeyWords.indexOf("chromecast") > -1 && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"))>-1) && (arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("dropdown")))) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords[arsKeyWords.indexOf("cast") - 1] === "no" && arsKeyWords[arsKeyWords.indexOf("cast") + 1] === "device") || (arsKeyWords.indexOf("chromecast")>-1 && arsKeyWords[arsKeyWords.indexOf("chromecast")-1] === "no" && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"))>-1))) {
-        console.log("nocastdevicesfound");
-        for (var i = 0; i < arsNoCastFound.length; i++) {
-            sAns += arsNoCastFound[i];
-        }
-        //sAns+= sNoCastFound;
-    }
-
-
-    /*========  CONTENT SUGGESTIONS  ========*/
-    else if (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("between") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) && arsKeyWords.indexOf("videos") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads"))) {
-        console.log("sDisplayContentSuggestions");
-        sAns += sDisplayContentSuggestions;
-    } else if (Math.max(arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("opensubtitles") > -1) {
-        console.log("opensubtitles ads");
-        sAns += sOpenSubtitlesAds;
-    } else if (arsKeyWords.indexOf("how") > -1 && Math.max(arsKeyWords.indexOf("make"), arsKeyWords.indexOf("create")) > -1 && arsKeyWords.indexOf("playlist") > -1) {
-        console.log("make playlist");
-        sAns += sHowToMakeAPlaylist;
-    } else if ((Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && ((arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("loading"), arsKeyWords.indexOf("display"), arsKeyWords.indexOf("working")) > -1) || (arsKeyWords.indexOf("display") > -1 && Math.max(arsKeyWords.indexOf("correctly"), arsKeyWords.indexOf("right")) > -1))) || ((Math.max(arsKeyWords.indexOf("opensubtitles"),arsKeyWords.indexOf("subtitle"))>-1) && Math.max(arsKeyWords.indexOf("wont"),arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt"))>-1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works"))>-1)) {
-        console.log("here");
-        for (var i = 0; i < arsSubtitlesNotLoading.length; i++) {
-            sAns += arsSubtitlesNotLoading[i];
-        }
-    } else if (arsKeyWords.indexOf("chromium") > -1 && ((arsKeyWords.indexOf("native") > -1 && arsKeyWords[arsKeyWords.indexOf("native") + 1] === 'client') || arsKeyWords.indexOf("nacl") > -1)) {
-        //console.log("nacl");
-        sAns += sNaClLinux;
-        //console.log(sAns, " done");
-    }
-
-    /*========  CAST FILES FROM ANDROID  ========*/
-    else if (Math.max(arsKeyWords.indexOf("cast"),arsKeyWords.indexOf("watch"))>-1 && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("files"))>-1 && Math.max(arsKeyWords.indexOf("from"), arsKeyWords.indexOf("with"))>-1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone"))>-1){
-        sAns += sCastFromPhone;
-    }
-
-    /*========  .m2ts  ========*/
-    else if (arsKeyWords.indexOf("m2ts")>-1){
-        console.log("m2ts");
-        sAns += sM2TS;
-    }
-
-    /*========  AUDIO NORMALIZATION  ========*/
-    else if (arsKeyWords.indexOf("audio")>-1 && arsKeyWords.indexOf("normalization")>-1){
-        sAns += sAudioNormalization;
-    }
-
-    /*========= OPENSUBTITLES NOT WORKING =========*/
-/*    else if ((arsKeyWords.indexOf("opensubtitles")>-1 || (arsKeyWords.indexOf("subtitle")>-1 && arsKeyWords.indexOf("web")>-1)) && Math.max(arsKeyWords.indexOf("wont"),arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt"))>-1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works"))>-1){
-        sAns+=sOpenSubtitlesBroken;
-    }*/
-
-    else if (Math.max(arsKeyWords.indexOf("uninstall"), arsKeyWords.indexOf("delete"), arsKeyWords.indexOf("remove"))>-1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("videostream"), arsKeyWords.indexOf("program"))>-1){
-        sAns += sUninstallInstructions;
-    }
-
-    else if (arsKeyWords.indexOf("subtitle")>-1 && (arsKeyWords.indexOf("change")>-1 && arsKeyWords.indexOf("size")>-1 || arsKeyWords.indexOf("smaller")>-1 || Math.max(arsKeyWords.indexOf("larger"), arsKeyWords.indexOf("bigger"))>-1)){
-        sAns += sSubtitleSize;
-    }
-
-    else if (arsKeyWords.indexOf("windows")>-1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"))>-1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("program"), arsKeyWords.indexOf("videostream"))>-1){
-        sAns += sWindowsPhone;
-    }
-
-    else if (Math.max(arsKeyWords.indexOf("loop"), arsKeyWords.indexOf("repeat"))>-1 && arsKeyWords.indexOf("videos")>-1){
-        sAns += sRepeatVideos;
-    }
-
-    else if (Math.max(arsKeyWords.indexOf("google"))>-1 && Math.max(arsKeyWords.indexOf("credit"), arsKeyWords.indexOf("play"))>-1 && Math.max(arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("buy"), arsKeyWords.indexOf("purchase"))>-1){
-        sAns += sGooglePlayCredit;
-    }
-
-    /*========  PHONE CAN'T FIND VIDEOSTREAM  ========*/    
-    else if ((Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone"), arsKeyWords.indexOf("mobile"))>-1 || arsKeyWords.indexOf("videostream")>-1 && arsKeyWords[arsKeyWords.indexOf("videostream")+1] === "mobile" || arsKeyWords.indexOf("mobile")>-1 && arsKeyWords[arsKeyWords.indexOf("mobile")+1] === "app") && ((Math.max(arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("cannot"), arsKeyWords.indexOf("doesnt"))>-1 && Math.max(arsKeyWords.indexOf("find"), arsKeyWords.indexOf("detect"), arsKeyWords.indexOf("connect"))>-1) || (arsKeyWords.indexOf("lose")>-1 && arsKeyWords.indexOf("connection")>-1)) && Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox"))>-1){
-        sAns += sPhoneCantFindVideostream;
-        sAns += sPhoneCantFindVideostream2;
-        var bFound = false;
-        if (Math.max(arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("windows"))>-1){
-                sAns += sPhoneCantFindVideostream3;
-                bFound = true;
-        }if (Math.max(arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("osx"))>-1){
-                sAns += sPhoneCantFindVideostream4;
-                bFound = true;
-        }if (Math.max(arsKeyWords.indexOf("linux"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox"), arsKeyWords.indexOf("mint"), arsKeyWords.indexOf("fedora"))>-1){
-                sAns += sPhoneCantFindVideostream5;
-                bFound = true;
-        }if (arsKeyWords.indexOf("ubuntu")>-1){
-                sAns += sPhoneCantFindVideostream6;
-                bFound = true;
-        }if (bFound){
-                for (var i = 6;i<arsPhoneCantFindVideostream.length;i++){
-                        sAns+= arsPhoneCantFindVideostream[i];
+                            }
+                        }
+                    }
                 }
-        }else{
-                for (var i = 2;i<arsPhoneCantFindVideostream.length;i++){
-                        sAns += arsPhoneCantFindVideostream[i];
+                //chrome.runtime.sendMessage({url: }, function(){console.log("done");});
+            }
+        }
+
+    } else if (type === "translate") {
+        console.log("kdlafjlkafajl");
+        chrome.runtime.sendMessage({ state: "ready" }, function() {});
+
+    } else if (type === "ticket") {
+        /*        chrome.runtime.sendMessage({action: "search", url: "https://translate.google.com/"}, function(id, bFoundURLInTab){
+                console.log("bFoundURLInTab: ", bFoundURLInTab);
+                if (!bFoundURLInTab){
+                        console.log("could not find");
+                }else{
+                        console.log("found");
                 }
+        });*/
+
+        console.log("kladfkaf;aflkafdkljaflkda dank");
+
+
+
+        /*=====================================================================  MAIN PROGRAM  =====================================================================*/
+        var sRequestTitle = document.getElementsByClassName('subject')[0].innerText.toLowerCase();
+        var sRequestBody = document.getElementById('ticket_original_request').innerText.toLowerCase();
+        var listOfTools = document.getElementsByClassName("attach_content");
+        console.log("listOfTools: ", listOfTools);
+        var bLog = false;
+        for (var i = 0; i < listOfTools.length; i++) {
+            var contentOfList = listOfTools[i].children;
+            for (var j = 0; j < contentOfList.length; j++) {
+                if (contentOfList[j].classList.contains("ellipsis")) {
+                    console.log("found ellipsis class in attachment");
+                    console.log("contentOfList[j].children[0]: ", contentOfList[j].children[0], " ", contentOfList[j].children[0].tagName);
+                    for (var k = 0; k < contentOfList[j].children.length; k++) {
+                        if (contentOfList[j].children[k].tagName === "A") {
+                            if (contentOfList[j].children[k].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt") {
+                                bLog = true;
+                            }
+                            console.log(contentOfList[j].children[k].getAttribute("href"));
+                            //window.open(contentOfList[j].children[k].getAttribute("href"), "_blank");
+                            //chrome.tabs.create({url: contentOfList[j].children[k].getAttribute("href")}, function(){});
+                            //chrome.tabs.create({url: "http://www.stackoverflow.com"});
+                            chrome.runtime.sendMessage({ action: "openvs", url: contentOfList[j].children[k].getAttribute("href") }, function() { console.log("done"); });
+                            //chrome.extension.getBackgroundPage().sayHello();
+                        }
+                    }
+
+                }
+            }
+
+            /*        if (listOfTools[i].hasAttribute("data-original-title")){
+                            console.log("hasAttribute - data-original-title ", listOfTools[i]);
+                            if (listOfTools[i].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt"){
+                                    console.log(listOfTools[i].getAttribute("href"));
+                                    //window.open(listOfTools[i].getAttribute("href"), "_blank");
+                                    //window.focus();
+                                    bLog = true;
+                                    chrome.tabs.create({url: listOfTools[i].getAttribute("href")})
+                            }
+                            //console.log(listOfTools[i]);
+                    }*/
+
+            //console.log(attachmentList[i].getElementsByClassName("elipsis"));
+            //        for (var j = 0;j<components.length;j++){
+            //              console.log(components[j].children);
+            //}
+
         }
+
+
+
+        if (sRequestBody === "") {
+            checkForKeyWords(sRequestTitle);
+            if (!bCheck)
+                printAnswer(sBlankEmail);
+        }
+
+        chrome.runtime.sendMessage({ action: "open", url: "https://translate.google.com/" }, function() { console.log("LEARL: "); });
+        console.log("blkadklfadklfajljkad ", bLog);
+        chrome.runtime.sendMessage({ action: "translate", text: sRequestTitle, type: "title" }, function() {
+            console.log("finished translating title: ");
+
+        });
+        chrome.runtime.sendMessage({ action: "translate", text: sRequestBody, type: "body" }, function() { console.log("finished translating body: "); });
+
+
+
+        //alert("here");
+        /*CHANGE ALL NEWLINES TO SPACES*/
+
+        /*        if (!confirm("was this dank")) {
+                    printAnswer("\n");
+                }*/
+
+
+        //console.log(sInstallCast);
+        //console.log(sRequestBody);
+        //console.log(sRequestTitle);
+        //document.write('poop');
+
+        //return;
+        // }
+
+        /*
+
+        document.getElementsByClassName("submit_btn").onclick() = function(){alert("kdafjakljsadlf")}
+
+
+        var lol = document.getElementById("TicketPseudoReply").children
+
+        lol.FwdButton.click()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        */
+
+
+
+
+
     }
+});
+var bTitle = false;
+var bBody = false;
+chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendResponsetrans) {
+    console.log("info: ", requesttrans, " ", sendertrans);
+    if (requesttrans.job === "solve") {
+        document.getElementById('source').innerText = requesttrans.string;
+        document.getElementById("gt-submit").click();
+        //while (document.getElementById("result_box").children[0] === undefined){}
+        var myVar = window.setInterval(function() {
+            if (document.getElementById("result_box").innerText != "") {
+                console.log("done the translate");
+                console.log(document.getElementById("result_box").innerText);
+                chrome.runtime.sendMessage({ action: "translatecomplete", sender: requesttrans, text: document.getElementById("result_box").innerText }, function() {});
+                clearInterval(myVar);
 
-    /*PUT EVRYTHING ABOVE THIS ONE LDKFAJDKFLAJFADJF;AFAJG;LAFKGALJKGAJG*/
 
-    /*========  STUCK ON LOADING SCREEN  ========*/
-    else if (arsKeyWords.indexOf("loading") > -1 && !(arsKeyWords.indexOf("subtitle")>-1)) {
-        console.log("dankloading");
-        sAns += "Super sorry to hear your video is stuck on the loading screen!  A few things: \n 1. Is it just one or a few files that are doing this?  If so do you mind checking to see if it plays in VLC? \n 2. If you are having trouble with all of them, then it's probably a problem with your firewall.  \n \n";
-        if ((arsKeyWords.indexOf("mac") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc"))) {
-            for (var i = 0; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
+            } else {
+                console.log("no t done the translate");
             }
-        }
-        if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows")>-1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac"))) {
-            for (var i = 0; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
+        }, 500);
+    } else if (requesttrans.job === "translationDoneFinishUp") {
+
+        console.log("for translation done finish up");
+        console.log("Type: ", requesttrans.type, " text: ", requesttrans.text);
+        if (requesttrans.type === "title") {
+            sRequestTitle = requesttrans.text;
+            bTitle = true;
         } else {
-                sAns += "Not sure whether you have a PC or a Mac, so I'm going to give you fixes for both of them :P \n \n"
-            for (var i = 0; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
-            }
-            sAns +="\n";
-            for (var i = 0; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
+            sRequestBody = requesttrans.text;
+            bBody = true;
         }
-        sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n"
+        if (bTitle && bBody) {
+            console.log("title: ", sRequestTitle, " body: ", sRequestBody);
+
+                      sRequestTitle = sRequestTitle.replace(/(\r\n|\n|\r)/gm, " ");
+          sRequestBody = sRequestBody.replace(/(\r\n|\n|\r)/gm, " ");
+          sRequestBody = sRequestBody.replace("eg.", "");
+          sRequestBody = sRequestBody.replace("ex.", " ");
+          sRequestBody = sRequestBody.replace("...", " ");
+          //console.log(sRequestBody);
+          /*SPLIT BODY AT PERIODS*/
+          console.log("requestbody ", sRequestBody);
+          //sRequestBody = sRequestBody.replace(/([.?!])\s*(?=[A-Z])/g, "\n")
+          //console.log("requestbody ", sRequestBody);
+          sRequestBody = sRequestBody.split(/[\\.!?]/);
+          console.log("requestbody ", sRequestBody);
+          sRequestTitle = sRequestTitle.split(/[\\.!?]/);
+          //console.log(sRequestBody);
+          //console.log(sRequestTitle);
+          //sRequestBody = sRequestBody.split(/[.?!]+/);
+          //sRequestTitle = sRequestTitle.split(/[.?!]+/);
+          /*GET RID OF PUNCTUATION*/
+          for (var i = 0; i < sRequestBody.length; i++) {
+              sRequestBody[i] = sRequestBody[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()“”¿]/g, "");
+              sRequestBody[i] = sRequestBody[i].trim();
+              sRequestBody[i] = sRequestBody[i].split(/[ ]+/);
+          }
+          console.log("therequestbody, ", sRequestBody);
+          for (var i = 0; i < sRequestTitle.length; i++) {
+              sRequestTitle[i] = sRequestTitle[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()¿]/g, "");
+              sRequestTitle[i] = sRequestTitle[i].trim();
+              sRequestTitle[i] = sRequestTitle[i].split(/[ ]+/);
+          }
+          console.log(sRequestBody);
+          console.log(sRequestTitle);
+          /*SEARCH FOR KEYWORDS IN EACH SENTENCE*/
+          console.log(sRequestTitle);
+          checkForKeyWords(sRequestTitle);
+         if (!bCheck) {
+              //console.log("there is poop all over");
+             console.log(sRequestBody);
+              checkForKeyWords(sRequestBody);
+              if (!bCheck) {
+                  printAnswer("Super sorry!  I don't quite understand your question!  Do you mind giving me a bit more information?  If possible, screenshots would be appreciated :) \n \n Cheers!");
+              } else {
+                  printAnswer(sAns);
+              }
+          } else {
+              printAnswer(sAns);
+              console.log("printingdeanswer");
+              console.log(sAns);
+          }
+
+
+        }
+
     }
 
-    console.log("done");
 
-}
+    //console.log("final trans: ", document.getElementById("result_box").innerText); //[0].innerText
+    /*            if (document.getElementById("spelling-correction").style.display != "none"){
+                    console.log("dkaldfkadfakj uber ultra dankness");
+                }else{
+                    console.log("wth this is retarded.");
+                }*/
+    //src = requesttrans.string;
+    /*document.getElementsByClassName("submit_btn").onclick() = function(){alert("kdafjakljsadlf")}
+        
 
-/*=====================================================================  CHECKFORKEYWORDS FUNCTION  =====================================================================*/
+        var lol = document.getElementById("TicketPseudoReply").children
 
-function checkForKeyWords(arsTest) {
-    console.log("arstest, ", arsTest);
-    arsKeyWords = [];
-    var arsKeyTot = [];
-    bCheck = false;
-    //console.log(arsTest);
-    //console.log("dank");
-    for (var i = 0; i < arsTest.length; i++) {
-        //if (sAns != "") {
-        arsKeyWords = [];
-        console.log("i, ", i);
-        //}
-        //bCheck = true;
-        for (var j = 0; j < arsTest[i].length; j++) { //LOOP THROUGH EMAIL BODY
-            console.log("j ", j);
-            for (var k = 0; k < arsWords.length; k++) { //LOOP THROUGH KEYWORD ARRAY
-                //console.log(k +" " +i+" "+j);
-                if (arsWords[k].indexOf(arsTest[i][j]) > -1) {
-                    //console.log("poo");
-                    arsKeyWords.push(arsWords[k][0]);
-                    break;
+        lol.FwdButton.click()*/
+    sendResponsetrans();
+});
+
+        /*=====================================================================  PRINTANSWER FUNCTION  =====================================================================*/
+
+        function printAnswer(sAns) {
+            var lol = document.getElementById("TicketPseudoReply").children;
+            lol.FwdButton.click();
+            var derp = document.getElementsByClassName("redactor_editor")[0].children;
+            derp[1].children[2].innerText = sAns;
+        }
+
+        /*=====================================================================  TESTWORDS FUNCTION  =====================================================================*/
+
+        function testwords(arsKeyWords) {
+            var sMaxLetterPos = Math.max(arsKeyWords.indexOf("queue"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("playlist"));
+            console.log("doth this worketh");
+            console.log("arsKeyWords: " + arsKeyWords);
+            console.log(arsKeyWords.indexOf("internet"));
+            console.log(arsKeyWords.indexOf("usage"));
+            /*========  BUFFERING  ========*/
+            if (arsKeyWords.indexOf("buffering") > -1 || arsKeyWords.indexOf("buffers") > -1) {
+                console.log("dankbuffer");
+                if (arsKeyWords.indexOf("constant") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("frequent") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("stuck") < arsKeyWords.indexOf("buffering") || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("forever") > arsKeyWords.indexOf("buffers")) || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("buffers"))) {
+                    for (var i = 0; i < arsBuffering.length; i++) {
+                        if (i === 16) {
+                            console.log(bLog);
+                            if (!bLog) {
+                                sAns += arsBuffering[i];
+                            }
+                        } else {
+                            sAns += arsBuffering[i];
+                        }
+
+                    }
+                    //console.log("hello");
+                    //LOOK FOR IN SAME ROOM, ACCROSS ROOM, RIGHT BESIDE EACH OTHER, ETC.        COULD BE IN A DIFFERENT SENTENCE.  MAKE EACH RESPONSE AN ARRAY, TOGGLE BTWN 1 AND 0, HAVE A FINAL PRINT FUNCTION...
+                    //printAnswer(sAns);
+                }
+                if (arsKeyWords.indexOf("loading") > -1) {
+                    sAns += "Just making sure here, are you stuck on the buffering screen or the loading screen?";
                 }
             }
-        }
-        /*CHECK FOR FUCKTARDS WHO USE SPACES IN RANDOM WAYS*/
-        for (var j = 0; j < arsKeyWords.length - 1; j++) {
-            if (arsKeyWords[j] === "play") {
-                if (arsKeyWords[j + 1] === "list") {
-                    arsKeyWords[j] = "playlist";
+
+
+
+            /*========  FIREWALL BLOCKING VIDEOSTREAM  ========*/
+            else if (arsKeyWords.indexOf("firewall") > -1 && (Math.max(arsKeyWords.indexOf("blocking"), arsKeyWords.indexOf("blocks")) > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("blocked") > -1 || (arsKeyWords.indexOf("get") > -1 && arsKeyWords.indexOf("fixed") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("blocking") > -1 && arsKeyWords.indexOf("content") > -1) || arsKeyWords.indexOf("repair") > -1 && Math.max(arsKeyWords.indexOf("freezing"), arsKeyWords.indexOf("stuck"))) || (arsKeyWords.indexOf("help") > -1 && arsKeyWords.indexOf("with") > -1)) {
+                console.log("dankfirewall");
+
+                if ((arsKeyWords.indexOf("mac") > -1 || arsKeyWords.indexOf("osx") > -1 || (arsKeyWords.indexOf("os") > -1 && arsKeyWords[arsKeyWords.indexOf("os") + 1] === "x") || arsKeyWords.indexOf("macbook") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
+                    sAns += sFirewall;
+                    sAns += sFirewall2;
+                    for (var i = 1; i < arsFirewallMac.length; i++) {
+                        sAns += arsFirewallMac[i];
+                    }
                 }
-            }
-            if (arsKeyWords[j] === "will"){
-                if (arsKeyWords[j+1] === "not"){
-                        arsKeyWords[j] = "wont";
-                }
-            }
-            if (arsKeyWords[j] === "not"){
-                if (arsKeyWords[j+1] === "available"){
-                        arsKeyWords[j] = 'unavailable';
+                if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac")) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
+                    sAns += sFirewall;
+                    sAns += sFirewall2;
+                    for (var i = 1; i < arsFirewallWindows.length; i++) {
+                        sAns += arsFirewallWindows[i];
+                    }
                 }
             }
 
-        if (arsKeyWords[j] === "get"){
-                if (arsKeyWords[j+1] === "rid"){
-                       // if (arsKeyWords[j+2] === "of"){
-                                arsKeyWords[j] = "delete";
-                       // }
+            /*========  REFUND  ========*/
+            else if (arsKeyWords.indexOf("refund") > -1 || (arsKeyWords.indexOf("money") > -1 && arsKeyWords[arsKeyWords.indexOf("money") + 1] === "back")) {
+                console.log("dankrefund");
+                sAns += sRefund;
+            }
+
+            /*========  UPGRADE TO LIFETIME  ========*/
+            else if ((arsKeyWords.indexOf("upgrade") > -1 && arsKeyWords.indexOf("lifetime") > arsKeyWords.indexOf("upgrade")) || Math.max(arsKeyWords.indexOf("monthly"), arsKeyWords.indexOf("yearly"), arsKeyWords.indexOf("annual")) > -1 && arsKeyWords.indexOf("lifetime") > -1) {
+                console.log("dankupgrade");
+                sAns += sToLifetimeNoSale;
+            }
+
+
+            /*========  CANCEL SUBSCRIPTION  ========*/
+            else if ((Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) > -1 && (arsKeyWords.indexOf("subscription") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("premium") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("charge") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")))) || Math.max(arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end"), arsKeyWords.indexOf("cancel")) > -1 && arsKeyWords.indexOf("payment") > -1 || Math.max(arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("membership"), arsKeyWords.indexOf("service")) > -1 && arsKeyWords.indexOf("cancel") > -1) {
+                console.log("dankcancel");
+                sAns += sCancelPremium;
+            }
+            //return sAns;
+
+            /*========  PREMIUM FEATURES/UPGRADE  ========*/
+            // else if  &&  {
+            // console.log("dankpremium");
+            else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && ((arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("detected"), arsKeyWords.indexOf("detecting"), arsKeyWords.indexOf("recognized")) > -1) || (arsKeyWords.indexOf("greyed") > -1 && Math.max(arsKeyWords.indexOf("features"), arsKeyWords.indexOf("choices")) > -1) || (Math.max(arsKeyWords.indexOf("change"), arsKeyWords.indexOf("new"), arsKeyWords.indexOf("other")) > -1 && arsKeyWords.indexOf("computer") > -1) || arsKeyWords.indexOf("doesnt") > -1 && arsKeyWords.indexOf("work") > -1 || arsKeyWords.indexOf("how") > -1 && arsKeyWords.indexOf("linked") > -1)) {
+                console.log("premiumnotworking: ", arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("not"))
+                sAns += sPremiumNotWorking;
+            } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(Math.max(arsKeyWords.indexOf("issue"), arsKeyWords.indexOf("problem")) > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("would") > -1 && arsKeyWords.indexOf("be") === arsKeyWords.indexOf("would") + 1)) && (arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("advantages") > -1 || arsKeyWords.indexOf("difference") > -1)) {
+                console.log("sPremiumFeatures");
+                sAns += sPremiumFeatures
+            } else if ((((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound")) > -1) && !(arsKeyWords.indexOf("opensubtitles") > -1))) && (arsKeyWords.indexOf("how") > -1 || Math.max(arsKeyWords.indexOf("upgrade"), arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("get")) > -1)) {
+                console.log("sGetPremium");
+                sAns += sGetPremium;
+            } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1)) && (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1)) {
+                console.log("sDisplayContentSuggestions");
+                sAns += sDisplayContentSuggestions;
+            }
+            // else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && arsKeyWords.indexOf("new")>-1 && arsKeyWords.indexOf("computer")>-1) //else if (arsKeyWords.indexOf("email") > -1) {
+
+            //     }
+
+            //   }
+
+            /*========  INSTALL CAST EXTENSION  ========*/
+            else if ((arsKeyWords.indexOf("google") < arsKeyWords.indexOf("cast") && arsKeyWords.indexOf("google") > -1) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords.indexOf("extension") > -1)) {
+                console.log("dankcast");
+                sAns += sInstallCast;
+            }
+
+            /*========  VIDDIT  ========*/
+            else if (arsKeyWords.indexOf("viddit") > -1) {
+                console.log("dankviddit");
+                sAns += sViddit;
+            }
+
+            /*========  ITUNES DRM  ========*/ //MAYBE MAKE ARRAY OF STUFF WITH DRM ON IT AND LOOP THROUGH?
+            else if (arsKeyWords.indexOf("itunes") > -1 && arsKeyWords.indexOf("play") > -1) {
+                console.log("dankdrm");
+                sAns += sDRMiTunes;
+            }
+
+            /*========  AUDIO THROUGH HEADPHONES OR CHROMECAST AUDIO, VIDEO THROUGH CHROMECAST  ========*/
+            else if (((Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound"), arsKeyWords.indexOf("listen")) > -1 && (arsKeyWords.indexOf("headphones") > -1 || Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("laptop")) > -1 || arsKeyWords.indexOf("phone") > -1 || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("chromecast"))))) || ((arsKeyWords.indexOf("connect") > -1 && arsKeyWords.indexOf("stereo") > -1 && arsKeyWords.indexOf("headphones") > -1))) {
+                console.log("dankaudio");
+                sAns += sHeadphoneAudio;
+            }
+
+            /*========  VIDEO BUT NO AUDIO  ========*/
+            else if ((arsKeyWords.indexOf("no") > -1 || (Math.max(arsKeyWords.indexOf("doesnt"), arsKeyWords.indexOf("wont")) > -1 && Math.max(arsKeyWords.indexOf("cast"), arsKeyWords.indexOf("play")) > -1)) && (arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("no") || arsKeyWords.indexOf("sound") > arsKeyWords.indexOf("no"))) {
+                console.log("dankvideo");
+                for (var i = 0; i < arsVideoNoAudio.length; i++) {
+                    if (i === 1) {
+                        if (!bLog) {
+                            sAns += arsVideoNoAudio[i];
+                        }
+                    } else {
+                        sAns += arsVideoNoAudio[i];
+                    }
+
                 }
-        }
-        if (arsKeyWords[j] === "not"){
-                if (arsKeyWords[j+1] === "able"){
-                        arsKeyWords[j] = "cant";
+            }
+            /*========  SELECT MULTIPLE VIDEOS  ========*/
+            else if (Math.max(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) > -1 && Math.max(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several")) > Math.min(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("episodes")) > Math.min(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several"))) {
+                console.log("dankmultiple");
+                sAns += sSelectMultipleVideos;
+            }
+
+
+
+
+            /*========  ANDROID APP SKIPPING BACK TO TOP  ========*/
+            else if ((Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")) > -1 && arsKeyWords.indexOf("back") > -1 && ((arsKeyWords.indexOf("top") > -1) || arsKeyWords.indexOf("beginnning") > Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")))) || (Math.max(arsKeyWords.indexOf("repeated"), arsKeyWords.indexOf("constant"), arsKeyWords.indexOf("frequent")) > -1 && arsKeyWords.indexOf("scanning") > -1)) {
+                console.log("dankandroidbug");
+                sAns += sSearchBackToTop;
+            }
+
+
+            //console.log("alkdfjakljfakldfalkakjla");
+            /*========  DVD  ========*/
+            else if (arsKeyWords.indexOf("dvd") > -1 || arsKeyWords.indexOf("iso") > -1) {
+                console.log("kdlfajdkjfaldfjakfjd0");
+                sAns += sDVD;
+            }
+
+
+            /*========  VIDEOSTREAM WINDOWS APPLICATION  ========*/
+            else if (arsKeyWords.indexOf("videostream") > -1 && (arsKeyWords.indexOf("windows") > -1 && arsKeyWords.indexOf("application") > arsKeyWords.indexOf("windows")) || arsKeyWords.indexOf("standalone") > -1) {
+                console.log("wndowsapp");
+                sAns += sWindowsApp;
+            }
+            /*========  VIDEOSTREAM RIGHT CLICK MENU  ========*/
+            else if (arsKeyWords.indexOf("videostream") > -1 && arsKeyWords.indexOf("right") > -1 && arsKeyWords.indexOf("click") === arsKeyWords[arsKeyWords.indexOf("right") + 1]) {
+                console.log("dankrightclick");
+                sAns += sWindowsRightClick;
+            }
+
+
+
+
+            /*========  RESOLUTION GRAINY  ========*/
+            else if ((arsKeyWords.indexOf("resolution") > -1 || arsKeyWords.indexOf("video") > -1) && arsKeyWords.indexOf("grainy") > -1) {
+                console.log("dankres");
+                sAns += sBitrateProblem;
+            }
+
+            /*========  SIGN IN TAB OPENS VIDEOSTREAM  ========*/
+            else if (arsKeyWords.indexOf("sign") > -1 && arsKeyWords.indexOf("in") === arsKeyWords.indexOf("sign") + 1 && (arsKeyWords.indexOf("tab") > arsKeyWords.indexOf("in") || arsKeyWords.indexOf("window") > arsKeyWords.indexOf("in")) && arsKeyWords.indexOf("open") > -1) {
+                console.log("sSignInTabOpens");
+                sAns += sSignInTabOpens;
+            }
+            /*========  COMPUTER SLEEP STOPS VIDEO  ========*/
+            else if (arsKeyWords.indexOf("computer") > -1 && arsKeyWords.indexOf("sleep") > -1 && arsKeyWords.indexOf("stops") > -1 && arsKeyWords.indexOf("videos") > -1) {
+                console.log(sComputerSleepsStopsVideo);
+                sAns += sComputerSleepsStopsVideo;
+            }
+            /*========  ADD SUBTITLE FILES  ========*/
+            else if (arsKeyWords.indexOf("add") > -1 && arsKeyWords.indexOf("subtitle") > arsKeyWords.indexOf("add") && !(arsKeyWords.indexOf("ads") > -1)) {
+                console.log("sAddSubtitleFiles");
+                sAns += sAddSubtitleFiles;
+            }
+            /*========  PLAYLIST SUPPORT  ========*/
+            else if (((sMaxLetterPos > -1 && (arsKeyWords.indexOf("support") > sMaxLetterPos || arsKeyWords.indexOf("for") > sMaxLetterPos && arsKeyWords[arsKeyWords.indexOf("for") + 1] === "premium")) || (arsKeyWords.indexOf("videos") > arsKeyWords.indexOf("play") && arsKeyWords.indexOf("play") > -1) || (arsKeyWords.indexOf("multiple") > sMaxLetterPos && (arsKeyWords.indexOf("files") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("video") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("movie") > arsKeyWords.indexOf("multiple")))) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("iphone") > -1)) {
+                console.log("sPlaylistSupport");
+                sAns += sPlaylistSupport;
+            }
+            /*========  PLAYLIST NOT WORKING  ========*/
+            else if (arsKeyWords.indexOf("playlist") > -1 && Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("wont")) > -1 && (Math.max(arsKeyWords.indexOf("working"), arsKeyWords.indexOf("showing")) > -1 || arsKeyWords.indexOf("show") > -1 && arsKeyWords[arsKeyWords.indexOf("show") + 1] === "up")) {
+                for (var i = 0; i < arsPlaylistNotShowing.length; i++) {
+                    sAns += arsPlaylistNotShowing[i];
                 }
+
+            }
+            /*========  UPNP/DLNA  ========*/
+            else if (arsKeyWords.indexOf("upnp") > -1 || arsKeyWords.indexOf("dlna") > -1) {
+                console.log("sUPNPDLNA");
+                sAns += sUPNPDLNA;
+            }
+
+
+
+            /*========  IOS LIKE ANDROID  ========*/
+            else if ((arsKeyWords.indexOf("iphone") > -1 || arsKeyWords.indexOf("ios") > -1) && ((arsKeyWords.indexOf("android") > -1 || arsKeyWords.indexOf("android") > -1) || (Math.max(arsKeyWords.indexOf("video"), arsKeyWords.indexOf("media"), arsKeyWords.indexOf("browse")) > -1 && arsKeyWords.indexOf("library") > Math.max(arsKeyWords.indexOf("video"), arsKeyWords.indexOf("media"))) || arsKeyWords.indexOf("playlist") > -1 || (Math.max(arsKeyWords.indexOf("connect"), arsKeyWords.indexOf("pair")) > -1 && Math.max(arsKeyWords.indexOf("desktop"), arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("mac")) > -1)) || (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("ios")) > -1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("start"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("find")) > -1 && Math.max(arsKeyWords.indexOf("files"), arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("movie"), arsKeyWords.indexOf("film")) > -1)) { // && ((arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("like") > -1)
+                console.log("here butts lie");
+                //if  {
+                sAns += sIOSAndroid;
+                //}
+            }
+
+            /*========  INTERNET USAGE  ========*/
+            else if ((arsKeyWords.indexOf("internet") > -1 && arsKeyWords.indexOf("usage") > arsKeyWords.indexOf("internet")) || (arsKeyWords.indexOf("data") > -1 && arsKeyWords.indexOf("cap") > arsKeyWords.indexOf("data"))) {
+                sAns += sDownloadCap;
+                console.log("poop");
+            }
+
+            /*========  DELETED FILES STILL SHOWING UP  ========*/
+            else if (Math.max(arsKeyWords.indexOf("deleted"), arsKeyWords.indexOf("removed")) > -1 && Math.max(arsKeyWords.indexOf("files"), arsKeyWords.indexOf("videos")) > -1 && arsKeyWords.indexOf("android") > -1) {
+                for (var i = 0; i < arsDeletedOnAndroidStillThere.length; i++) {
+                    sAns += arsDeletedOnAndroidStillThere[i];
+                }
+                console.log("poossss");
+            }
+            /*========  PHONE VIDEOS ON SIDE WHEN VIEWED WITH VIDEOSTREAM  ========*/
+            else if (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("phone")) > -1 && arsKeyWords.indexOf("videos") > -1 && arsKeyWords.indexOf("side") > -1) {
+                console.log("sPhoneVideosOnSide");
+                sAns += sPhoneVideosOnSide;
+            }
+
+            /*========  CHROMECAST EXTEND TIMEOUT  ========*/
+            else if (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("extend") > -1 && arsKeyWords.indexOf("timeout") > arsKeyWords.indexOf("extend")) {
+                console.log("sChromecastTimeout");
+                sAns += sChromecastTimeout;
+            }
+
+            /*========  CHROMECAST NOT IN DROPDOWN  ========*/
+            else if ((arsKeyWords.indexOf("chromecast") > -1 && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell")) > -1) && (arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("dropdown")))) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords[arsKeyWords.indexOf("cast") - 1] === "no" && arsKeyWords[arsKeyWords.indexOf("cast") + 1] === "device") || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords[arsKeyWords.indexOf("chromecast") - 1] === "no" && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell")) > -1))) {
+                console.log("nocastdevicesfound");
+                for (var i = 0; i < arsNoCastFound.length; i++) {
+                    sAns += arsNoCastFound[i];
+                }
+                //sAns+= sNoCastFound;
+            }
+
+
+            /*========  CONTENT SUGGESTIONS  ========*/
+            else if (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("between") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) && arsKeyWords.indexOf("videos") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads"))) {
+                console.log("sDisplayContentSuggestions");
+                sAns += sDisplayContentSuggestions;
+            } else if (Math.max(arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("opensubtitles") > -1) {
+                console.log("opensubtitles ads");
+                sAns += sOpenSubtitlesAds;
+            } else if (arsKeyWords.indexOf("how") > -1 && Math.max(arsKeyWords.indexOf("make"), arsKeyWords.indexOf("create")) > -1 && arsKeyWords.indexOf("playlist") > -1) {
+                console.log("make playlist");
+                sAns += sHowToMakeAPlaylist;
+            } else if ((Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && ((arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("loading"), arsKeyWords.indexOf("display"), arsKeyWords.indexOf("working")) > -1) || (arsKeyWords.indexOf("display") > -1 && Math.max(arsKeyWords.indexOf("correctly"), arsKeyWords.indexOf("right")) > -1))) || ((Math.max(arsKeyWords.indexOf("opensubtitles"), arsKeyWords.indexOf("subtitle")) > -1) && Math.max(arsKeyWords.indexOf("wont"), arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt")) > -1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works")) > -1)) {
+                console.log("here");
+                for (var i = 0; i < arsSubtitlesNotLoading.length; i++) {
+                    sAns += arsSubtitlesNotLoading[i];
+                }
+            } else if (arsKeyWords.indexOf("chromium") > -1 && ((arsKeyWords.indexOf("native") > -1 && arsKeyWords[arsKeyWords.indexOf("native") + 1] === 'client') || arsKeyWords.indexOf("nacl") > -1)) {
+                //console.log("nacl");
+                sAns += sNaClLinux;
+                //console.log(sAns, " done");
+            }
+
+            /*========  CAST FILES FROM ANDROID  ========*/
+            else if (Math.max(arsKeyWords.indexOf("cast"), arsKeyWords.indexOf("watch")) > -1 && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("files")) > -1 && Math.max(arsKeyWords.indexOf("from"), arsKeyWords.indexOf("with")) > -1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone")) > -1) {
+                sAns += sCastFromPhone;
+            }
+
+            /*========  .m2ts  ========*/
+            else if (arsKeyWords.indexOf("m2ts") > -1) {
+                console.log("m2ts");
+                sAns += sM2TS;
+            }
+
+            /*========  AUDIO NORMALIZATION  ========*/
+            else if (arsKeyWords.indexOf("audio") > -1 && arsKeyWords.indexOf("normalization") > -1) {
+                sAns += sAudioNormalization;
+            }
+
+            /*========= OPENSUBTITLES NOT WORKING =========*/
+            /*    else if ((arsKeyWords.indexOf("opensubtitles")>-1 || (arsKeyWords.indexOf("subtitle")>-1 && arsKeyWords.indexOf("web")>-1)) && Math.max(arsKeyWords.indexOf("wont"),arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt"))>-1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works"))>-1){
+                    sAns+=sOpenSubtitlesBroken;
+                }*/
+            else if (Math.max(arsKeyWords.indexOf("uninstall"), arsKeyWords.indexOf("delete"), arsKeyWords.indexOf("remove")) > -1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("videostream"), arsKeyWords.indexOf("program")) > -1) {
+                sAns += sUninstallInstructions;
+            } else if (arsKeyWords.indexOf("subtitle") > -1 && (arsKeyWords.indexOf("change") > -1 && arsKeyWords.indexOf("size") > -1 || arsKeyWords.indexOf("smaller") > -1 || Math.max(arsKeyWords.indexOf("larger"), arsKeyWords.indexOf("bigger")) > -1)) {
+                sAns += sSubtitleSize;
+            } else if (arsKeyWords.indexOf("windows") > -1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile")) > -1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("program"), arsKeyWords.indexOf("videostream")) > -1) {
+                sAns += sWindowsPhone;
+            } else if (Math.max(arsKeyWords.indexOf("loop"), arsKeyWords.indexOf("repeat")) > -1 && arsKeyWords.indexOf("videos") > -1) {
+                sAns += sRepeatVideos;
+            } else if (Math.max(arsKeyWords.indexOf("google")) > -1 && Math.max(arsKeyWords.indexOf("credit"), arsKeyWords.indexOf("play")) > -1 && Math.max(arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("buy"), arsKeyWords.indexOf("purchase")) > -1) {
+                sAns += sGooglePlayCredit;
+            }
+
+            /*========  PHONE CAN'T FIND VIDEOSTREAM  ========*/
+            else if ((Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone"), arsKeyWords.indexOf("mobile")) > -1 || arsKeyWords.indexOf("videostream") > -1 && arsKeyWords[arsKeyWords.indexOf("videostream") + 1] === "mobile" || arsKeyWords.indexOf("mobile") > -1 && arsKeyWords[arsKeyWords.indexOf("mobile") + 1] === "app") && ((Math.max(arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("cannot"), arsKeyWords.indexOf("doesnt")) > -1 && Math.max(arsKeyWords.indexOf("find"), arsKeyWords.indexOf("detect"), arsKeyWords.indexOf("connect")) > -1) || (arsKeyWords.indexOf("lose") > -1 && arsKeyWords.indexOf("connection") > -1)) && Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox")) > -1) {
+                sAns += sPhoneCantFindVideostream;
+                sAns += sPhoneCantFindVideostream2;
+                var bFound = false;
+                if (Math.max(arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("windows")) > -1) {
+                    sAns += sPhoneCantFindVideostream3;
+                    bFound = true;
+                }
+                if (Math.max(arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("osx")) > -1) {
+                    sAns += sPhoneCantFindVideostream4;
+                    bFound = true;
+                }
+                if (Math.max(arsKeyWords.indexOf("linux"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox"), arsKeyWords.indexOf("mint"), arsKeyWords.indexOf("fedora")) > -1) {
+                    sAns += sPhoneCantFindVideostream5;
+                    bFound = true;
+                }
+                if (arsKeyWords.indexOf("ubuntu") > -1) {
+                    sAns += sPhoneCantFindVideostream6;
+                    bFound = true;
+                }
+                if (bFound) {
+                    for (var i = 6; i < arsPhoneCantFindVideostream.length; i++) {
+                        sAns += arsPhoneCantFindVideostream[i];
+                    }
+                } else {
+                    for (var i = 2; i < arsPhoneCantFindVideostream.length; i++) {
+                        sAns += arsPhoneCantFindVideostream[i];
+                    }
+                }
+            }
+
+            /*PUT EVRYTHING ABOVE THIS ONE LDKFAJDKFLAJFADJF;AFAJG;LAFKGALJKGAJG*/
+
+            /*========  STUCK ON LOADING SCREEN  ========*/
+            else if (arsKeyWords.indexOf("loading") > -1 && !(arsKeyWords.indexOf("subtitle") > -1)) {
+                console.log("dankloading");
+                sAns += "Super sorry to hear your video is stuck on the loading screen!  A few things: \n 1. Is it just one or a few files that are doing this?  If so do you mind checking to see if it plays in VLC? \n 2. If you are having trouble with all of them, then it's probably a problem with your firewall.  \n \n";
+                if ((arsKeyWords.indexOf("mac") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc"))) {
+                    for (var i = 0; i < arsFirewallMac.length; i++) {
+                        sAns += arsFirewallMac[i];
+                    }
+                }
+                if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac"))) {
+                    for (var i = 0; i < arsFirewallWindows.length; i++) {
+                        sAns += arsFirewallWindows[i];
+                    }
+                } else {
+                    sAns += "Not sure whether you have a PC or a Mac, so I'm going to give you fixes for both of them :P \n \n"
+                    for (var i = 0; i < arsFirewallMac.length; i++) {
+                        sAns += arsFirewallMac[i];
+                    }
+                    sAns += "\n";
+                    for (var i = 0; i < arsFirewallWindows.length; i++) {
+                        sAns += arsFirewallWindows[i];
+                    }
+                }
+                sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n"
+            }
+
+            console.log("done");
+
         }
-            /*                else if (arsKeyWords[j] === "monthly" || arsKeyWords[j] === "yearly" || arsKeyWords[j] === "annual"){
-                                    if (arsKeyWords[j+1] === "service"){
-                                            arsKeyWords[j] = "subscription";
-                                    }
-                            }*/
-        }
-        if (arsKeyWords.length > 0) {
-            console.log(arsKeyWords);
-            testwords(arsKeyWords);
-            arsKeyTot = arsKeyTot.concat(arsKeyWords);
+
+        /*=====================================================================  CHECKFORKEYWORDS FUNCTION  =====================================================================*/
+
+        function checkForKeyWords(arsTest) {
+            console.log("arstest, ", arsTest);
+            arsKeyWords = [];
+            var arsKeyTot = [];
+            bCheck = false;
+            //console.log(arsTest);
+            //console.log("dank");
+            for (var i = 0; i < arsTest.length; i++) {
+                //if (sAns != "") {
+                arsKeyWords = [];
+                console.log("i, ", i);
+                //}
+                //bCheck = true;
+                for (var j = 0; j < arsTest[i].length; j++) { //LOOP THROUGH EMAIL BODY
+                    console.log("j ", j);
+                    for (var k = 0; k < arsWords.length; k++) { //LOOP THROUGH KEYWORD ARRAY
+                        //console.log(k +" " +i+" "+j);
+                        if (arsWords[k].indexOf(arsTest[i][j]) > -1) {
+                            //console.log("poo");
+                            arsKeyWords.push(arsWords[k][0]);
+                            break;
+                        }
+                    }
+                }
+                /*CHECK FOR FUCKTARDS WHO USE SPACES IN RANDOM WAYS*/
+                for (var j = 0; j < arsKeyWords.length - 1; j++) {
+                    if (arsKeyWords[j] === "play") {
+                        if (arsKeyWords[j + 1] === "list") {
+                            arsKeyWords[j] = "playlist";
+                        }
+                    }
+                    if (arsKeyWords[j] === "will") {
+                        if (arsKeyWords[j + 1] === "not") {
+                            arsKeyWords[j] = "wont";
+                        }
+                    }
+                    if (arsKeyWords[j] === "not") {
+                        if (arsKeyWords[j + 1] === "available") {
+                            arsKeyWords[j] = 'unavailable';
+                        }
+                    }
+
+                    if (arsKeyWords[j] === "get") {
+                        if (arsKeyWords[j + 1] === "rid") {
+                            // if (arsKeyWords[j+2] === "of"){
+                            arsKeyWords[j] = "delete";
+                            // }
+                        }
+                    }
+                    if (arsKeyWords[j] === "not") {
+                        if (arsKeyWords[j + 1] === "able") {
+                            arsKeyWords[j] = "cant";
+                        }
+                    }
+                    /*                else if (arsKeyWords[j] === "monthly" || arsKeyWords[j] === "yearly" || arsKeyWords[j] === "annual"){
+                                            if (arsKeyWords[j+1] === "service"){
+                                                    arsKeyWords[j] = "subscription";
+                                            }
+                                    }*/
+                }
+                if (arsKeyWords.length > 0) {
+                    console.log(arsKeyWords);
+                    testwords(arsKeyWords);
+                    arsKeyTot = arsKeyTot.concat(arsKeyWords);
+                    if (sAns.length > 0) {
+                        bCheck = true;
+                    }
+                    console.log(sAns);
+                    //bCheck = true;
+                } //else {
+                // bCheck = false;
+                // }
+            }
+            if (sAns.length === 0) {
+                testwords(arsKeyTot);
+            }
             if (sAns.length > 0) {
                 bCheck = true;
             }
-            console.log(sAns);
-            //bCheck = true;
-        } //else {
-        // bCheck = false;
-        // }
-    }
-    if (sAns.length === 0) {
-        testwords(arsKeyTot);
-    }
-    if (sAns.length > 0) {
-        bCheck = true;
-    }
-    //if (!bCheck){
-    //  printAnswer(sAns);
-    //}
-}
-
-/*=====================================================================  MAIN PROGRAM  =====================================================================*/
-var sRequestTitle = document.getElementsByClassName('subject')[0].innerText.toLowerCase();
-var sRequestBody = document.getElementById('ticket_original_request').innerText.toLowerCase();
-if (sRequestBody === "") {
-    checkForKeyWords(sRequestTitle);
-    if (!bCheck)
-        printAnswer(sBlankEmail);
-}
-//alert("here");
-/*CHANGE ALL NEWLINES TO SPACES*/
-sRequestTitle = sRequestTitle.replace(/(\r\n|\n|\r)/gm, " ");
-sRequestBody = sRequestBody.replace(/(\r\n|\n|\r)/gm, " ");
-sRequestBody = sRequestBody.replace("eg.", "");
-sRequestBody = sRequestBody.replace("ex.", " ");
-sRequestBody = sRequestBody.replace("...", " ");
-//console.log(sRequestBody);
-/*SPLIT BODY AT PERIODS*/
-console.log("requestbody ", sRequestBody);
-//sRequestBody = sRequestBody.replace(/([.?!])\s*(?=[A-Z])/g, "\n")
-//console.log("requestbody ", sRequestBody);
-sRequestBody = sRequestBody.split(/[\\.!?]/);
-console.log("requestbody ", sRequestBody);
-sRequestTitle = sRequestTitle.split(/[\\.!?]/);
-//console.log(sRequestBody);
-//console.log(sRequestTitle);
-//sRequestBody = sRequestBody.split(/[.?!]+/);
-//sRequestTitle = sRequestTitle.split(/[.?!]+/);
-/*GET RID OF PUNCTUATION*/
-for (var i = 0; i < sRequestBody.length; i++) {
-    sRequestBody[i] = sRequestBody[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()“”¿]/g, "");
-    sRequestBody[i] = sRequestBody[i].trim();
-    sRequestBody[i] = sRequestBody[i].split(/[ ]+/);
-}
-console.log("therequestbody, ", sRequestBody);
-for (var i = 0; i < sRequestTitle.length; i++) {
-    sRequestTitle[i] = sRequestTitle[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()¿]/g, "");
-    sRequestTitle[i] = sRequestTitle[i].trim();
-    sRequestTitle[i] = sRequestTitle[i].split(/[ ]+/);
-}
-console.log(sRequestBody);
-console.log(sRequestTitle);
-/*SEARCH FOR KEYWORDS IN EACH SENTENCE*/
-console.log(sRequestTitle);
-var listOfTools = document.getElementsByClassName("attach_content");
-console.log("listOfTools: ", listOfTools);
-var bLog = false;
-for (var i = 0;i<listOfTools.length;i++){
-        var contentOfList = listOfTools[i].children;
-        for (var j = 0;j<contentOfList.length;j++){
-                if (contentOfList[j].classList.contains("ellipsis")){
-                        console.log("found ellipsis class in attachment");
-                        console.log("contentOfList[j].children[0]: ", contentOfList[j].children[0], " ", contentOfList[j].children[0].tagName);
-                        for (var k = 0;k<contentOfList[j].children.length;k++){
-                                if (contentOfList[j].children[k].tagName === "A"){
-                                        if (contentOfList[j].children[k].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt"){
-                                                bLog = true;
-                                        }console.log(contentOfList[j].children[k].getAttribute("href"));
-                                        //window.open(contentOfList[j].children[k].getAttribute("href"), "_blank");
-                                        //chrome.tabs.create({url: contentOfList[j].children[k].getAttribute("href")}, function(){});
-                                         //chrome.tabs.create({url: "http://www.stackoverflow.com"});
-                                         chrome.runtime.sendMessage({url: contentOfList[j].children[k].getAttribute("href")}, function(){console.log("done");});
-                                         //chrome.extension.getBackgroundPage().sayHello();
-                                }
-                        }
-
-                }
+            //if (!bCheck){
+            //  printAnswer(sAns);
+            //}
         }
-/*        if (listOfTools[i].hasAttribute("data-original-title")){
-                console.log("hasAttribute - data-original-title ", listOfTools[i]);
-                if (listOfTools[i].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt"){
-                        console.log(listOfTools[i].getAttribute("href"));
-                        //window.open(listOfTools[i].getAttribute("href"), "_blank");
-                        //window.focus();
-                        bLog = true;
-                        chrome.tabs.create({url: listOfTools[i].getAttribute("href")})
-                }
-                //console.log(listOfTools[i]);
-        }*/
-        
-        //console.log(attachmentList[i].getElementsByClassName("elipsis"));
-//        for (var j = 0;j<components.length;j++){
-  //              console.log(components[j].children);
-    //}
-
-}
-console.log("blkadklfadklfajljkad ", bLog);
-checkForKeyWords(sRequestTitle);
-if (!bCheck) {
-    //console.log("there is poop all over");
-    console.log(sRequestBody);
-    checkForKeyWords(sRequestBody);
-    if (!bCheck) {
-        printAnswer("Super sorry!  I don't quite understand your question!  Do you mind giving me a bit more information?  If possible, screenshots would be appreciated :) \n \n Cheers!");
-    } else {
-        printAnswer(sAns);
-    }
-} else {
-    printAnswer(sAns);
-    console.log("printingdeanswer");
-    console.log(sAns);
-}
-if (!confirm("was this dank")) {
-    printAnswer("\n");
-}
-
-
-//console.log(sInstallCast);
-//console.log(sRequestBody);
-//console.log(sRequestTitle);
-//document.write('poop');
-
-//return;
-// }
-
-/*
-
-document.getElementsByClassName("submit_btn").onclick() = function(){alert("kdafjakljsadlf")}
-
-
-var lol = document.getElementById("TicketPseudoReply").children
-
-lol.FwdButton.click()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/

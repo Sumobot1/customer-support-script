@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
+  "name": "Tech Support Plugin",
+  "description": "This extension works with freshdesk.  As of right now, it takes support tickets, runs them through Google Translate, parses them into keywords, and selects an answer from an answer bank",
   "version": "1.0",
 
             "background": { "scripts": [

@@ -7,10 +7,21 @@
 <html>
   <head>
     <title>Getting Started Extension's Popup</title>
+    <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
+  	<button id="refresh">Refresh</button>
     <div id="status"><p>Good day im a paragraph... fuckoff now</p></div>
-    <img id="image-result" hidden>
+    <div>Current Keyword Array:<br></div>
+    <div id="current-keyword-array"></div>
+    <button id="submit-answer">Add current keyword array to my answer bank</button>
+    <div id="new-keyword-title">Or put in new keyword array here:</div>
+    <!-- <div id="new-keyword-array"> -->
+    <input type="text" id="input-field" name="new-keyword-array"><br>
+    <button id="submit-new-answer">Add this to my answer bank</button>
+    <div id="current-answer"></div>
+    <button id="dont-submit-answer">Don't add this to my answer bank</button>
+    <button id="show-db">Show Database in all its glory</button>
   </body>
 </html>
 

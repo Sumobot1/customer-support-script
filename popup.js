@@ -28,15 +28,15 @@ window.onload = function() {
             localStorage.setItem("answer", "start");
         }
       //  console.log("alsdkfalkjfafjdk: ", localStorage.getItem("question"));
-        var question = localStorage.getItem("question");
-        question += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
-        question += document.getElementById("current-keyword-array").innerText;
-        localStorage.setItem("question", question);
+        var questiontextquestion = localStorage.getItem("question");
+        questiontextquestion += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
+        questiontextquestion += document.getElementById("current-keyword-array").innerText;
+        localStorage.setItem("question", questiontextquestion);
       //  console.log(localStorage.getItem("answer"));
-        var answer = localStorage.getItem("answer");
-        answer += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
-        answer += document.getElementById("current-answer").innerText;
-        localStorage.setItem("answer", answer);
+        var answertext = localStorage.getItem("answer");
+        answertext += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
+        answertext += document.getElementById("current-answer").innerText;
+        localStorage.setItem("answer", answertext);
         chrome.runtime.sendMessage({action: "submit", text: document.getElementById("current-keyword-array").innerText, answer: document.getElementById("current-answer").innerText});
     });
     document.getElementById("submit-new-answer").addEventListener("click", function() {
@@ -48,21 +48,22 @@ window.onload = function() {
             localStorage.setItem("answer", "start");
         }
       //  console.log("alsdkfalkjfafjdk: ", localStorage.getItem("question"));
-        var question = localStorage.getItem("question");
-        question += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
-        question += document.getElementById("input-field").value;
-        localStorage.setItem("question", question);
+        var questiontextquestion = localStorage.getItem("question");
+        questiontextquestion += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
+        questiontextquestion += document.getElementById("input-field").value;
+        console.log("question: ", questiontextquestion);
+        localStorage.setItem("question", questiontextquestion);
       //  console.log(localStorage.getItem("answer"));
-        var answer = localStorage.getItem("answer");
-        answer += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
-        answer += document.getElementById("current-answer").innerText;
-        localStorage.setItem("answer", answer);
+        var answertext = localStorage.getItem("answer");
+        answertext += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
+        answertext += document.getElementById("current-answer").innerText;
+        localStorage.setItem("answer", answertext);
 
         //console.log(document.getElementById("input-field").value); 
         chrome.runtime.sendMessage({action: "submit", text: document.getElementById("input-field").value, answer: document.getElementById("current-answer").innerText});
     });
     document.getElementById("show-db").addEventListener("click", function() {
-        if (localStorage.getItem("question") === null) {
+        /*if (localStorage.getItem("question") === null) {
         //    console.log("here");
             localStorage.setItem("question", "start");
         }
@@ -71,11 +72,14 @@ window.onload = function() {
         }
     //    console.log("alsdkfalkjfafjdk: ", localStorage.getItem("question"));
         var question = localStorage.getItem("question");
-        question += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  "
+        question += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  "*/
     //    console.log(localStorage.getItem("answer"));
-        chrome.runtime.sendMessage({action: "query", data: "database"});
+        chrome.runtime.sendMessage({action: "query", data: "database-printout"});
 
-    }); 
+    });
+    document.getElementById("inject-answer-button").addEventListener("click", function(){
+        chrome.runtime.sendMessage({action: "inject", text: document.getElementById("inject-answer").value});
+    }) ;
 //    console.log('dlfkajdlkajfakljdfljaklfkjalfdkjda');
 }
 

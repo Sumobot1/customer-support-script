@@ -133,7 +133,8 @@ var sPremiumNotWorking = "Videostream Premium is linked to the account you were 
 
 var sCancelPremium = "To cancel our Premium account, go to the 'help' button in our app.  There should be a button there called subscription management.  You can click on it, and click a button to cancel your premium account. \n \nIf that doesn't work, you can also go to Paypal and cancel the recurring payment to us through Activity -> Select one of the payments -> Click 'See details on the classic site' -> View details of recurring payment! If you have Stripe, do you mind forwarding us the last email receipt you got? We can probably cancel on our end! \n";
 
-var sChangeEmail = "Thanks so much for supporting us through Videostream Premium!  We will change your Premium account email from email address .  Do you mind sending me an email just confirming that is what you want?  \n";
+var sChangeEmail = "Thanks so much for supporting us through Videostream Premium!  We will change your Premium account email ";
+var sChangeEmail2 = "  Do you mind sending me an email just confirming that is what you want?  \n";
 
 var sHeadphoneAudio = "Unfortunately we don't have this feature yet, but we'd like to have it :)  We've been getting a lot of requests for audio streaming directly to a phone or PC or Chromecast Audio with the video only going to the Chromecast.  As a small team we can't guarantee anything as far as how soon we can bring this feature to Videosteam but we will definitely work on it :) \n";
 
@@ -269,7 +270,7 @@ var arsKeyTot;
 var arQuestions, arAnswers;
 var bKeywordslistpresent;
 var arsWords;
-
+console.log("poo");
 //chrome.runtime.sendMessage({ action: "open", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
 
 chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
@@ -303,7 +304,10 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
         console.log("kdlafjlkafajl");
         chrome.runtime.sendMessage({ state: "ready" }, function() {});
 
-    } else if (type === "ticket") {
+    } else if (type ===  "info"){
+        console.log("info page is loaded");
+        chrome.runtime.sendMessage({tab: "info", state: "loaded"}, function(){console.log("send message loaded")});
+    }else if (type === "ticket") {
         // setTimeout(function() {
         //     console.log("kladfkaf;aflkafdkljaflkda dank");
 
@@ -455,17 +459,40 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                 console.log("no t done the translate");
             }
         }, 500);
+    } else if (requesttrans.job === "displaystuff"){
+        console.log(requesttrans.questions, " ", requesttrans.answers, " ", requesttrans.keywords);
+    }else if (requesttrans.job === "inject") {
+        sAns = requesttrans.text;
+        printAnswer(sAns);
     } else if (requesttrans.job === "query") {
-     //   console.log(arsKeyTot);
-     //   console.log(document.getElementsByClassName("redactor_editor")[0].children[1].children[2].innerText);
+        //   console.log(arsKeyTot);
+        //   console.log(document.getElementsByClassName("redactor_editor")[0].children[1].children[2].innerText);
         chrome.runtime.sendMessage({ action: "gotKeyWords", sender: requesttrans, text: arsKeyTot, text2: document.getElementsByClassName("redactor_editor")[0].children[1].children[2].innerText, origin: requesttrans.origin }, function() { console.log("done sending keywords back"); })
     } else if (requesttrans.job === "keywordsreturned") {
         var vDank = window.setInterval(function() {
             if (bKeywordslistpresent) {
                 console.log(requesttrans.question, " ", requesttrans.answer);
                 arQuestions = requesttrans.question.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
+                for (var i = 0; i < arQuestions.length; i++) {
+                    if (arQuestions[i] === String(arQuestions[i])) {
+                        if (arQuestions[i].indexOf(",") > -1) {
+                            console.log(arQuestions[i]);
+                            arQuestions[i] = arQuestions[i].split(",");
+                            console.log(arQuestions[i]);
+                        } else {
+                            console.log("nope.avi");
+                            arQuestions[i] = [arQuestions[i]];
+                        }
+                    }
+                }
                 arAnswers = requesttrans.answer.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
-             //   console.log("Questions: ", arQuestions, " Answers: ", arAnswers);
+                //   console.log("Questions: ", arQuestions, " Answers: ", arAnswers);
+                console.log("Title: ", sRequestTitle, " Body: ", sRequestBody); //I'M HERE RIGHT NOW
+                /*                for (var i = 0;i<sRequestBody.length;i++){
+                                        for (var j = 0;j<sRequestBody[i].length;j++){
+                                                if (sRequestBody[i][j])
+                                        }
+                                }*/
                 checkForKeyWords(sRequestTitle);
                 if (!bCheck) {
                     //console.log("there is poop all over");
@@ -478,7 +505,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                     }
                 } else {
                     printAnswer(sAns);
-                  //  console.log("printingdeanswer");
+                    //  console.log("printingdeanswer");
                     console.log(sAns);
                 }
                 window.clearInterval(vDank);
@@ -486,20 +513,20 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         }, 500);
 
     } else if (requesttrans.job === "keywordslistreturned") {
-       // console.log(requesttrans.info);
+        // console.log(requesttrans.info);
         arsWords = requesttrans.info;
-     //   console.log("arsWords: ", arsWords, " String: ", String(arsWords));
+        //   console.log("arsWords: ", arsWords, " String: ", String(arsWords));
         arsWords = arsWords.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex    newarraydklfdaslkfakflasdkljadsfjknewarray  ");
         for (var i = 0; i < arsWords.length; i++) {
             arsWords[i] = arsWords[i].split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
         }
 
-    //    console.log("arsWords: ", arsWords);
+        //    console.log("arsWords: ", arsWords);
         bKeywordslistpresent = true;
     } else if (requesttrans.job === "translationDoneFinishUp") {
 
-   //     console.log("for translation done finish up");
-    //    console.log("Type: ", requesttrans.type, " text: ", requesttrans.text);
+        //     console.log("for translation done finish up");
+        //    console.log("Type: ", requesttrans.type, " text: ", requesttrans.text);
         if (requesttrans.type === "title") {
             sRequestTitle = requesttrans.text;
             bTitle = true;
@@ -509,48 +536,93 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         }
         if (bTitle && bBody) {
             console.log("title: ", sRequestTitle, " body: ", sRequestBody);
+            var sEmails = "";
+            var arEnd = [",", "\/", "!", "&", ":", "\"", "\'", "{", "}", "=", "\-", "(", ")", "“", "”", "¿", " "]; //THIS IS THE PART WHERE WE DEAL WITH EMAILS... YEAH VERY IMPORTANT
+            var sStart = sRequestBody.length,
+                sEnd, sSubstr, sEmail;
+            for (var i = 0; i < sRequestBody.length; i++) {
+                sEmail = "";
+                if (sRequestBody.charAt(i) === "@") {
+                    console.log("Found @ at: ", i);
+                    while (arEnd.indexOf(sRequestBody.charAt(i)) === -1 && i >= 0) {
+                        i--;
+                    }
+                    if (i < sStart) {
+                        sStart = i;
+                    }
 
-            sRequestTitle = sRequestTitle.replace(/(\r\n|\n|\r)/gm, " ");
-            sRequestBody = sRequestBody.replace(/(\r\n|\n|\r)/gm, " ");
-            sRequestBody = sRequestBody.replace("eg.", "");
-            sRequestBody = sRequestBody.replace("ex.", " ");
-            sRequestBody = sRequestBody.replace("...", " ");
-            //sRequestBody = sRequestBody.replace("  ", " ");
-            //console.log(sRequestBody);
-            /*SPLIT BODY AT PERIODS*/
-           // console.log("requestbody ", sRequestBody);
-            //sRequestBody = sRequestBody.replace(/([.?!])\s*(?=[A-Z])/g, "\n")
-            //console.log("requestbody ", sRequestBody);
-            sRequestBody = sRequestBody.split(/[\\.!?]/);
-           // console.log("requestbody ", sRequestBody);
-            sRequestTitle = sRequestTitle.split(/[\\.!?]/);
-            //console.log(sRequestBody);
-            //console.log(sRequestTitle);
-            //sRequestBody = sRequestBody.split(/[.?!]+/);
-            //sRequestTitle = sRequestTitle.split(/[.?!]+/);
-            /*GET RID OF PUNCTUATION*/
-            for (var i = 0; i < sRequestBody.length; i++) {
-                sRequestBody[i] = sRequestBody[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()“”¿]/g, "");
-                sRequestBody[i] = sRequestBody[i].trim();
-                sRequestBody[i] = sRequestBody[i].split(/[ ]+/);
-            }
-            for (var i = 0; i < sRequestBody.length; i++) {
-                for (var j = 0; j < sRequestBody[i].length; j++) {
-                    sRequestBody[i][j] = sRequestBody[i][j].trim();
+                    console.log("New i: ", i, " Current Start: ", sStart);
+                    i += 1;
+                    while (arEnd.indexOf(sRequestBody.charAt(i)) === -1 && i < sRequestBody.length) {
+                        sEmail += sRequestBody.charAt(i);
+                        sEnd = i;
+                        i++;
+                    }
+                    if (sEmails.indexOf(sEmail) === -1) {
+                        sEmails += sEmail;
+                        sEmails += " ";
+                    }
                 }
-                //sRequestBody[i] = sRequestBody[i].trim();
             }
-         //   console.log("therequestbody, ", sRequestBody);
-            for (var i = 0; i < sRequestTitle.length; i++) {
-                sRequestTitle[i] = sRequestTitle[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()¿]/g, "");
-                sRequestTitle[i] = sRequestTitle[i].trim();
-                sRequestTitle[i] = sRequestTitle[i].split(/[ ]+/);
+            sEmails = sEmails.trim();
+            sEmails = sEmails.split(" ");
+            sSubstr = sRequestBody.substring(sStart, sEnd + 1).split(" ");
+            if (sEmails.length === 2) { //THIS WILL WORK FOR NOW BUT WILL NEED TO BE FIXED AT SOME POINT... IT ONLY WORKS FOR 2 EMAILS RIGHT NOW...
+                if (sSubstr.indexOf("to") > -1) {
+                    sAns += sChangeEmail + "from " + sEmails[0] + " to " + sEmails[1] + sChangeEmail2;
+                    printAnswer(sAns);
+                    console.log(sEmails[0], " to ", sEmails[1]);
+                } else {
+                    sAns += sChangeEmail + "from " + sEmails[1] + " to " + sEmails[0] + sChangeEmail2;
+                    printAnswer(sAns);
+                    console.log(sEmails[1], " to ", sEmails[0]);
+                }
+                console.log("Final i: ", i, " sEmails: ", sEmails, " Substring: ", sRequestBody.substring(sStart, sEnd + 1));
+            } else {
+                sRequestTitle = sRequestTitle.replace(/(\r\n|\n|\r)/gm, " ");
+                sRequestBody = sRequestBody.replace(/(\r\n|\n|\r)/gm, " ");
+                sRequestBody = sRequestBody.replace("eg.", "");
+                sRequestBody = sRequestBody.replace("ex.", " ");
+                sRequestBody = sRequestBody.replace("...", " ");
+                //sRequestBody = sRequestBody.replace("  ", " ");
+                //console.log(sRequestBody);
+                /*SPLIT BODY AT PERIODS*/
+                // console.log("requestbody ", sRequestBody);
+                //sRequestBody = sRequestBody.replace(/([.?!])\s*(?=[A-Z])/g, "\n")
+                //console.log("requestbody ", sRequestBody);
+                sRequestBody = sRequestBody.split(/[\\.!?]/);
+                // console.log("requestbody ", sRequestBody);
+                sRequestTitle = sRequestTitle.split(/[\\.!?]/);
+                //console.log(sRequestBody);
+                //console.log(sRequestTitle);
+                //sRequestBody = sRequestBody.split(/[.?!]+/);
+                //sRequestTitle = sRequestTitle.split(/[.?!]+/);
+                /*GET RID OF PUNCTUATION*/
+                for (var i = 0; i < sRequestBody.length; i++) {
+                    sRequestBody[i] = sRequestBody[i].replace(/[,\/#!$%\^&\*;:\"\'’{}=\-_`~()“”¿]/g, "");
+                    sRequestBody[i] = sRequestBody[i].trim();
+                    sRequestBody[i] = sRequestBody[i].split(/[ ]+/);
+                }
+                for (var i = 0; i < sRequestBody.length; i++) {
+                    for (var j = 0; j < sRequestBody[i].length; j++) {
+                        sRequestBody[i][j] = sRequestBody[i][j].trim();
+                    }
+                    //sRequestBody[i] = sRequestBody[i].trim();
+                }
+                //   console.log("therequestbody, ", sRequestBody);
+                for (var i = 0; i < sRequestTitle.length; i++) {
+                    sRequestTitle[i] = sRequestTitle[i].replace(/[,\/#!$%\^&\*;:\"\'{}=\-_`~()¿]/g, "");
+                    sRequestTitle[i] = sRequestTitle[i].trim();
+                    sRequestTitle[i] = sRequestTitle[i].split(/[ ]+/);
+                }
+                console.log(sRequestBody);
+                console.log(sRequestTitle);
+                chrome.runtime.sendMessage({ action: "query", data: "keywords" }, function() { console.log("done done done so fkin done"); });
+                /*SEARCH FOR KEYWORDS IN EACH SENTENCE*/
+                //    console.log(sRequestTitle);
             }
-            console.log(sRequestBody);
-            console.log(sRequestTitle);
-            chrome.runtime.sendMessage({ action: "query", data: "keywords" }, function() { console.log("done done done so fkin done"); });
-            /*SEARCH FOR KEYWORDS IN EACH SENTENCE*/
-        //    console.log(sRequestTitle);
+
+
 
 
 
@@ -983,13 +1055,40 @@ function testwords(arsKeyWords) {
 /*=====================================================================  CHECKFORKEYWORDS FUNCTION  =====================================================================*/
 function checkifseenbefore(array) {
     var bFound;
+
     console.log("Question: ", arQuestions, " Answer: ", arAnswers);
-    for (var i = 0; i < arQuestions.length; i++) {
+    for (var i = 0;i<array.length;i++){
+        for (var j = 0;j<arQuestions.length;j++){
+                if (array[i] === arQuestions[j][0]){
+                        var bFound = false;
+                        var k = 0, l = 0;
+                        while (k<arQuestions[j].length && (i+k)<array.length){
+                                if (array[i+k] === arQuestions[j][l]){
+                                        k++;
+                                        l++;
+                                }else{
+                                        k++;
+                                }
+                        }if (k===l && k>=arQuestions[j].length){
+                                bFound = true;
+                        }
+                }
+                if (bFound){
+                        console.log ("Found an answer...", arAnswers[j], " based on ", arQuestions[j]);
+                        sAns+=arAnswers[j];
+                }
+        }if (bFound){
+                return;
+        }
+    }
+/*    for (var i = 1; i < arQuestions.length; i++) {
         for (var j = 0; j < array.length; j++) {
+            console.log("arQuestions[i][0]: ", arQuestions[i][0], " array[j]: ", array[j]);
             if (array[j] === arQuestions[i][0]) {
+                console.log("found");
                 bFound = true;
-                for (var k = 0; k < arQuestions[i].length; k++) {
-                    if ((array[j + k] != arQuestions[i][k]) || !((j + k) < aray.length)) {
+                for (var k = 0; k < array.length-j; k++) {
+                    if ((array[j + k] != arQuestions[i][k]) || !((j + k) < array.length)) {
                         bFound = false;
                         break;
                     }
@@ -998,9 +1097,12 @@ function checkifseenbefore(array) {
             if (bFound) {
                 console.log("found an answer");
                 sAns += arAnswers[i];
+                break;
             }
+        }if (bFound){
+                break;
         }
-    }
+    }*/
 }
 
 
@@ -1073,7 +1175,7 @@ function checkForKeyWords(arsTest) {
                             }*/
         }
         if (arsKeyWords.length > 0) {
-            console.log(arsKeyWords);
+            console.log("Checking if seen before arsKeyWords: ", arsKeyWords);
             checkifseenbefore(arsKeyWords);
             testwords(arsKeyWords);
             arsKeyTot = arsKeyTot.concat(arsKeyWords);
@@ -1086,7 +1188,8 @@ function checkForKeyWords(arsTest) {
         // bCheck = false;
         // }
     }
-    if (sAns.length === 0) {
+    if (sAns.length === 0 || sAns === "Super sorry!  I don't quite understand your question!  Do you mind giving me a bit more information?  If possible, screenshots would be appreciated :) \n \n Cheers!") {
+        console.log("checking if seen before, arsKeyTot: ", arsKeyTot);
         checkifseenbefore(arsKeyTot);
         testwords(arsKeyTot);
     }

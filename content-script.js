@@ -1069,13 +1069,14 @@ function checkifseenbefore(array) {
                                 }else{
                                         k++;
                                 }
-                        }if (k===l && k>=arQuestions[j].length){
+                        }if (k>=l && k>=arQuestions[j].length){
                                 bFound = true;
                         }
                 }
                 if (bFound){
                         console.log ("Found an answer...", arAnswers[j], " based on ", arQuestions[j]);
                         sAns+=arAnswers[j];
+                        break;
                 }
         }if (bFound){
                 return;

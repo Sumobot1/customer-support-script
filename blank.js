@@ -1,6 +1,7 @@
 chrome.runtime.sendMessage({ action: "query", data: "getAllInformation" }, function() { console.log("asked for all the information"); });
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.job === "answer") {
+        console.log(request.questions);
         var questionlist = request.questions.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
         var answerlist = request.answers.replace(/\n/g, "\\n");
         answerlist = answerlist.replace(/"/g, '\\"');
@@ -11,6 +12,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             listofkeywords[i] = listofkeywords[i].split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
         }
         //console.log(listofkeywords);
+        console.log("questionlist: ", questionlist);
         questionlist = OneDArrayToString(questionlist, "string");
         document.getElementById("questions").innerText = "var arsQuestions = " + questionlist;
         answerlist = OneDArrayToString(answerlist, "string");
@@ -77,6 +79,7 @@ function OneDArrayToString(array, type) {
     var sFin = "[";
     for (var i = 0; i < array.length; i++) {
     	if (type === "string"){
+            //console.log(array[i], i);
     		sFin += "\"" + array[i] + "\"" + ",";
     	}
         else if (type === "int"){

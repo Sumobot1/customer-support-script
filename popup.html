@@ -15,9 +15,13 @@
 <body style="background-color: rgba(50,50,50,1); min-width:320px;">
     <div id="status" class="wide-across">
         <h1 class="white-title-text">Videostream Freshdesk Email Plugin</h1></div>
-    <button id="refresh" class="orange-flat-button">Refresh</button>
+    <button id="gettypos" class="orange-flat-button">Get Typos</button>
     <br>
     <br>
+    <textarea id="typos" style="width: 98%;display: none"></textarea>
+    <!-- rows="4" cols="50"  -->
+    <br><br> 
+    <button id="confirmtypos" class="orange-flat-button" style="display: none;">Confirm</button>   
     <div class="wide-across white-subtitle-text"><b>Current Keyword Array:</b>
         <br>
     </div>
@@ -49,6 +53,8 @@
     <br><br>
     <!-- <input type="text" id="inject-answer" name="new-answer"> -->
     <button id="show-db" class="blue-flat-button">Export Database to Tab</button>
+    <br><br>
+    <button id="organize-db" class="green-flat-button">Organize Database</button>
 </body>
 
 </html>

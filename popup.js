@@ -17,7 +17,22 @@ window.onload = function() {
             console.log("oh look a query is here");
             chrome.runtime.sendMessage({action: "keywords" question: localStorage.getItem("question"), answer: localStorage.getItem("answer"), origin: requesttrans }, function() { console.log("dankness forever"); });
         }*/
+        else if (requesttrans.job === "confirm"){
+            console.log("popup got confirm message");
+            if (requesttrans.state === "ready"){
+                //var sWordsfortypostobefoundon = requesttrans.keywords;
+                document.getElementById("typos").value = requesttrans.keywords;
+                document.getElementById("typos").style.display = "block";
+                document.getElementById("confirmtypos").style.display = "block";
+            }
+        }
 
+    });
+    document.getElementById("confirmtypos").addEventListener("click", function(){
+                document.getElementById("typos").style.display = "block";
+                document.getElementById("confirmtypos").style.display = "block";
+                console.log("typos to be generated: ", document.getElementById("typos").value);
+                chrome.runtime.sendMessage({action: "query", data: "wordstotranslate", typos: document.getElementById("typos").value})        
     });
     document.getElementById("submit-answer").addEventListener("click", function() {
         if (localStorage.getItem("question") === null) {
@@ -80,6 +95,13 @@ window.onload = function() {
     document.getElementById("inject-answer-button").addEventListener("click", function(){
         chrome.runtime.sendMessage({action: "inject", text: document.getElementById("inject-answer").value});
     }) ;
+    document.getElementById("gettypos").addEventListener("click", function(){
+        chrome.runtime.sendMessage({action: "query", data: "typos"});
+    });
+    document.getElementById("organize-db").addEventListener("click", function(){
+        console.log("organize-db has been requested");
+        chrome.runtime.sendMessage({action: "organize-db"});
+    });
 //    console.log('dlfkajdlkajfakljdfljaklfkjalfdkjda');
 }
 

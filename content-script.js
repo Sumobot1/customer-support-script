@@ -1,41 +1,5 @@
-//window.onload = function(){
-// window.setTimeout(function (){}, 3000);
-//_$("body").append('Test');
+//AT SOME POINT PUT IN BINARY SEARCH TO FIND WORDS FASTER LOL
 
-/*=====================================================================  KEYWORDS  =====================================================================*/
-
-/*var arsBuffer = ['buffering', 'uffering' , 'bffering' , 'bufering' , 'bufering' , 'buffring' , 'buffeing' , 'bufferng' , 'bufferig' , 'bufferin' , 'bbuffering' , 'buuffering' , 'bufffering' , 'bufffering' , 'buffeering' , 'bufferring' , 'bufferiing' , 'bufferinng' , 'bufferingg' , 'ubffering' , 'bfufering' , 'bufefring' , 'buffreing' , 'buffeirng' , 'buffernig' , 'bufferign' , 'vuffering' , 'guffering' , 'huffering' , 'nuffering' , 'byffering' , 'b7ffering' , 'b8ffering' , 'biffering' , 'bkffering' , 'bjffering' , 'bhffering' , 'budfering' , 'burfering' , 'butfering' , 'bugfering' , 'buvfering' , 'bucfering' , 'bufdering' , 'bufrering' , 'buftering' , 'bufgering' , 'bufvering' , 'bufcering' , 'buffwring' , 'buff3ring' , 'buff4ring' , 'buffrring' , 'bufffring' , 'buffdring' , 'buffsring' , 'buffeeing' , 'buffe4ing' , 'buffe5ing' , 'buffeting' , 'buffeging' , 'buffefing' , 'buffeding' , 'bufferung' , 'buffer8ng' , 'buffer9ng' , 'bufferong' , 'bufferlng' , 'bufferkng' , 'bufferjng' , 'bufferibg' , 'bufferihg' , 'bufferijg' , 'bufferimg' , 'bufferinf' , 'bufferint' , 'bufferiny' , 'bufferinh' , 'bufferinb' , 'bufferinv' , 'vbuffering' , 'bvuffering' , 'gbuffering' , 'bguffering' , 'hbuffering' , 'bhuffering' , 'nbuffering' , 'bnuffering' , 'byuffering' , 'buyffering' , 'b7uffering' , 'bu7ffering' , 'b8uffering' , 'bu8ffering' , 'biuffering' , 'buiffering' , 'bkuffering' , 'bukffering' , 'bjuffering' , 'bujffering' , 'bhuffering' , 'buhffering' , 'budffering' , 'bufdfering' , 'burffering' , 'bufrfering' , 'butffering' , 'buftfering' , 'bugffering' , 'bufgfering' , 'buvffering' , 'bufvfering' , 'bucffering' , 'bufcfering' , 'bufdfering' , 'buffdering' , 'bufrfering' , 'buffrering' , 'buftfering' , 'bufftering' , 'bufgfering' , 'buffgering' , 'bufvfering' , 'buffvering' , 'bufcfering' , 'buffcering' , 'buffwering' , 'buffewring' , 'buff3ering' , 'buffe3ring' , 'buff4ering' , 'buffe4ring' , 'buffrering' , 'bufferring' , 'bufffering' , 'buffefring' , 'buffdering' , 'buffedring' , 'buffsering' , 'buffesring' , 'buffeering' , 'buffereing' , 'buffe4ring' , 'buffer4ing' , 'buffe5ring' , 'buffer5ing' , 'buffetring' , 'bufferting' , 'buffegring' , 'bufferging' , 'buffefring' , 'bufferfing' , 'buffedring' , 'bufferding' , 'bufferuing' , 'bufferiung' , 'buffer8ing' , 'bufferi8ng' , 'buffer9ing' , 'bufferi9ng' , 'bufferoing' , 'bufferiong' , 'bufferling' , 'bufferilng' , 'bufferking' , 'bufferikng' , 'bufferjing' , 'bufferijng' , 'bufferibng' , 'bufferinbg' , 'bufferihng' , 'bufferinhg' , 'bufferijng' , 'bufferinjg' , 'bufferimng' , 'bufferinmg' , 'bufferinfg' , 'bufferingf' , 'bufferintg' , 'bufferingt' , 'bufferinyg' , 'bufferingy' , 'bufferinhg' , 'bufferingh' , 'bufferinbg' , 'bufferingb' , 'bufferinvg' , 'bufferingv']
-var arsFirewall = ['firewall', 'irewall' , 'frewall' , 'fiewall' , 'firwall' , 'fireall' , 'firewll' , 'firewal' , 'firewal' , 'ffirewall' , 'fiirewall' , 'firrewall' , 'fireewall' , 'firewwall' , 'firewaall' , 'firewalll' , 'firewalll' , 'ifrewall' , 'friewall' , 'fierwall' , 'firweall' , 'fireawll' , 'firewlal' , 'direwall' , 'rirewall' , 'tirewall' , 'girewall' , 'virewall' , 'cirewall' , 'furewall' , 'f8rewall' , 'f9rewall' , 'forewall' , 'flrewall' , 'fkrewall' , 'fjrewall' , 'fieewall' , 'fi4ewall' , 'fi5ewall' , 'fitewall' , 'figewall' , 'fifewall' , 'fidewall' , 'firwwall' , 'fir3wall' , 'fir4wall' , 'firrwall' , 'firfwall' , 'firdwall' , 'firswall' , 'fireqall' , 'fire2all' , 'fire3all' , 'fireeall' , 'firedall' , 'firesall' , 'fireaall' , 'firewqll' , 'firewwll' , 'firewsll' , 'firewxll' , 'firewzll' , 'firewakl' , 'firewaol' , 'firewapl' , 'firewalk' , 'firewalo' , 'firewalp' , 'dfirewall' , 'fdirewall' , 'rfirewall' , 'frirewall' , 'tfirewall' , 'ftirewall' , 'gfirewall' , 'fgirewall' , 'vfirewall' , 'fvirewall' , 'cfirewall' , 'fcirewall' , 'fuirewall' , 'fiurewall' , 'f8irewall' , 'fi8rewall' , 'f9irewall' , 'fi9rewall' , 'foirewall' , 'fiorewall' , 'flirewall' , 'filrewall' , 'fkirewall' , 'fikrewall' , 'fjirewall' , 'fijrewall' , 'fierewall' , 'fireewall' , 'fi4rewall' , 'fir4ewall' , 'fi5rewall' , 'fir5ewall' , 'fitrewall' , 'firtewall' , 'figrewall' , 'firgewall' , 'fifrewall' , 'firfewall' , 'fidrewall' , 'firdewall' , 'firwewall' , 'firewwall' , 'fir3ewall' , 'fire3wall' , 'fir4ewall' , 'fire4wall' , 'firrewall' , 'firerwall' , 'firfewall' , 'firefwall' , 'firdewall' , 'firedwall' , 'firsewall' , 'fireswall' , 'fireqwall' , 'firewqall' , 'fire2wall' , 'firew2all' , 'fire3wall' , 'firew3all' , 'fireewall' , 'fireweall' , 'firedwall' , 'firewdall' , 'fireswall' , 'firewsall' , 'fireawall' , 'firewaall' , 'firewqall' , 'firewaqll' , 'firewwall' , 'firewawll' , 'firewsall' , 'firewasll' , 'firewxall' , 'firewaxll' , 'firewzall' , 'firewazll' , 'firewakll' , 'firewalkl' , 'firewaoll' , 'firewalol' , 'firewapll' , 'firewalpl' , 'firewalkl' , 'firewallk' , 'firewalol' , 'firewallo' , 'firewalpl' , 'firewallp']
-var arsBlocking = ['blocking', 'locking' , 'bocking' , 'blcking' , 'bloking' , 'blocing' , 'blockng' , 'blockig' , 'blockin' , 'bblocking' , 'bllocking' , 'bloocking' , 'bloccking' , 'blockking' , 'blockiing' , 'blockinng' , 'blockingg' , 'lbocking' , 'bolcking' , 'blcoking' , 'blokcing' , 'blocikng' , 'blocknig' , 'blockign' , 'vlocking' , 'glocking' , 'hlocking' , 'nlocking' , 'bkocking' , 'boocking' , 'bpocking' , 'blicking' , 'bl9cking' , 'bl0cking' , 'blpcking' , 'bllcking' , 'blkcking' , 'bloxking' , 'blodking' , 'blofking' , 'blovking' , 'blocjing' , 'blociing' , 'blocoing' , 'blocling' , 'blocming' , 'blockung' , 'block8ng' , 'block9ng' , 'blockong' , 'blocklng' , 'blockkng' , 'blockjng' , 'blockibg' , 'blockihg' , 'blockijg' , 'blockimg' , 'blockinf' , 'blockint' , 'blockiny' , 'blockinh' , 'blockinb' , 'blockinv' , 'vblocking' , 'bvlocking' , 'gblocking' , 'bglocking' , 'hblocking' , 'bhlocking' , 'nblocking' , 'bnlocking' , 'bklocking' , 'blkocking' , 'bolocking' , 'bloocking' , 'bplocking' , 'blpocking' , 'bliocking' , 'bloicking' , 'bl9ocking' , 'blo9cking' , 'bl0ocking' , 'blo0cking' , 'blpocking' , 'blopcking' , 'bllocking' , 'blolcking' , 'blkocking' , 'blokcking' , 'bloxcking' , 'blocxking' , 'blodcking' , 'blocdking' , 'blofcking' , 'blocfking' , 'blovcking' , 'blocvking' , 'blocjking' , 'blockjing' , 'blociking' , 'blockiing' , 'blocoking' , 'blockoing' , 'bloclking' , 'blockling' , 'blocmking' , 'blockming' , 'blockuing' , 'blockiung' , 'block8ing' , 'blocki8ng' , 'block9ing' , 'blocki9ng' , 'blockoing' , 'blockiong' , 'blockling' , 'blockilng' , 'blockking' , 'blockikng' , 'blockjing' , 'blockijng' , 'blockibng' , 'blockinbg' , 'blockihng' , 'blockinhg' , 'blockijng' , 'blockinjg' , 'blockimng' , 'blockinmg' , 'blockinfg' , 'blockingf' , 'blockintg' , 'blockingt' , 'blockinyg' , 'blockingy' , 'blockinhg' , 'blockingh' , 'blockinbg' , 'blockingb' , 'blockinvg' , 'blockingv']
-var arsVideostream = ['videostream', 'ideostream' , 'vdeostream' , 'vieostream' , 'vidostream' , 'videstream' , 'videotream' , 'videosream' , 'videosteam' , 'videostram' , 'videostrem' , 'videostrea' , 'vvideostream' , 'viideostream' , 'viddeostream' , 'videeostream' , 'videoostream' , 'videosstream' , 'videosttream' , 'videostrream' , 'videostreeam' , 'videostreaam' , 'videostreamm' , 'ivdeostream' , 'vdieostream' , 'viedostream' , 'vidoestream' , 'videsotream' , 'videotsream' , 'videosrteam' , 'videosteram' , 'videostraem' , 'videostrema' , 'cideostream' , 'fideostream' , 'gideostream' , 'bideostream' , 'vudeostream' , 'v8deostream' , 'v9deostream' , 'vodeostream' , 'vldeostream' , 'vkdeostream' , 'vjdeostream' , 'viseostream' , 'vieeostream' , 'vireostream' , 'vifeostream' , 'viceostream' , 'vixeostream' , 'vidwostream' , 'vid3ostream' , 'vid4ostream' , 'vidrostream' , 'vidfostream' , 'viddostream' , 'vidsostream' , 'videistream' , 'vide9stream' , 'vide0stream' , 'videpstream' , 'videlstream' , 'videkstream' , 'videoatream' , 'videowtream' , 'videoetream' , 'videodtream' , 'videoxtream' , 'videoztream' , 'videosrream' , 'videos5ream' , 'videos6ream' , 'videosyream' , 'videoshream' , 'videosgream' , 'videosfream' , 'videosteeam' , 'videost4eam' , 'videost5eam' , 'videostteam' , 'videostgeam' , 'videostfeam' , 'videostdeam' , 'videostrwam' , 'videostr3am' , 'videostr4am' , 'videostrram' , 'videostrfam' , 'videostrdam' , 'videostrsam' , 'videostreqm' , 'videostrewm' , 'videostresm' , 'videostrexm' , 'videostrezm' , 'videostrean' , 'videostreaj' , 'videostreak' , 'cvideostream' , 'vcideostream' , 'fvideostream' , 'vfideostream' , 'gvideostream' , 'vgideostream' , 'bvideostream' , 'vbideostream' , 'vuideostream' , 'viudeostream' , 'v8ideostream' , 'vi8deostream' , 'v9ideostream' , 'vi9deostream' , 'voideostream' , 'viodeostream' , 'vlideostream' , 'vildeostream' , 'vkideostream' , 'vikdeostream' , 'vjideostream' , 'vijdeostream' , 'visdeostream' , 'vidseostream' , 'viedeostream' , 'videeostream' , 'virdeostream' , 'vidreostream' , 'vifdeostream' , 'vidfeostream' , 'vicdeostream' , 'vidceostream' , 'vixdeostream' , 'vidxeostream' , 'vidweostream' , 'videwostream' , 'vid3eostream' , 'vide3ostream' , 'vid4eostream' , 'vide4ostream' , 'vidreostream' , 'viderostream' , 'vidfeostream' , 'videfostream' , 'viddeostream' , 'videdostream' , 'vidseostream' , 'videsostream' , 'videiostream' , 'videoistream' , 'vide9ostream' , 'video9stream' , 'vide0ostream' , 'video0stream' , 'videpostream' , 'videopstream' , 'videlostream' , 'videolstream' , 'videkostream' , 'videokstream' , 'videoastream' , 'videosatream' , 'videowstream' , 'videoswtream' , 'videoestream' , 'videosetream' , 'videodstream' , 'videosdtream' , 'videoxstream' , 'videosxtream' , 'videozstream' , 'videosztream' , 'videosrtream' , 'videostrream' , 'videos5tream' , 'videost5ream' , 'videos6tream' , 'videost6ream' , 'videosytream' , 'videostyream' , 'videoshtream' , 'videosthream' , 'videosgtream' , 'videostgream' , 'videosftream' , 'videostfream' , 'videosteream' , 'videostreeam' , 'videost4ream' , 'videostr4eam' , 'videost5ream' , 'videostr5eam' , 'videosttream' , 'videostrteam' , 'videostgream' , 'videostrgeam' , 'videostfream' , 'videostrfeam' , 'videostdream' , 'videostrdeam' , 'videostrweam' , 'videostrewam' , 'videostr3eam' , 'videostre3am' , 'videostr4eam' , 'videostre4am' , 'videostrream' , 'videostreram' , 'videostrfeam' , 'videostrefam' , 'videostrdeam' , 'videostredam' , 'videostrseam' , 'videostresam' , 'videostreqam' , 'videostreaqm' , 'videostrewam' , 'videostreawm' , 'videostresam' , 'videostreasm' , 'videostrexam' , 'videostreaxm' , 'videostrezam' , 'videostreazm' , 'videostreanm' , 'videostreamn' , 'videostreajm' , 'videostreamj' , 'videostreakm' , 'videostreamk']
-var arsPremium = ['premium', 'remium' , 'pemium' , 'prmium' , 'preium' , 'premum' , 'premim' , 'premiu' , 'ppremium' , 'prremium' , 'preemium' , 'premmium' , 'premiium' , 'premiuum' , 'premiumm' , 'rpemium' , 'permium' , 'prmeium' , 'preimum' , 'premuim' , 'premimu' , 'oremium' , '0remium' , 'lremium' , 'peemium' , 'p4emium' , 'p5emium' , 'ptemium' , 'pgemium' , 'pfemium' , 'pdemium' , 'prwmium' , 'pr3mium' , 'pr4mium' , 'prrmium' , 'prfmium' , 'prdmium' , 'prsmium' , 'prenium' , 'prejium' , 'prekium' , 'premuum' , 'prem8um' , 'prem9um' , 'premoum' , 'premlum' , 'premkum' , 'premjum' , 'premiym' , 'premi7m' , 'premi8m' , 'premiim' , 'premikm' , 'premijm' , 'premihm' , 'premiun' , 'premiuj' , 'premiuk' , 'opremium' , 'poremium' , '0premium' , 'p0remium' , 'lpremium' , 'plremium' , 'peremium' , 'preemium' , 'p4remium' , 'pr4emium' , 'p5remium' , 'pr5emium' , 'ptremium' , 'prtemium' , 'pgremium' , 'prgemium' , 'pfremium' , 'prfemium' , 'pdremium' , 'prdemium' , 'prwemium' , 'prewmium' , 'pr3emium' , 'pre3mium' , 'pr4emium' , 'pre4mium' , 'prremium' , 'prermium' , 'prfemium' , 'prefmium' , 'prdemium' , 'predmium' , 'prsemium' , 'presmium' , 'prenmium' , 'premnium' , 'prejmium' , 'premjium' , 'prekmium' , 'premkium' , 'premuium' , 'premiuum' , 'prem8ium' , 'premi8um' , 'prem9ium' , 'premi9um' , 'premoium' , 'premioum' , 'premlium' , 'premilum' , 'premkium' , 'premikum' , 'premjium' , 'premijum' , 'premiyum' , 'premiuym' , 'premi7um' , 'premiu7m' , 'premi8um' , 'premiu8m' , 'premiium' , 'premiuim' , 'premikum' , 'premiukm' , 'premijum' , 'premiujm' , 'premihum' , 'premiuhm' , 'premiunm' , 'premiumn' , 'premiujm' , 'premiumj' , 'premiukm' , 'premiumk']
-var arsCancel = ['cancel', 'ancel' , 'cncel' , 'cacel' , 'canel' , 'cancl' , 'cance' , 'ccancel' , 'caancel' , 'canncel' , 'canccel' , 'canceel' , 'cancell' , 'acncel' , 'cnacel' , 'cacnel' , 'canecl' , 'cancle' , 'xancel' , 'dancel' , 'fancel' , 'vancel' , 'cqncel' , 'cwncel' , 'csncel' , 'cxncel' , 'czncel' , 'cabcel' , 'cahcel' , 'cajcel' , 'camcel' , 'canxel' , 'candel' , 'canfel' , 'canvel' , 'cancwl' , 'canc3l' , 'canc4l' , 'cancrl' , 'cancfl' , 'cancdl' , 'cancsl' , 'cancek' , 'canceo' , 'cancep' , 'xcancel' , 'cxancel' , 'dcancel' , 'cdancel' , 'fcancel' , 'cfancel' , 'vcancel' , 'cvancel' , 'cqancel' , 'caqncel' , 'cwancel' , 'cawncel' , 'csancel' , 'casncel' , 'cxancel' , 'caxncel' , 'czancel' , 'cazncel' , 'cabncel' , 'canbcel' , 'cahncel' , 'canhcel' , 'cajncel' , 'canjcel' , 'camncel' , 'canmcel' , 'canxcel' , 'cancxel' , 'candcel' , 'cancdel' , 'canfcel' , 'cancfel' , 'canvcel' , 'cancvel' , 'cancwel' , 'cancewl' , 'canc3el' , 'cance3l' , 'canc4el' , 'cance4l' , 'cancrel' , 'cancerl' , 'cancfel' , 'cancefl' , 'cancdel' , 'cancedl' , 'cancsel' , 'cancesl' , 'cancekl' , 'cancelk' , 'canceol' , 'cancelo' , 'cancepl' , 'cancelp']
-var arsSubscription = ['subscription', 'ubscription' , 'sbscription' , 'suscription' , 'subcription' , 'subsription' , 'subsciption' , 'subscrption' , 'subscrition' , 'subscripion' , 'subscripton' , 'subscriptin' , 'subscriptio' , 'ssubscription' , 'suubscription' , 'subbscription' , 'subsscription' , 'subsccription' , 'subscrription' , 'subscriiption' , 'subscripption' , 'subscripttion' , 'subscriptiion' , 'subscriptioon' , 'subscriptionn' , 'usbscription' , 'sbuscription' , 'susbcription' , 'subcsription' , 'subsrciption' , 'subscirption' , 'subscrpition' , 'subscritpion' , 'subscripiton' , 'subscriptoin' , 'subscriptino' , 'aubscription' , 'wubscription' , 'eubscription' , 'dubscription' , 'xubscription' , 'zubscription' , 'sybscription' , 's7bscription' , 's8bscription' , 'sibscription' , 'skbscription' , 'sjbscription' , 'shbscription' , 'suvscription' , 'sugscription' , 'suhscription' , 'sunscription' , 'subacription' , 'subwcription' , 'subecription' , 'subdcription' , 'subxcription' , 'subzcription' , 'subsxription' , 'subsdription' , 'subsfription' , 'subsvription' , 'subsceiption' , 'subsc4iption' , 'subsc5iption' , 'subsctiption' , 'subscgiption' , 'subscfiption' , 'subscdiption' , 'subscruption' , 'subscr8ption' , 'subscr9ption' , 'subscroption' , 'subscrlption' , 'subscrkption' , 'subscrjption' , 'subscriotion' , 'subscri0tion' , 'subscriltion' , 'subscriprion' , 'subscrip5ion' , 'subscrip6ion' , 'subscripyion' , 'subscriphion' , 'subscripgion' , 'subscripfion' , 'subscriptuon' , 'subscript8on' , 'subscript9on' , 'subscriptoon' , 'subscriptlon' , 'subscriptkon' , 'subscriptjon' , 'subscriptiin' , 'subscripti9n' , 'subscripti0n' , 'subscriptipn' , 'subscriptiln' , 'subscriptikn' , 'subscriptiob' , 'subscriptioh' , 'subscriptioj' , 'subscriptiom' , 'asubscription' , 'saubscription' , 'wsubscription' , 'swubscription' , 'esubscription' , 'seubscription' , 'dsubscription' , 'sdubscription' , 'xsubscription' , 'sxubscription' , 'zsubscription' , 'szubscription' , 'syubscription' , 'suybscription' , 's7ubscription' , 'su7bscription' , 's8ubscription' , 'su8bscription' , 'siubscription' , 'suibscription' , 'skubscription' , 'sukbscription' , 'sjubscription' , 'sujbscription' , 'shubscription' , 'suhbscription' , 'suvbscription' , 'subvscription' , 'sugbscription' , 'subgscription' , 'suhbscription' , 'subhscription' , 'sunbscription' , 'subnscription' , 'subascription' , 'subsacription' , 'subwscription' , 'subswcription' , 'subescription' , 'subsecription' , 'subdscription' , 'subsdcription' , 'subxscription' , 'subsxcription' , 'subzscription' , 'subszcription' , 'subsxcription' , 'subscxription' , 'subsdcription' , 'subscdription' , 'subsfcription' , 'subscfription' , 'subsvcription' , 'subscvription' , 'subsceription' , 'subscreiption' , 'subsc4ription' , 'subscr4iption' , 'subsc5ription' , 'subscr5iption' , 'subsctription' , 'subscrtiption' , 'subscgription' , 'subscrgiption' , 'subscfription' , 'subscrfiption' , 'subscdription' , 'subscrdiption' , 'subscruiption' , 'subscriuption' , 'subscr8iption' , 'subscri8ption' , 'subscr9iption' , 'subscri9ption' , 'subscroiption' , 'subscrioption' , 'subscrliption' , 'subscrilption' , 'subscrkiption' , 'subscrikption' , 'subscrjiption' , 'subscrijption' , 'subscrioption' , 'subscripotion' , 'subscri0ption' , 'subscrip0tion' , 'subscrilption' , 'subscripltion' , 'subscriprtion' , 'subscriptrion' , 'subscrip5tion' , 'subscript5ion' , 'subscrip6tion' , 'subscript6ion' , 'subscripytion' , 'subscriptyion' , 'subscriphtion' , 'subscripthion' , 'subscripgtion' , 'subscriptgion' , 'subscripftion' , 'subscriptfion' , 'subscriptuion' , 'subscriptiuon' , 'subscript8ion' , 'subscripti8on' , 'subscript9ion' , 'subscripti9on' , 'subscriptoion' , 'subscriptioon' , 'subscriptlion' , 'subscriptilon' , 'subscriptkion' , 'subscriptikon' , 'subscriptjion' , 'subscriptijon' , 'subscriptiion' , 'subscriptioin' , 'subscripti9on' , 'subscriptio9n' , 'subscripti0on' , 'subscriptio0n' , 'subscriptipon' , 'subscriptiopn' , 'subscriptilon' , 'subscriptioln' , 'subscriptikon' , 'subscriptiokn' , 'subscriptiobn' , 'subscriptionb' , 'subscriptiohn' , 'subscriptionh' , 'subscriptiojn' , 'subscriptionj' , 'subscriptiomn' , 'subscriptionm']
-var arsWorking = ['working', 'orking' , 'wrking' , 'woking' , 'woring' , 'workng' , 'workig' , 'workin' , 'wworking' , 'woorking' , 'worrking' , 'workking' , 'workiing' , 'workinng' , 'workingg' , 'owrking' , 'wroking' , 'wokring' , 'worikng' , 'worknig' , 'workign' , 'qorking' , '2orking' , '3orking' , 'eorking' , 'dorking' , 'sorking' , 'aorking' , 'wirking' , 'w9rking' , 'w0rking' , 'wprking' , 'wlrking' , 'wkrking' , 'woeking' , 'wo4king' , 'wo5king' , 'wotking' , 'wogking' , 'wofking' , 'wodking' , 'worjing' , 'woriing' , 'woroing' , 'worling' , 'worming' , 'workung' , 'work8ng' , 'work9ng' , 'workong' , 'worklng' , 'workkng' , 'workjng' , 'workibg' , 'workihg' , 'workijg' , 'workimg' , 'workinf' , 'workint' , 'workiny' , 'workinh' , 'workinb' , 'workinv' , 'qworking' , 'wqorking' , '2working' , 'w2orking' , '3working' , 'w3orking' , 'eworking' , 'weorking' , 'dworking' , 'wdorking' , 'sworking' , 'wsorking' , 'aworking' , 'waorking' , 'wiorking' , 'woirking' , 'w9orking' , 'wo9rking' , 'w0orking' , 'wo0rking' , 'wporking' , 'woprking' , 'wlorking' , 'wolrking' , 'wkorking' , 'wokrking' , 'woerking' , 'woreking' , 'wo4rking' , 'wor4king' , 'wo5rking' , 'wor5king' , 'wotrking' , 'wortking' , 'wogrking' , 'worgking' , 'wofrking' , 'worfking' , 'wodrking' , 'wordking' , 'worjking' , 'workjing' , 'woriking' , 'workiing' , 'woroking' , 'workoing' , 'worlking' , 'workling' , 'wormking' , 'workming' , 'workuing' , 'workiung' , 'work8ing' , 'worki8ng' , 'work9ing' , 'worki9ng' , 'workoing' , 'workiong' , 'workling' , 'workilng' , 'workking' , 'workikng' , 'workjing' , 'workijng' , 'workibng' , 'workinbg' , 'workihng' , 'workinhg' , 'workijng' , 'workinjg' , 'workimng' , 'workinmg' , 'workinfg' , 'workingf' , 'workintg' , 'workingt' , 'workinyg' , 'workingy' , 'workinhg' , 'workingh' , 'workinbg' , 'workingb' , 'workinvg' , 'workingv']
-var arsPlaying = ['playing', 'laying' , 'paying' , 'plying' , 'plaing' , 'playng' , 'playig' , 'playin' , 'pplaying' , 'pllaying' , 'plaaying' , 'playying' , 'playiing' , 'playinng' , 'playingg' , 'lpaying' , 'palying' , 'plyaing' , 'plaiyng' , 'playnig' , 'playign' , 'olaying' , '0laying' , 'llaying' , 'pkaying' , 'poaying' , 'ppaying' , 'plqying' , 'plwying' , 'plsying' , 'plxying' , 'plzying' , 'plating' , 'pla6ing' , 'pla7ing' , 'plauing' , 'plajing' , 'plahing' , 'plaging' , 'playung' , 'play8ng' , 'play9ng' , 'playong' , 'playlng' , 'playkng' , 'playjng' , 'playibg' , 'playihg' , 'playijg' , 'playimg' , 'playinf' , 'playint' , 'playiny' , 'playinh' , 'playinb' , 'playinv' , 'oplaying' , 'polaying' , '0playing' , 'p0laying' , 'lplaying' , 'pllaying' , 'pklaying' , 'plkaying' , 'polaying' , 'ploaying' , 'pplaying' , 'plpaying' , 'plqaying' , 'plaqying' , 'plwaying' , 'plawying' , 'plsaying' , 'plasying' , 'plxaying' , 'plaxying' , 'plzaying' , 'plazying' , 'platying' , 'playting' , 'pla6ying' , 'play6ing' , 'pla7ying' , 'play7ing' , 'plauying' , 'playuing' , 'plajying' , 'playjing' , 'plahying' , 'playhing' , 'plagying' , 'playging' , 'playuing' , 'playiung' , 'play8ing' , 'playi8ng' , 'play9ing' , 'playi9ng' , 'playoing' , 'playiong' , 'playling' , 'playilng' , 'playking' , 'playikng' , 'playjing' , 'playijng' , 'playibng' , 'playinbg' , 'playihng' , 'playinhg' , 'playijng' , 'playinjg' , 'playimng' , 'playinmg' , 'playinfg' , 'playingf' , 'playintg' , 'playingt' , 'playinyg' , 'playingy' , 'playinhg' , 'playingh' , 'playinbg' , 'playingb' , 'playinvg' , 'playingv'],
-var arsVideos = ['videos', 'ideos' , 'vdeos' , 'vieos' , 'vidos' , 'vides' , 'video' , 'vvideos' , 'viideos' , 'viddeos' , 'videeos' , 'videoos' , 'videoss' , 'ivdeos' , 'vdieos' , 'viedos' , 'vidoes' , 'videso' , 'cideos' , 'fideos' , 'gideos' , 'bideos' , 'vudeos' , 'v8deos' , 'v9deos' , 'vodeos' , 'vldeos' , 'vkdeos' , 'vjdeos' , 'viseos' , 'vieeos' , 'vireos' , 'vifeos' , 'viceos' , 'vixeos' , 'vidwos' , 'vid3os' , 'vid4os' , 'vidros' , 'vidfos' , 'viddos' , 'vidsos' , 'videis' , 'vide9s' , 'vide0s' , 'videps' , 'videls' , 'videks' , 'videoa' , 'videow' , 'videoe' , 'videod' , 'videox' , 'videoz' , 'cvideos' , 'vcideos' , 'fvideos' , 'vfideos' , 'gvideos' , 'vgideos' , 'bvideos' , 'vbideos' , 'vuideos' , 'viudeos' , 'v8ideos' , 'vi8deos' , 'v9ideos' , 'vi9deos' , 'voideos' , 'viodeos' , 'vlideos' , 'vildeos' , 'vkideos' , 'vikdeos' , 'vjideos' , 'vijdeos' , 'visdeos' , 'vidseos' , 'viedeos' , 'videeos' , 'virdeos' , 'vidreos' , 'vifdeos' , 'vidfeos' , 'vicdeos' , 'vidceos' , 'vixdeos' , 'vidxeos' , 'vidweos' , 'videwos' , 'vid3eos' , 'vide3os' , 'vid4eos' , 'vide4os' , 'vidreos' , 'videros' , 'vidfeos' , 'videfos' , 'viddeos' , 'videdos' , 'vidseos' , 'videsos' , 'videios' , 'videois' , 'vide9os' , 'video9s' , 'vide0os' , 'video0s' , 'videpos' , 'videops' , 'videlos' , 'videols' , 'videkos' , 'videoks' , 'videoas' , 'videosa' , 'videows' , 'videosw' , 'videoes' , 'videose' , 'videods' , 'videosd' , 'videoxs' , 'videosx' , 'videozs' , 'videosz'],
-var arsConstant = ['constant', 'onstant' , 'cnstant' , 'costant' , 'contant' , 'consant' , 'constnt' , 'constat' , 'constan' , 'cconstant' , 'coonstant' , 'connstant' , 'consstant' , 'consttant' , 'constaant' , 'constannt' , 'constantt' , 'ocnstant' , 'cnostant' , 'cosntant' , 'contsant' , 'consatnt' , 'constnat' , 'constatn' , 'xonstant' , 'donstant' , 'fonstant' , 'vonstant' , 'cinstant' , 'c9nstant' , 'c0nstant' , 'cpnstant' , 'clnstant' , 'cknstant' , 'cobstant' , 'cohstant' , 'cojstant' , 'comstant' , 'conatant' , 'conwtant' , 'conetant' , 'condtant' , 'conxtant' , 'conztant' , 'consrant' , 'cons5ant' , 'cons6ant' , 'consyant' , 'conshant' , 'consgant' , 'consfant' , 'constqnt' , 'constwnt' , 'constsnt' , 'constxnt' , 'constznt' , 'constabt' , 'constaht' , 'constajt' , 'constamt' , 'constanr' , 'constan5' , 'constan6' , 'constany' , 'constanh' , 'constang' , 'constanf' , 'xconstant' , 'cxonstant' , 'dconstant' , 'cdonstant' , 'fconstant' , 'cfonstant' , 'vconstant' , 'cvonstant' , 'cionstant' , 'coinstant' , 'c9onstant' , 'co9nstant' , 'c0onstant' , 'co0nstant' , 'cponstant' , 'copnstant' , 'clonstant' , 'colnstant' , 'ckonstant' , 'coknstant' , 'cobnstant' , 'conbstant' , 'cohnstant' , 'conhstant' , 'cojnstant' , 'conjstant' , 'comnstant' , 'conmstant' , 'conastant' , 'consatant' , 'conwstant' , 'conswtant' , 'conestant' , 'consetant' , 'condstant' , 'consdtant' , 'conxstant' , 'consxtant' , 'conzstant' , 'consztant' , 'consrtant' , 'constrant' , 'cons5tant' , 'const5ant' , 'cons6tant' , 'const6ant' , 'consytant' , 'constyant' , 'conshtant' , 'consthant' , 'consgtant' , 'constgant' , 'consftant' , 'constfant' , 'constqant' , 'constaqnt' , 'constwant' , 'constawnt' , 'constsant' , 'constasnt' , 'constxant' , 'constaxnt' , 'constzant' , 'constaznt' , 'constabnt' , 'constanbt' , 'constahnt' , 'constanht' , 'constajnt' , 'constanjt' , 'constamnt' , 'constanmt' , 'constanrt' , 'constantr' , 'constan5t' , 'constant5' , 'constan6t' , 'constant6' , 'constanyt' , 'constanty' , 'constanht' , 'constanth' , 'constangt' , 'constantg' , 'constanft' , 'constantf']
-var arsFrequent = ['frequent', 'requent' , 'fequent' , 'frquent' , 'freuent' , 'freqent' , 'frequnt' , 'frequet' , 'frequen' , 'ffrequent' , 'frrequent' , 'freequent' , 'freqquent' , 'frequuent' , 'frequeent' , 'frequennt' , 'frequentt' , 'rfequent' , 'ferquent' , 'frqeuent' , 'freuqent' , 'freqeunt' , 'frequnet' , 'frequetn' , 'drequent' , 'rrequent' , 'trequent' , 'grequent' , 'vrequent' , 'crequent' , 'feequent' , 'f4equent' , 'f5equent' , 'ftequent' , 'fgequent' , 'ffequent' , 'fdequent' , 'frwquent' , 'fr3quent' , 'fr4quent' , 'frrquent' , 'frfquent' , 'frdquent' , 'frsquent' , 'fre1uent' , 'fre2uent' , 'frewuent' , 'fresuent' , 'freauent' , 'freqyent' , 'freq7ent' , 'freq8ent' , 'freqient' , 'freqkent' , 'freqjent' , 'freqhent' , 'frequwnt' , 'frequ3nt' , 'frequ4nt' , 'frequrnt' , 'frequfnt' , 'frequdnt' , 'frequsnt' , 'frequebt' , 'frequeht' , 'frequejt' , 'frequemt' , 'frequenr' , 'frequen5' , 'frequen6' , 'frequeny' , 'frequenh' , 'frequeng' , 'frequenf' , 'dfrequent' , 'fdrequent' , 'rfrequent' , 'frrequent' , 'tfrequent' , 'ftrequent' , 'gfrequent' , 'fgrequent' , 'vfrequent' , 'fvrequent' , 'cfrequent' , 'fcrequent' , 'ferequent' , 'freequent' , 'f4requent' , 'fr4equent' , 'f5requent' , 'fr5equent' , 'ftrequent' , 'frtequent' , 'fgrequent' , 'frgequent' , 'ffrequent' , 'frfequent' , 'fdrequent' , 'frdequent' , 'frwequent' , 'frewquent' , 'fr3equent' , 'fre3quent' , 'fr4equent' , 'fre4quent' , 'frrequent' , 'frerquent' , 'frfequent' , 'frefquent' , 'frdequent' , 'fredquent' , 'frsequent' , 'fresquent' , 'fre1quent' , 'freq1uent' , 'fre2quent' , 'freq2uent' , 'frewquent' , 'freqwuent' , 'fresquent' , 'freqsuent' , 'freaquent' , 'freqauent' , 'freqyuent' , 'frequyent' , 'freq7uent' , 'frequ7ent' , 'freq8uent' , 'frequ8ent' , 'freqiuent' , 'frequient' , 'freqkuent' , 'frequkent' , 'freqjuent' , 'frequjent' , 'freqhuent' , 'frequhent' , 'frequwent' , 'frequewnt' , 'frequ3ent' , 'freque3nt' , 'frequ4ent' , 'freque4nt' , 'frequrent' , 'frequernt' , 'frequfent' , 'frequefnt' , 'frequdent' , 'frequednt' , 'frequsent' , 'frequesnt' , 'frequebnt' , 'frequenbt' , 'frequehnt' , 'frequenht' , 'frequejnt' , 'frequenjt' , 'frequemnt' , 'frequenmt' , 'frequenrt' , 'frequentr' , 'frequen5t' , 'frequent5' , 'frequen6t' , 'frequent6' , 'frequenyt' , 'frequenty' , 'frequenht' , 'frequenth' , 'frequengt' , 'frequentg' , 'frequenft' , 'frequentf']
-var arsLoading = ['loading', 'oading' , 'lading' , 'loding' , 'loaing' , 'loadng' , 'loadig' , 'loadin' , 'lloading' , 'looading' , 'loaading' , 'loadding' , 'loadiing' , 'loadinng' , 'loadingg' , 'olading' , 'laoding' , 'lodaing' , 'loaidng' , 'loadnig' , 'loadign' , 'koading' , 'ooading' , 'poading' , 'liading' , 'l9ading' , 'l0ading' , 'lpading' , 'llading' , 'lkading' , 'loqding' , 'lowding' , 'losding' , 'loxding' , 'lozding' , 'loasing' , 'loaeing' , 'loaring' , 'loafing' , 'loacing' , 'loaxing' , 'loadung' , 'load8ng' , 'load9ng' , 'loadong' , 'loadlng' , 'loadkng' , 'loadjng' , 'loadibg' , 'loadihg' , 'loadijg' , 'loadimg' , 'loadinf' , 'loadint' , 'loadiny' , 'loadinh' , 'loadinb' , 'loadinv' , 'kloading' , 'lkoading' , 'oloading' , 'looading' , 'ploading' , 'lpoading' , 'lioading' , 'loiading' , 'l9oading' , 'lo9ading' , 'l0oading' , 'lo0ading' , 'lpoading' , 'lopading' , 'lloading' , 'lolading' , 'lkoading' , 'lokading' , 'loqading' , 'loaqding' , 'lowading' , 'loawding' , 'losading' , 'loasding' , 'loxading' , 'loaxding' , 'lozading' , 'loazding' , 'loasding' , 'loadsing' , 'loaeding' , 'loadeing' , 'loarding' , 'loadring' , 'loafding' , 'loadfing' , 'loacding' , 'loadcing' , 'loaxding' , 'loadxing' , 'loaduing' , 'loadiung' , 'load8ing' , 'loadi8ng' , 'load9ing' , 'loadi9ng' , 'loadoing' , 'loadiong' , 'loadling' , 'loadilng' , 'loadking' , 'loadikng' , 'loadjing' , 'loadijng' , 'loadibng' , 'loadinbg' , 'loadihng' , 'loadinhg' , 'loadijng' , 'loadinjg' , 'loadimng' , 'loadinmg' , 'loadinfg' , 'loadingf' , 'loadintg' , 'loadingt' , 'loadinyg' , 'loadingy' , 'loadinhg' , 'loadingh' , 'loadinbg' , 'loadingb' , 'loadinvg' , 'loadingv']
-['not', 'ot' , 'nt' , 'no' , 'nnot' , 'noot' , 'nott' , 'ont' , 'nto' , 'bot' , 'hot' , 'jot' , 'mot' , 'nit' , 'n9t' , 'n0t' , 'npt' , 'nlt' , 'nkt' , 'nor' , 'no5' , 'no6' , 'noy' , 'noh' , 'nog' , 'nof' , 'bnot' , 'nbot' , 'hnot' , 'nhot' , 'jnot' , 'njot' , 'mnot' , 'nmot' , 'niot' , 'noit' , 'n9ot' , 'no9t' , 'n0ot' , 'no0t' , 'npot' , 'nopt' , 'nlot' , 'nolt' , 'nkot' , 'nokt' , 'nort' , 'notr' , 'no5t' , 'not5' , 'no6t' , 'not6' , 'noyt' , 'noty' , 'noht' , 'noth' , 'nogt' , 'notg' , 'noft' , 'notf']
-
-['ever', 'ever' , 'nver' , 'neer' , 'nevr' , 'neve' , 'nnever' , 'neever' , 'nevver' , 'neveer' , 'neverr' , 'enver' , 'nveer' , 'neevr' , 'nevre' , 'bever' , 'hever' , 'jever' , 'mever' , 'nwver' , 'n3ver' , 'n4ver' , 'nrver' , 'nfver' , 'ndver' , 'nsver' , 'necer' , 'nefer' , 'neger' , 'neber' , 'nevwr' , 'nev3r' , 'nev4r' , 'nevrr' , 'nevfr' , 'nevdr' , 'nevsr' , 'nevee' , 'neve4' , 'neve5' , 'nevet' , 'neveg' , 'nevef' , 'neved' , 'bnever' , 'nbever' , 'hnever' , 'nhever' , 'jnever' , 'njever' , 'mnever' , 'nmever' , 'nwever' , 'newver' , 'n3ever' , 'ne3ver' , 'n4ever' , 'ne4ver' , 'nrever' , 'nerver' , 'nfever' , 'nefver' , 'ndever' , 'nedver' , 'nsever' , 'nesver' , 'necver' , 'nevcer' , 'nefver' , 'nevfer' , 'negver' , 'nevger' , 'nebver' , 'nevber' , 'nevwer' , 'nevewr' , 'nev3er' , 'neve3r' , 'nev4er' , 'neve4r' , 'nevrer' , 'neverr' , 'nevfer' , 'nevefr' , 'nevder' , 'nevedr' , 'nevser' , 'nevesr' , 'neveer' , 'nevere' , 'neve4r' , 'never4' , 'neve5r' , 'never5' , 'nevetr' , 'nevert' , 'nevegr' , 'neverg' , 'nevefr' , 'neverf' , 'nevedr' , 'neverd']
-
-['stuck', 'tuck', 'tuck' , 'suck' , 'stck' , 'stuk' , 'stuc' , 'sstuck' , 'sttuck' , 'stuuck' , 'stucck' , 'stuckk' , 'tsuck' , 'sutck' , 'stcuk' , 'stukc' , 'atuck' , 'wtuck' , 'etuck' , 'dtuck' , 'xtuck' , 'ztuck' , 'sruck' , 's5uck' , 's6uck' , 'syuck' , 'shuck' , 'sguck' , 'sfuck' , 'styck' , 'st7ck' , 'st8ck' , 'stick' , 'stkck' , 'stjck' , 'sthck' , 'stuxk' , 'studk' , 'stufk' , 'stuvk' , 'stucj' , 'stuci' , 'stuco' , 'stucl' , 'stucm' , 'astuck' , 'satuck' , 'wstuck' , 'swtuck' , 'estuck' , 'setuck' , 'dstuck' , 'sdtuck' , 'xstuck' , 'sxtuck' , 'zstuck' , 'sztuck' , 'srtuck' , 'struck' , 's5tuck' , 'st5uck' , 's6tuck' , 'st6uck' , 'sytuck' , 'styuck' , 'shtuck' , 'sthuck' , 'sgtuck' , 'stguck' , 'sftuck' , 'stfuck' , 'styuck' , 'stuyck' , 'st7uck' , 'stu7ck' , 'st8uck' , 'stu8ck' , 'stiuck' , 'stuick' , 'stkuck' , 'stukck' , 'stjuck' , 'stujck' , 'sthuck' , 'stuhck' , 'stuxck' , 'stucxk' , 'studck' , 'stucdk' , 'stufck' , 'stucfk' , 'stuvck' , 'stucvk' , 'stucjk' , 'stuckj' , 'stucik' , 'stucki' , 'stucok' , 'stucko' , 'stuclk' , 'stuckl' , 'stucmk' , 'stuckm']
-
-['gone', 'one' , 'gne' , 'goe' , 'gon' , 'ggone' , 'goone' , 'gonne' , 'gonee' , 'ogne' , 'gnoe' , 'goen' , 'fone' , 'tone' , 'yone' , 'hone' , 'bone' , 'vone' , 'gine' , 'g9ne' , 'g0ne' , 'gpne' , 'glne' , 'gkne' , 'gobe' , 'gohe' , 'goje' , 'gome' , 'gonw' , 'gon3' , 'gon4' , 'gonr' , 'gonf' , 'gond' , 'gons' , 'fgone' , 'gfone' , 'tgone' , 'gtone' , 'ygone' , 'gyone' , 'hgone' , 'ghone' , 'bgone' , 'gbone' , 'vgone' , 'gvone' , 'gione' , 'goine' , 'g9one' , 'go9ne' , 'g0one' , 'go0ne' , 'gpone' , 'gopne' , 'glone' , 'golne' , 'gkone' , 'gokne' , 'gobne' , 'gonbe' , 'gohne' , 'gonhe' , 'gojne' , 'gonje' , 'gomne' , 'gonme' , 'gonwe' , 'gonew' , 'gon3e' , 'gone3' , 'gon4e' , 'gone4' , 'gonre' , 'goner' , 'gonfe' , 'gonef' , 'gonde' , 'goned' , 'gonse' , 'gones']
-
-['audio', 'udio' , 'adio' , 'auio' , 'audo' , 'audi' , 'aaudio' , 'auudio' , 'auddio' , 'audiio' , 'audioo' , 'uadio' , 'aduio' , 'auido' , 'audoi' , 'qudio' , 'wudio' , 'sudio' , 'xudio' , 'zudio' , 'aydio' , 'a7dio' , 'a8dio' , 'aidio' , 'akdio' , 'ajdio' , 'ahdio' , 'ausio' , 'aueio' , 'aurio' , 'aufio' , 'aucio' , 'auxio' , 'auduo' , 'aud8o' , 'aud9o' , 'audoo' , 'audlo' , 'audko' , 'audjo' , 'audii' , 'audi9' , 'audi0' , 'audip' , 'audil' , 'audik' , 'qaudio' , 'aqudio' , 'waudio' , 'awudio' , 'saudio' , 'asudio' , 'xaudio' , 'axudio' , 'zaudio' , 'azudio' , 'ayudio' , 'auydio' , 'a7udio' , 'au7dio' , 'a8udio' , 'au8dio' , 'aiudio' , 'auidio' , 'akudio' , 'aukdio' , 'ajudio' , 'aujdio' , 'ahudio' , 'auhdio' , 'ausdio' , 'audsio' , 'auedio' , 'audeio' , 'aurdio' , 'audrio' , 'aufdio' , 'audfio' , 'aucdio' , 'audcio' , 'auxdio' , 'audxio' , 'auduio' , 'audiuo' , 'aud8io' , 'audi8o' , 'aud9io' , 'audi9o' , 'audoio' , 'audioo' , 'audlio' , 'audilo' , 'audkio' , 'audiko' , 'audjio' , 'audijo' , 'audiio' , 'audioi' , 'audi9o' , 'audio9' , 'audi0o' , 'audio0' , 'audipo' , 'audiop' , 'audilo' , 'audiol' , 'audiko' , 'audiok']
-
-['sound', 'ound' , 'sund' , 'sond' , 'soud' , 'soun' , 'ssound' , 'soound' , 'souund' , 'sounnd' , 'soundd' , 'osund' , 'suond' , 'sonud' , 'soudn' , 'aound' , 'wound' , 'eound' , 'dound' , 'xound' , 'zound' , 'siund' , 's9und' , 's0und' , 'spund' , 'slund' , 'skund' , 'soynd' , 'so7nd' , 'so8nd' , 'soind' , 'soknd' , 'sojnd' , 'sohnd' , 'soubd' , 'souhd' , 'soujd' , 'soumd' , 'souns' , 'soune' , 'sounr' , 'sounf' , 'sounc' , 'sounx' , 'asound' , 'saound' , 'wsound' , 'swound' , 'esound' , 'seound' , 'dsound' , 'sdound' , 'xsound' , 'sxound' , 'zsound' , 'szound' , 'siound' , 'soiund' , 's9ound' , 'so9und' , 's0ound' , 'so0und' , 'spound' , 'sopund' , 'slound' , 'solund' , 'skound' , 'sokund' , 'soyund' , 'souynd' , 'so7und' , 'sou7nd' , 'so8und' , 'sou8nd' , 'soiund' , 'souind' , 'sokund' , 'souknd' , 'sojund' , 'soujnd' , 'sohund' , 'souhnd' , 'soubnd' , 'sounbd' , 'souhnd' , 'sounhd' , 'soujnd' , 'sounjd' , 'soumnd' , 'sounmd' , 'sounsd' , 'sounds' , 'souned' , 'sounde' , 'sounrd' , 'soundr' , 'sounfd' , 'soundf' , 'souncd' , 'soundc' , 'sounxd' , 'soundx']
-
-['cannot', 'annot' , 'cnnot' , 'canot' , 'canot' , 'cannt' , 'canno' , 'ccannot' , 'caannot' , 'cannnot' , 'cannnot' , 'cannoot' , 'cannott' , 'acnnot' , 'cnanot' , 'canont' , 'cannto' , 'xannot' , 'dannot' , 'fannot' , 'vannot' , 'cqnnot' , 'cwnnot' , 'csnnot' , 'cxnnot' , 'cznnot' , 'cabnot' , 'cahnot' , 'cajnot' , 'camnot' , 'canbot' , 'canhot' , 'canjot' , 'canmot' , 'cannit' , 'cann9t' , 'cann0t' , 'cannpt' , 'cannlt' , 'cannkt' , 'cannor' , 'canno5' , 'canno6' , 'cannoy' , 'cannoh' , 'cannog' , 'cannof' , 'xcannot' , 'cxannot' , 'dcannot' , 'cdannot' , 'fcannot' , 'cfannot' , 'vcannot' , 'cvannot' , 'cqannot' , 'caqnnot' , 'cwannot' , 'cawnnot' , 'csannot' , 'casnnot' , 'cxannot' , 'caxnnot' , 'czannot' , 'caznnot' , 'cabnnot' , 'canbnot' , 'cahnnot' , 'canhnot' , 'cajnnot' , 'canjnot' , 'camnnot' , 'canmnot' , 'canbnot' , 'cannbot' , 'canhnot' , 'cannhot' , 'canjnot' , 'cannjot' , 'canmnot' , 'cannmot' , 'canniot' , 'cannoit' , 'cann9ot' , 'canno9t' , 'cann0ot' , 'canno0t' , 'cannpot' , 'cannopt' , 'cannlot' , 'cannolt' , 'cannkot' , 'cannokt' , 'cannort' , 'cannotr' , 'canno5t' , 'cannot5' , 'canno6t' , 'cannot6' , 'cannoyt' , 'cannoty' , 'cannoht' , 'cannoth' , 'cannogt' , 'cannotg' , 'cannoft' , 'cannotf']
-
-
-
-
-var arsWords = [arsBuffer, arsFirewall, arsVideostream, arsPremium, arsCancel, arsSubscription, arsWorking, arsPlaying, arsVideos, arsConstant, arsFrequent, arsLoading];*/
-/*=====================================================================  RESPONSES  =====================================================================*/
 var sBlankEmail = "Is there a Videostream issue I can help you with? \n";
 
 var sInstallCast = "Videostream needs the Google Cast app to be able to talk properly with your Chromecast.  You can install the Google Cast extension here: https://chrome.google.com/webstore/detail/google-cast/boadgeojelhgndaghljhdicfkmllpafd?hl=en \n \nIf that one doesn't work, you can give the Cast Beta a shot: https://chrome.google.com/webstore/detail/google-cast-beta/dliochdbjfkdbacpmhlcpmleaejidimm?hl=en \n \nMake sure you open those links in Chrome! \n"
@@ -304,12 +268,23 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
         console.log("kdlafjlkafajl");
         chrome.runtime.sendMessage({ state: "ready" }, function() {});
 
-    } else if (type ===  "info"){
+    } else if (type === "info") {
         console.log("info page is loaded");
-        chrome.runtime.sendMessage({tab: "info", state: "loaded"}, function(){console.log("send message loaded")});
-    }else if (type === "ticket") {
+        chrome.runtime.sendMessage({ tab: "info", state: "loaded" }, function() { console.log("send message loaded") });
+    } else if (type === "generatetypos") {
+        console.log("type is generatetypos");
+        var vWait = window.setInterval(function(){
+                if (document.getElementsByTagName("textarea").length >0){
+                        setTimeout(function(){chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() { console.log("typos loaded"); });}, 00);
+                        clearInterval(vWait);
+        }}, 200);
+        
+        
+    } else if (type === "ticket") {
+        console.log("TYPE IS A TICKET LOLOLOLOL");
         // setTimeout(function() {
         //     console.log("kladfkaf;aflkafdkljaflkda dank");
+        
 
         chrome.runtime.sendMessage({ action: "query", data: "database" });
 
@@ -459,9 +434,60 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                 console.log("no t done the translate");
             }
         }, 500);
-    } else if (requesttrans.job === "displaystuff"){
+    } else if (requesttrans.job === "generatetypos") {
+        console.log("requesttrans.job is generatetypos");
+        //console.log("Typos from: ", requesttrans.keywords);
+        var sKeyword = requesttrans.keyword;
+        //console.log("Typos to be found: ", arTypostobefound);
+        //var i = 0;
+        if (document.getElementsByTagName("textarea").length === 1) {
+                console.log("First load - textarea.length is 1");
+            document.getElementsByName("skip_letter")[0].click();
+            document.getElementsByName("double_letters")[0].click();
+            document.getElementsByName("reverse_letters")[0].click();
+            document.getElementsByName("skip_spaces")[0].click();
+            document.getElementsByName("missed_key")[0].click();
+            document.getElementsByName("inserted_key")[0].click();
+        }
+        if (document.getElementsByTagName("textarea")[0].value != sKeyword) {
+
+                console.log("New text - not equal current keyword");
+            document.getElementsByName("user_input")[0].value = sKeyword;
+            var arInputs = document.getElementsByTagName("input");
+            for (var i = 0; i < arInputs.length; i++) {
+                if (arInputs[i].value === "generate typos") {
+                    console.log("found da button to generate typos, ", i);
+                    arInputs[i].click();
+                    break;
+                }
+            }
+        }else if (document.getElementsByTagName("textarea")[0].value === sKeyword){
+                var sGeneratedTypos = document.getElementsByTagName("textarea")[1].value;
+                console.log("sAns: ", sGeneratedTypos);
+                chrome.runtime.sendMessage({tab: "typos", state: "finished", finishedstuff: sGeneratedTypos, original: sKeyword, index: requesttrans.index}, function(){console.log("Sent messsage: ", sGeneratedTypos, " back to bg page");});
+                setTimeout(function(){window.location.reload()/*chrome.runtime.sendMessage({tab: "typos", state: "loaded"}, function(){console.log("Responded that ready for next one");})*/;}, 000);
+        }
+
+
+        /*        var vDank = window.setInterval(function(){
+                        if (i>=arTypostobefound.length){
+                                window.clearInterval(vDank);
+                        }else{
+                                document.getElementsByName("user_input")[0].value = arTypostobefound[i][0];
+                                var arInputs = document.getElementsByTagName("input");
+                                for (var i=0;i<arInputs.length;i++){
+                                        if (arInputs[i].value === "generate typos"){
+                                                console.log("found da button to generate typos, ", i);
+                                                arInputs[i].click();
+                                        }
+                                }
+
+                        }
+                        
+                }, 500);*/
+    } else if (requesttrans.job === "displaystuff") {
         console.log(requesttrans.questions, " ", requesttrans.answers, " ", requesttrans.keywords);
-    }else if (requesttrans.job === "inject") {
+    } else if (requesttrans.job === "inject") {
         sAns = requesttrans.text;
         printAnswer(sAns);
     } else if (requesttrans.job === "query") {
@@ -501,9 +527,11 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                     if (!bCheck) {
                         printAnswer("Super sorry!  I don't quite understand your question!  Do you mind giving me a bit more information?  If possible, screenshots would be appreciated :) \n \n Cheers!");
                     } else {
+                        console.log("sAns: ", sAns);
                         printAnswer(sAns);
                     }
                 } else {
+                        console.log("sAns before printing- in keywordsreturned: ", sAns);
                     printAnswer(sAns);
                     //  console.log("printingdeanswer");
                     console.log(sAns);
@@ -524,7 +552,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         //    console.log("arsWords: ", arsWords);
         bKeywordslistpresent = true;
     } else if (requesttrans.job === "translationDoneFinishUp") {
-
+        window.setInterval(function(){document.getElementById("noticeajax").style.display = "none"}, 500);
         //     console.log("for translation done finish up");
         //    console.log("Type: ", requesttrans.type, " text: ", requesttrans.text);
         if (requesttrans.type === "title") {
@@ -558,7 +586,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                         sEnd = i;
                         i++;
                     }
-                    if (sEmails.indexOf(sEmail) === -1) {
+                    if (sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">")===-1 && sEmail.indexOf("<")===-1) {
                         sEmails += sEmail;
                         sEmails += " ";
                     }
@@ -650,12 +678,13 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
 /*=====================================================================  PRINTANSWER FUNCTION  =====================================================================*/
 
 function printAnswer(sAns) {
+        console.log("Answer to print: ", sAns);
     var lol = document.getElementById("TicketPseudoReply").children;
     lol.FwdButton.click();
     var derp = document.getElementsByClassName("redactor_editor")[0].children;
     derp[1].children[2].innerText = sAns;
 
-}
+};
 
 /*=====================================================================  TESTWORDS FUNCTION  =====================================================================*/
 
@@ -1057,54 +1086,57 @@ function checkifseenbefore(array) {
     var bFound;
 
     console.log("Question: ", arQuestions, " Answer: ", arAnswers);
-    for (var i = 0;i<array.length;i++){
-        for (var j = 0;j<arQuestions.length;j++){
-                if (array[i] === arQuestions[j][0]){
-                        var bFound = false;
-                        var k = 0, l = 0;
-                        while (k<arQuestions[j].length && (i+k)<array.length){
-                                if (array[i+k] === arQuestions[j][l]){
-                                        k++;
-                                        l++;
-                                }else{
-                                        k++;
-                                }
-                        }if (k>=l && k>=arQuestions[j].length){
-                                bFound = true;
-                        }
-                }
-                if (bFound){
-                        console.log ("Found an answer...", arAnswers[j], " based on ", arQuestions[j]);
-                        sAns+=arAnswers[j];
-                        break;
-                }
-        }if (bFound){
-                return;
-        }
-    }
-/*    for (var i = 1; i < arQuestions.length; i++) {
-        for (var j = 0; j < array.length; j++) {
-            console.log("arQuestions[i][0]: ", arQuestions[i][0], " array[j]: ", array[j]);
-            if (array[j] === arQuestions[i][0]) {
-                console.log("found");
-                bFound = true;
-                for (var k = 0; k < array.length-j; k++) {
-                    if ((array[j + k] != arQuestions[i][k]) || !((j + k) < array.length)) {
-                        bFound = false;
-                        break;
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < arQuestions.length; j++) {
+            if (array[i] === arQuestions[j][0]) {
+                var bFound = false;
+                var k = 0,
+                    l = 0;
+                while (k < arQuestions[j].length && (i + k) < array.length) {
+                    if (array[i + k] === arQuestions[j][l]) {
+                        k++;
+                        l++;
+                    } else {
+                        k++;
                     }
+                }
+                if (k >= l && k >= arQuestions[j].length) {
+                    bFound = true;
                 }
             }
             if (bFound) {
-                console.log("found an answer");
-                sAns += arAnswers[i];
+                console.log("Found an answer...", arAnswers[j], " based on ", arQuestions[j]);
+                sAns += arAnswers[j];
                 break;
             }
-        }if (bFound){
-                break;
         }
-    }*/
-}
+        if (bFound) {
+            return;
+        }
+    }
+    /*    for (var i = 1; i < arQuestions.length; i++) {
+            for (var j = 0; j < array.length; j++) {
+                console.log("arQuestions[i][0]: ", arQuestions[i][0], " array[j]: ", array[j]);
+                if (array[j] === arQuestions[i][0]) {
+                    console.log("found");
+                    bFound = true;
+                    for (var k = 0; k < array.length-j; k++) {
+                        if ((array[j + k] != arQuestions[i][k]) || !((j + k) < array.length)) {
+                            bFound = false;
+                            break;
+                        }
+                    }
+                }
+                if (bFound) {
+                    console.log("found an answer");
+                    sAns += arAnswers[i];
+                    break;
+                }
+            }if (bFound){
+                    break;
+            }
+        }*/
+};
 
 
 function checkForKeyWords(arsTest) {
@@ -1183,7 +1215,7 @@ function checkForKeyWords(arsTest) {
             if (sAns.length > 0) {
                 bCheck = true;
             }
-            console.log(sAns);
+            console.log("Answer - in check for keywords: ", sAns);
             //bCheck = true;
         } //else {
         // bCheck = false;
@@ -1196,8 +1228,9 @@ function checkForKeyWords(arsTest) {
     }
     if (sAns.length > 0) {
         bCheck = true;
+        return;
     }
-    //if (!bCheck){
-    //  printAnswer(sAns);
-    //}
+/*    if (!bCheck){
+      printAnswer(sAns);
+    }*/
 }

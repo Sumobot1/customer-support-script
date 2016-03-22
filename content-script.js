@@ -268,23 +268,193 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
         console.log("kdlafjlkafajl");
         chrome.runtime.sendMessage({ state: "ready" }, function() {});
 
+    } else if (type === "attachment") {
+        console.log("knows its an attachment lol");
+        var sUsefulInfo = [],
+            nMaxBitRate = 0,
+            nNoCast = 0;
+        var sThing = document.getElementsByTagName("pre")[0].innerText.split("\n");
+        //I DONT KNOW WHAT I NEED HERE YET - NEED MORE LOG FILES TO LOOK THROUGH...
+        for (var i = 0; i < sThing.length; i++) {
+            console.log("sThing[i]: ", sThing[i], " sThing[i] stuff ", sThing[i].indexOf("VideostreamApplication: Platform:"), " ", sThing[i].indexOf("VideostreamApplication: UserAgent:"), " ", sThing[i].indexOf("User CPU:"), " ", sThing[i].indexOf("Found cast extension:"));
+            if (sThing[i].indexOf("VideostreamApplication: Platform:") > -1) {
+                sThing[i] = sThing[i].replace("[info]  ", "");
+                var newDiv = document.createElement("pre");
+                var newContent = document.createTextNode(sThing[i]);
+                newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                if (sThing[i].indexOf("Linux x86_64") > -1) {
+                    newDiv.style.color = "orange";
+                } else {
+                    newDiv.style.color = "green";
+                }
+
+                // add the newly created element and its content into the DOM 
+                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                document.body.insertBefore(newDiv, currentDiv);
+                sUsefulInfo.push(sThing[i]);
+            } else if (sThing[i].indexOf("VideostreamApplication: UserAgent:") > -1) {
+                sThing[i] = sThing[i].replace("[info]  ", "");
+                var newDiv = document.createElement("pre");
+                var newContent = document.createTextNode(sThing[i]);
+                newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                if (sThing[i].indexOf("CrOS") > -1) {
+                    newDiv.style.color = "red";
+                } else {
+                    newDiv.style.color = "green";
+                }
+                // add the newly created element and its content into the DOM 
+                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                document.body.insertBefore(newDiv, currentDiv);
+                sUsefulInfo.push(sThing[i]);
+            } else if (sThing[i].indexOf("User CPU:") > -1) {
+                sThing[i] = sThing[i].replace("[log]   ", "");
+                var newDiv = document.createElement("pre");
+                var newContent = document.createTextNode(sThing[i]);
+                newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                if (sThing[i].indexOf("Intel") > -1) {
+                    if ((sThing[i].indexOf("i3") > -1 || sThing.indexOf("i5") > -1 || sThing.indexOf("i7") > -1)) {
+                        sThing[i] = sThing[i].split(" ");
+                        for (var j = 0; j < sThing[i].length; j++) {
+                            if (sThing[i][j].indexOf("GHz") > -1) {
+                                sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                break;
+                            }
+                        }
+                        if (sThing[i][j] >= 2) {
+                            newDiv.color = "green";
+                        } else {
+                            newDiv.color = "orange";
+                        }
+                    } else {
+                        sThing[i] = sThing[i].split(" ");
+                        for (var j = 0; j < sThing[i].length; j++) {
+                            if (sThing[i][j].indexOf("GHz") > -1) {
+                                sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                break;
+                            }
+                        }
+                        if (sThing[i][j] >= 2) {
+                            newDiv.color = "orange";
+                        } else {
+                            newDiv.color = "red";
+                        }
+                    }
+
+                } else if (sThing[i].indexOf("AMD") > -1) {
+                    if (sThing[i].indexOf("FX") > -1 || sThing.indexOf("A8") > -1 || sThing.indexOf("A10") > -1) {
+                        sThing[i] = sThing[i].split(" ");
+                        for (var j = 0; j < sThing[i].length; j++) {
+                            if (sThing[i][j].indexOf("GHz") > -1) {
+                                sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                break;
+                            }
+                        }
+                        if (sThing[i][j] >= 2) {
+                            newDiv.color = "green";
+                        } else {
+                            newDiv.color = "orange";
+                        }
+                    }else{
+                        newDiv.color = "red";
+                    }
+                }
+
+                // add the newly created element and its content into the DOM 
+                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                document.body.insertBefore(newDiv, currentDiv);
+                sUsefulInfo.push(sThing[i]);
+            } else if (sThing[i].indexOf("[log]   [Desktop], Found cast extension:") > -1) {
+                sThing[i] = sThing[i].replace("[log]   [Desktop], ", "");
+                var newDiv = document.createElement("pre");
+                newDiv.style.color = "green";
+                var newContent = document.createTextNode(sThing[i]);
+                newDiv.appendChild(newContent); //add the text node to the newly created div. 
+
+                // add the newly created element and its content into the DOM 
+                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                document.body.insertBefore(newDiv, currentDiv);
+                sUsefulInfo.push(sThing[i]);
+            } else if (sThing[i].indexOf("NativeTaskController.isAlive") > -1) {
+                sThing[i] = sThing[i].replace("[log]   ", "");
+                var newDiv = document.createElement("pre");
+                newDiv.style.color = "red";
+                var newContent = document.createTextNode(sThing[i]);
+                newDiv.appendChild(newContent); //add the text node to the newly created div. 
+
+                // add the newly created element and its content into the DOM 
+                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                document.body.insertBefore(newDiv, currentDiv);
+                sUsefulInfo.push(sThing[i]);
+            } else if (sThing[i].indexOf("kBits/s") > -1) {
+                var sPlayback = sThing[i].split(", ");
+                for (var j = 0; j < sPlayback.length; j++) {
+                    if (sPlayback[j].indexOf("kBits/s") > -1) {
+                        sPlayback[j] = parseInt(sPlayback[j].replace(/kBits\/s/g, ""));
+                        if (sPlayback[j] > nMaxBitRate) {
+                            nMaxBitRate = sPlayback[j];
+                        }
+                    }
+                }
+            } else if (sThing[i].indexOf("No cast extension found") > -1) {
+                nNoCast += 1;
+            }
+        }
+        sUsefulInfo.push("Max Bitrate: " + nMaxBitRate);
+        sUsefulInfo.push("No Cast Extension Found: " + nNoCast);
+        console.log(sThing);
+        console.log("Useful Info: ", sUsefulInfo);
+        var newDiv = document.createElement("pre");
+        var newContent = document.createTextNode("Max Bitrate: " + nMaxBitRate + "\n");
+        newDiv.appendChild(newContent); //add the text node to the newly created div.
+        if (nMaxBitRate <= 5000) {
+            newDiv.style.color = "green";
+        } else if (nMaxBitRate <= 7000) {
+            newDiv.style.color = "orange";
+        } else {
+            newDiv.style.color = "red";
+        }
+        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+        document.body.insertBefore(newDiv, currentDiv);
+
+        var newDiv = document.createElement("pre");
+        var newContent = document.createTextNode("No Cast Extension Found: " + nNoCast);
+        newDiv.appendChild(newContent); //add the text node to the newly created div.
+        if (nNoCast > 0) {
+            newDiv.style.color = "red";
+        } else {
+            newDiv.style.color = "green";
+        }
+        // add the newly created element and its content into the DOM 
+        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+        document.body.insertBefore(newDiv, currentDiv);
+
+        var newDiv = document.createElement("pre");
+        var newContent = document.createTextNode("================================================================  LOG FILE STARTS HERE  ================================================================");
+        newDiv.style.color = "purple";
+        newDiv.appendChild(newContent); //add the text node to the newly created div. 
+        // add the newly created element and its content into the DOM 
+        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+        document.body.insertBefore(newDiv, currentDiv);
+
+
     } else if (type === "info") {
         console.log("info page is loaded");
         chrome.runtime.sendMessage({ tab: "info", state: "loaded" }, function() { console.log("send message loaded") });
     } else if (type === "generatetypos") {
         console.log("type is generatetypos");
-        var vWait = window.setInterval(function(){
-                if (document.getElementsByTagName("textarea").length >0){
-                        setTimeout(function(){chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() { console.log("typos loaded"); });}, 00);
-                        clearInterval(vWait);
-        }}, 200);
-        
-        
+        var vWait = window.setInterval(function() {
+            if (document.getElementsByTagName("textarea").length > 0) {
+                setTimeout(function() { chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() { console.log("typos loaded"); }); }, 00);
+                clearInterval(vWait);
+            }
+        }, 200);
+
+
     } else if (type === "ticket") {
         console.log("TYPE IS A TICKET LOLOLOLOL");
         // setTimeout(function() {
         //     console.log("kladfkaf;aflkafdkljaflkda dank");
-        
+
 
         chrome.runtime.sendMessage({ action: "query", data: "database" });
 
@@ -441,7 +611,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         //console.log("Typos to be found: ", arTypostobefound);
         //var i = 0;
         if (document.getElementsByTagName("textarea").length === 1) {
-                console.log("First load - textarea.length is 1");
+            console.log("First load - textarea.length is 1");
             document.getElementsByName("skip_letter")[0].click();
             document.getElementsByName("double_letters")[0].click();
             document.getElementsByName("reverse_letters")[0].click();
@@ -451,7 +621,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         }
         if (document.getElementsByTagName("textarea")[0].value != sKeyword) {
 
-                console.log("New text - not equal current keyword");
+            console.log("New text - not equal current keyword");
             document.getElementsByName("user_input")[0].value = sKeyword;
             var arInputs = document.getElementsByTagName("input");
             for (var i = 0; i < arInputs.length; i++) {
@@ -461,11 +631,11 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                     break;
                 }
             }
-        }else if (document.getElementsByTagName("textarea")[0].value === sKeyword){
-                var sGeneratedTypos = document.getElementsByTagName("textarea")[1].value;
-                console.log("sAns: ", sGeneratedTypos);
-                chrome.runtime.sendMessage({tab: "typos", state: "finished", finishedstuff: sGeneratedTypos, original: sKeyword, index: requesttrans.index}, function(){console.log("Sent messsage: ", sGeneratedTypos, " back to bg page");});
-                setTimeout(function(){window.location.reload()/*chrome.runtime.sendMessage({tab: "typos", state: "loaded"}, function(){console.log("Responded that ready for next one");})*/;}, 000);
+        } else if (document.getElementsByTagName("textarea")[0].value === sKeyword) {
+            var sGeneratedTypos = document.getElementsByTagName("textarea")[1].value;
+            console.log("sAns: ", sGeneratedTypos);
+            chrome.runtime.sendMessage({ tab: "typos", state: "finished", finishedstuff: sGeneratedTypos, original: sKeyword, index: requesttrans.index }, function() { console.log("Sent messsage: ", sGeneratedTypos, " back to bg page"); });
+            setTimeout(function() { window.location.reload() /*chrome.runtime.sendMessage({tab: "typos", state: "loaded"}, function(){console.log("Responded that ready for next one");})*/ ; }, 000);
         }
 
 
@@ -531,7 +701,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                         printAnswer(sAns);
                     }
                 } else {
-                        console.log("sAns before printing- in keywordsreturned: ", sAns);
+                    console.log("sAns before printing- in keywordsreturned: ", sAns);
                     printAnswer(sAns);
                     //  console.log("printingdeanswer");
                     console.log(sAns);
@@ -552,7 +722,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         //    console.log("arsWords: ", arsWords);
         bKeywordslistpresent = true;
     } else if (requesttrans.job === "translationDoneFinishUp") {
-        window.setInterval(function(){document.getElementById("noticeajax").style.display = "none"}, 500);
+        window.setInterval(function() { document.getElementById("noticeajax").style.display = "none" }, 500);
         //     console.log("for translation done finish up");
         //    console.log("Type: ", requesttrans.type, " text: ", requesttrans.text);
         if (requesttrans.type === "title") {
@@ -586,7 +756,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                         sEnd = i;
                         i++;
                     }
-                    if (sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">")===-1 && sEmail.indexOf("<")===-1) {
+                    if (sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">") === -1 && sEmail.indexOf("<") === -1) {
                         sEmails += sEmail;
                         sEmails += " ";
                     }
@@ -678,7 +848,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
 /*=====================================================================  PRINTANSWER FUNCTION  =====================================================================*/
 
 function printAnswer(sAns) {
-        console.log("Answer to print: ", sAns);
+    console.log("Answer to print: ", sAns);
     var lol = document.getElementById("TicketPseudoReply").children;
     lol.FwdButton.click();
     var derp = document.getElementsByClassName("redactor_editor")[0].children;
@@ -687,6 +857,7 @@ function printAnswer(sAns) {
 };
 
 /*=====================================================================  TESTWORDS FUNCTION  =====================================================================*/
+var arAnswersCompleted;
 
 function testwords(arsKeyWords) {
     var sMaxLetterPos = Math.max(arsKeyWords.indexOf("queue"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("playlist"));
@@ -696,6 +867,9 @@ function testwords(arsKeyWords) {
     console.log(arsKeyWords.indexOf("usage"));
     /*========  BUFFERING  ========*/
     if (arsKeyWords.indexOf("buffering") > -1 || arsKeyWords.indexOf("buffers") > -1) {
+        if (arAnswersCompleted[0] != true){
+                console.log("here");
+        }
         console.log("dankbuffer");
         if (arsKeyWords.indexOf("constant") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("frequent") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("stuck") < arsKeyWords.indexOf("buffering") || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("forever") > arsKeyWords.indexOf("buffers")) || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("buffers"))) {
             for (var i = 0; i < arsBuffering.length; i++) {
@@ -716,6 +890,7 @@ function testwords(arsKeyWords) {
         if (arsKeyWords.indexOf("loading") > -1) {
             sAns += "Just making sure here, are you stuck on the buffering screen or the loading screen?";
         }
+        arAnswersCompleted[0] = true;
     }
 
 
@@ -750,18 +925,21 @@ function testwords(arsKeyWords) {
                 sAns += arsFirewallWindows[i];
             }
         }
+        arAnswersCompleted[1] = true;
     }
 
     /*========  REFUND  ========*/
     else if (arsKeyWords.indexOf("refund") > -1 || (arsKeyWords.indexOf("money") > -1 && arsKeyWords[arsKeyWords.indexOf("money") + 1] === "back")) {
         console.log("dankrefund");
         sAns += sRefund;
+        arAnswersCompleted[2] = true;
     }
 
     /*========  UPGRADE TO LIFETIME  ========*/
     else if ((arsKeyWords.indexOf("upgrade") > -1 && arsKeyWords.indexOf("lifetime") > arsKeyWords.indexOf("upgrade")) || Math.max(arsKeyWords.indexOf("monthly"), arsKeyWords.indexOf("yearly"), arsKeyWords.indexOf("annual")) > -1 && arsKeyWords.indexOf("lifetime") > -1) {
         console.log("dankupgrade");
         sAns += sToLifetimeNoSale;
+        arAnswersCompleted[3] = true;
     }
 
 
@@ -769,6 +947,7 @@ function testwords(arsKeyWords) {
     else if ((Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) > -1 && (arsKeyWords.indexOf("subscription") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("premium") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("charge") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")))) || Math.max(arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end"), arsKeyWords.indexOf("cancel")) > -1 && arsKeyWords.indexOf("payment") > -1 || Math.max(arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("membership"), arsKeyWords.indexOf("service")) > -1 && arsKeyWords.indexOf("cancel") > -1) {
         console.log("dankcancel");
         sAns += sCancelPremium;
+        arAnswersCompleted[4] = true;
     }
     //return sAns;
 
@@ -778,15 +957,19 @@ function testwords(arsKeyWords) {
     else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && ((arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("detected"), arsKeyWords.indexOf("detecting"), arsKeyWords.indexOf("recognized")) > -1) || (arsKeyWords.indexOf("greyed") > -1 && Math.max(arsKeyWords.indexOf("features"), arsKeyWords.indexOf("choices")) > -1) || (Math.max(arsKeyWords.indexOf("change"), arsKeyWords.indexOf("new"), arsKeyWords.indexOf("other")) > -1 && Math.max(arsKeyWords.indexOf("laptop"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("computer")) > -1) || arsKeyWords.indexOf("doesnt") > -1 && arsKeyWords.indexOf("work") > -1 || arsKeyWords.indexOf("how") > -1 && arsKeyWords.indexOf("linked") > -1)) {
         console.log("premiumnotworking: ", arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("not"))
         sAns += sPremiumNotWorking;
+        arAnswersCompleted[5] = true;
     } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(Math.max(arsKeyWords.indexOf("issue"), arsKeyWords.indexOf("problem")) > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("would") > -1 && arsKeyWords.indexOf("be") === arsKeyWords.indexOf("would") + 1)) && (arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("advantages") > -1 || arsKeyWords.indexOf("difference") > -1)) {
         console.log("sPremiumFeatures");
         sAns += sPremiumFeatures
+        arAnswersCompleted[6] = true;
     } else if ((((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound")) > -1) && !(arsKeyWords.indexOf("opensubtitles") > -1))) && (arsKeyWords.indexOf("how") > -1 || Math.max(arsKeyWords.indexOf("upgrade"), arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("get")) > -1)) {
         console.log("sGetPremium");
         sAns += sGetPremium;
+        arAnswersCompleted[7] = true;
     } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1)) && (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1)) {
         console.log("sDisplayContentSuggestions");
         sAns += sDisplayContentSuggestions;
+        arAnswersCompleted[8] = true;
     }
     // else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && arsKeyWords.indexOf("new")>-1 && arsKeyWords.indexOf("computer")>-1) //else if (arsKeyWords.indexOf("email") > -1) {
 
@@ -798,24 +981,28 @@ function testwords(arsKeyWords) {
     else if ((arsKeyWords.indexOf("google") < arsKeyWords.indexOf("cast") && arsKeyWords.indexOf("google") > -1) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords.indexOf("extension") > -1)) {
         console.log("dankcast");
         sAns += sInstallCast;
+        arAnswersCompleted[9] = true;
     }
 
     /*========  VIDDIT  ========*/
     else if (arsKeyWords.indexOf("viddit") > -1) {
         console.log("dankviddit");
         sAns += sViddit;
+        arAnswersCompleted[10] = true;
     }
 
     /*========  ITUNES DRM  ========*/ //MAYBE MAKE ARRAY OF STUFF WITH DRM ON IT AND LOOP THROUGH?
     else if (arsKeyWords.indexOf("itunes") > -1 && arsKeyWords.indexOf("play") > -1) {
         console.log("dankdrm");
         sAns += sDRMiTunes;
+        arAnswersCompleted[11] = true;
     }
 
     /*========  AUDIO THROUGH HEADPHONES OR CHROMECAST AUDIO, VIDEO THROUGH CHROMECAST  ========*/
     else if (((Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound"), arsKeyWords.indexOf("listen")) > -1 && (arsKeyWords.indexOf("headphones") > -1 || Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("laptop")) > -1 || arsKeyWords.indexOf("phone") > -1 || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("chromecast"))))) || ((arsKeyWords.indexOf("connect") > -1 && arsKeyWords.indexOf("stereo") > -1 && arsKeyWords.indexOf("headphones") > -1))) {
         console.log("dankaudio");
         sAns += sHeadphoneAudio;
+        arAnswersCompleted[12] = true;
     }
 
     /*========  VIDEO BUT NO AUDIO  ========*/
@@ -831,11 +1018,13 @@ function testwords(arsKeyWords) {
             }
 
         }
+        arAnswersCompleted[13] = true;
     }
     /*========  SELECT MULTIPLE VIDEOS  ========*/
     else if (Math.max(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) > -1 && Math.max(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several")) > Math.min(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("episodes")) > Math.min(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several"))) {
         console.log("dankmultiple");
         sAns += sSelectMultipleVideos;
+        arAnswersCompleted[14] = true;
     }
 
 
@@ -845,6 +1034,7 @@ function testwords(arsKeyWords) {
     else if ((Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")) > -1 && arsKeyWords.indexOf("back") > -1 && ((arsKeyWords.indexOf("top") > -1) || arsKeyWords.indexOf("beginnning") > Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")))) || (Math.max(arsKeyWords.indexOf("repeated"), arsKeyWords.indexOf("constant"), arsKeyWords.indexOf("frequent")) > -1 && arsKeyWords.indexOf("scanning") > -1)) {
         console.log("dankandroidbug");
         sAns += sSearchBackToTop;
+        arAnswersCompleted[15] = true;
     }
 
 
@@ -853,6 +1043,7 @@ function testwords(arsKeyWords) {
     else if (arsKeyWords.indexOf("dvd") > -1 || arsKeyWords.indexOf("iso") > -1) {
         console.log("kdlfajdkjfaldfjakfjd0");
         sAns += sDVD;
+        arAnswersCompleted[16] = true;
     }
 
 
@@ -860,11 +1051,13 @@ function testwords(arsKeyWords) {
     else if (arsKeyWords.indexOf("videostream") > -1 && (arsKeyWords.indexOf("windows") > -1 && arsKeyWords.indexOf("application") > arsKeyWords.indexOf("windows")) || arsKeyWords.indexOf("standalone") > -1) {
         console.log("wndowsapp");
         sAns += sWindowsApp;
+        arAnswersCompleted[17] = true;
     }
     /*========  VIDEOSTREAM RIGHT CLICK MENU  ========*/
     else if (arsKeyWords.indexOf("videostream") > -1 && arsKeyWords.indexOf("right") > -1 && arsKeyWords[arsKeyWords.indexOf("right") + 1] === "click") {
         console.log("dankrightclick");
         sAns += sWindowsRightClick;
+        arAnswersCompleted[18] = true;
     }
 
 
@@ -874,27 +1067,32 @@ function testwords(arsKeyWords) {
     else if ((arsKeyWords.indexOf("resolution") > -1 || arsKeyWords.indexOf("video") > -1) && arsKeyWords.indexOf("grainy") > -1) {
         console.log("dankres");
         sAns += sBitrateProblem;
+        arAnswersCompleted[19] = true;
     }
 
     /*========  SIGN IN TAB OPENS VIDEOSTREAM  ========*/
     else if (arsKeyWords.indexOf("sign") > -1 && arsKeyWords.indexOf("in") === arsKeyWords.indexOf("sign") + 1 && (arsKeyWords.indexOf("tab") > arsKeyWords.indexOf("in") || arsKeyWords.indexOf("window") > arsKeyWords.indexOf("in")) && arsKeyWords.indexOf("open") > -1) {
         console.log("sSignInTabOpens");
         sAns += sSignInTabOpens;
+        arAnswersCompleted[20] = true;
     }
     /*========  COMPUTER SLEEP STOPS VIDEO  ========*/
     else if (arsKeyWords.indexOf("computer") > -1 && arsKeyWords.indexOf("sleep") > -1 && arsKeyWords.indexOf("stops") > -1 && arsKeyWords.indexOf("videos") > -1) {
         console.log(sComputerSleepsStopsVideo);
         sAns += sComputerSleepsStopsVideo;
+        arAnswersCompleted[21] = true;
     }
     /*========  ADD SUBTITLE FILES  ========*/
     else if (arsKeyWords.indexOf("add") > -1 && arsKeyWords.indexOf("subtitle") > arsKeyWords.indexOf("add") && !(arsKeyWords.indexOf("ads") > -1)) {
         console.log("sAddSubtitleFiles");
         sAns += sAddSubtitleFiles;
+        arAnswersCompleted[22] = true;
     }
     /*========  PLAYLIST SUPPORT  ========*/
     else if (((sMaxLetterPos > -1 && (arsKeyWords.indexOf("support") > sMaxLetterPos || arsKeyWords.indexOf("for") > sMaxLetterPos && arsKeyWords[arsKeyWords.indexOf("for") + 1] === "premium")) || (arsKeyWords.indexOf("videos") > arsKeyWords.indexOf("play") && arsKeyWords.indexOf("play") > -1) || (arsKeyWords.indexOf("multiple") > sMaxLetterPos && (arsKeyWords.indexOf("files") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("video") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("movie") > arsKeyWords.indexOf("multiple")))) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("iphone") > -1)) {
         console.log("sPlaylistSupport");
         sAns += sPlaylistSupport;
+        arAnswersCompleted[23] = true;
     }
     /*========  PLAYLIST NOT WORKING  ========*/
     else if (arsKeyWords.indexOf("playlist") > -1 && Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("wont")) > -1 && (Math.max(arsKeyWords.indexOf("working"), arsKeyWords.indexOf("showing")) > -1 || arsKeyWords.indexOf("show") > -1 && arsKeyWords[arsKeyWords.indexOf("show") + 1] === "up")) {
@@ -902,15 +1100,18 @@ function testwords(arsKeyWords) {
         for (var i = 0; i < arsPlaylistNotShowing.length; i++) {
             sAns += arsPlaylistNotShowing[i];
         }
+        arAnswersCompleted[24] = true;
 
     } else if (arsKeyWords.indexOf("playlist") > -1 && (Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone"), arsKeyWords.indexOf("mobile")) > -1 && arsKeyWords.indexOf("app") > -1)) {
         console.log("playlist mobile app");
         sAns += sPlaylistMobile;
+        arAnswersCompleted[25] = true;
     }
     /*========  UPNP/DLNA  ========*/
     else if (arsKeyWords.indexOf("upnp") > -1 || arsKeyWords.indexOf("dlna") > -1) {
         console.log("sUPNPDLNA");
         sAns += sUPNPDLNA;
+        arAnswersCompleted[26] = true;
     }
 
 
@@ -921,12 +1122,14 @@ function testwords(arsKeyWords) {
         //if  {
         sAns += sIOSAndroid;
         //}
+        arAnswersCompleted[27] = true;
     }
 
     /*========  INTERNET USAGE  ========*/
     else if ((arsKeyWords.indexOf("internet") > -1 && arsKeyWords.indexOf("usage") > arsKeyWords.indexOf("internet")) || (arsKeyWords.indexOf("data") > -1 && arsKeyWords.indexOf("cap") > arsKeyWords.indexOf("data"))) {
         sAns += sDownloadCap;
         console.log("poop");
+        arAnswersCompleted[28] = true;
     }
 
     /*========  DELETED FILES STILL SHOWING UP  ========*/
@@ -935,17 +1138,20 @@ function testwords(arsKeyWords) {
             sAns += arsDeletedOnAndroidStillThere[i];
         }
         console.log("poossss");
+        arAnswersCompleted[29] = true;
     }
     /*========  PHONE VIDEOS ON SIDE WHEN VIEWED WITH VIDEOSTREAM  ========*/
     else if (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("phone")) > -1 && arsKeyWords.indexOf("videos") > -1 && arsKeyWords.indexOf("side") > -1) {
         console.log("sPhoneVideosOnSide");
         sAns += sPhoneVideosOnSide;
+        arAnswersCompleted[30] = true;
     }
 
     /*========  CHROMECAST EXTEND TIMEOUT  ========*/
     else if (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("extend") > -1 && arsKeyWords.indexOf("timeout") > arsKeyWords.indexOf("extend")) {
         console.log("sChromecastTimeout");
         sAns += sChromecastTimeout;
+        arAnswersCompleted[31] = true;
     }
 
 
@@ -955,12 +1161,15 @@ function testwords(arsKeyWords) {
     else if (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("between") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) && arsKeyWords.indexOf("videos") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads"))) {
         console.log("sDisplayContentSuggestions");
         sAns += sDisplayContentSuggestions;
+        arAnswersCompleted[32] = true;
     } else if (Math.max(arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("opensubtitles") > -1) {
         console.log("opensubtitles ads");
         sAns += sOpenSubtitlesAds;
+        arAnswersCompleted[33] = true;
     } else if (arsKeyWords.indexOf("how") > -1 && Math.max(arsKeyWords.indexOf("make"), arsKeyWords.indexOf("create")) > -1 && arsKeyWords.indexOf("playlist") > -1) {
         console.log("make playlist");
         sAns += sHowToMakeAPlaylist;
+        arAnswersCompleted[34] = true;
     } else if ((Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && ((Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("stopped")) > -1 && Math.max(arsKeyWords.indexOf("loading"), arsKeyWords.indexOf("display"), arsKeyWords.indexOf("working"), arsKeyWords.indexOf("streaming")) > -1) || (arsKeyWords.indexOf("display") > -1 && Math.max(arsKeyWords.indexOf("correctly"), arsKeyWords.indexOf("right")) > -1) || (arsKeyWords.indexOf("cut") > -1 && arsKeyWords.indexOf("off") > -1) || arsKeyWords.indexOf("problem") > -1 && arsKeyWords[arsKeyWords.indexOf("problem") + 1] === "with") || arsKeyWords.indexOf("disappear") > -1) || ((Math.max(arsKeyWords.indexOf("opensubtitles"), arsKeyWords.indexOf("subtitle")) > -1) && Math.max(arsKeyWords.indexOf("wont"), arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt")) > -1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works")) > -1) || (Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && arsKeyWords.indexOf("no") > -1 && arsKeyWords.indexOf("files") > -1 && arsKeyWords.indexOf("have") > -1)) {
         console.log("here");
         //        for (var i = 0; i < arsSubtitlesNotLoading.length; i++) {
@@ -969,26 +1178,31 @@ function testwords(arsKeyWords) {
         for (var i = 0; i < arsSubtitlesCutOff.length; i++) {
             sAns += arsSubtitlesCutOff[i];
         }
+        arAnswersCompleted[35] = true;
     } else if (arsKeyWords.indexOf("chromium") > -1 && ((arsKeyWords.indexOf("native") > -1 && arsKeyWords[arsKeyWords.indexOf("native") + 1] === 'client') || arsKeyWords.indexOf("nacl") > -1)) {
         //console.log("nacl");
         sAns += sNaClLinux;
         //console.log(sAns, " done");
+        arAnswersCompleted[36] = true;
     }
 
     /*========  CAST FILES FROM ANDROID  ========*/
     else if (Math.max(arsKeyWords.indexOf("cast"), arsKeyWords.indexOf("watch")) > -1 && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("files")) > -1 && Math.max(arsKeyWords.indexOf("from"), arsKeyWords.indexOf("with")) > -1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone")) > -1) {
         sAns += sCastFromPhone;
+        arAnswersCompleted[37] = true;
     }
 
     /*========  .m2ts  ========*/
     else if (arsKeyWords.indexOf("m2ts") > -1) {
         console.log("m2ts");
         sAns += sM2TS;
+        arAnswersCompleted[38] = true;
     }
 
     /*========  AUDIO NORMALIZATION  ========*/
     else if (arsKeyWords.indexOf("audio") > -1 && arsKeyWords.indexOf("normalization") > -1) {
         sAns += sAudioNormalization;
+        arAnswersCompleted[39] = true;
     }
 
     /*========= OPENSUBTITLES NOT WORKING =========*/
@@ -997,14 +1211,19 @@ function testwords(arsKeyWords) {
         }*/
     else if (Math.max(arsKeyWords.indexOf("uninstall"), arsKeyWords.indexOf("delete"), arsKeyWords.indexOf("remove")) > -1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("videostream"), arsKeyWords.indexOf("program")) > -1) {
         sAns += sUninstallInstructions;
+        arAnswersCompleted[40] = true;
     } else if (arsKeyWords.indexOf("subtitle") > -1 && (arsKeyWords.indexOf("change") > -1 && arsKeyWords.indexOf("size") > -1 || arsKeyWords.indexOf("smaller") > -1 || Math.max(arsKeyWords.indexOf("larger"), arsKeyWords.indexOf("bigger")) > -1)) {
         sAns += sSubtitleSize;
+        arAnswersCompleted[41] = true;
     } else if (arsKeyWords.indexOf("windows") > -1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile")) > -1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("program"), arsKeyWords.indexOf("videostream")) > -1) {
         sAns += sWindowsPhone;
+        arAnswersCompleted[42] = true;
     } else if (Math.max(arsKeyWords.indexOf("loop"), arsKeyWords.indexOf("repeat")) > -1 && arsKeyWords.indexOf("videos") > -1) {
         sAns += sRepeatVideos;
+        arAnswersCompleted[43] = true;
     } else if (Math.max(arsKeyWords.indexOf("google")) > -1 && Math.max(arsKeyWords.indexOf("credit"), arsKeyWords.indexOf("play")) > -1 && Math.max(arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("buy"), arsKeyWords.indexOf("purchase")) > -1) {
         sAns += sGooglePlayCredit;
+        arAnswersCompleted[44] = true;
     }
 
     /*========  PHONE CAN'T FIND VIDEOSTREAM  ========*/
@@ -1037,6 +1256,7 @@ function testwords(arsKeyWords) {
                 sAns += arsPhoneCantFindVideostream[i];
             }
         }
+        arAnswersCompleted[45] = true;
     }
 
 
@@ -1046,6 +1266,7 @@ function testwords(arsKeyWords) {
         for (var i = 0; i < arsNoCastFound.length; i++) {
             sAns += arsNoCastFound[i];
         }
+        arAnswersCompleted[46] = true;
         //sAns+= sNoCastFound;
     }
 
@@ -1074,7 +1295,8 @@ function testwords(arsKeyWords) {
                 sAns += arsFirewallWindows[i];
             }
         }
-        sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n"
+        sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n";
+        arAnswersCompleted[47] = true;
     }
 
     console.log("done");
@@ -1230,7 +1452,7 @@ function checkForKeyWords(arsTest) {
         bCheck = true;
         return;
     }
-/*    if (!bCheck){
-      printAnswer(sAns);
-    }*/
+    /*    if (!bCheck){
+          printAnswer(sAns);
+        }*/
 }

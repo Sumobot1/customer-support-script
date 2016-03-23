@@ -354,7 +354,7 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
                         } else {
                             newDiv.color = "orange";
                         }
-                    }else{
+                    } else {
                         newDiv.color = "red";
                     }
                 }
@@ -857,7 +857,7 @@ function printAnswer(sAns) {
 };
 
 /*=====================================================================  TESTWORDS FUNCTION  =====================================================================*/
-var arAnswersCompleted;
+var arAnswersCompleted = [];
 
 function testwords(arsKeyWords) {
     var sMaxLetterPos = Math.max(arsKeyWords.indexOf("queue"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("playlist"));
@@ -867,30 +867,31 @@ function testwords(arsKeyWords) {
     console.log(arsKeyWords.indexOf("usage"));
     /*========  BUFFERING  ========*/
     if (arsKeyWords.indexOf("buffering") > -1 || arsKeyWords.indexOf("buffers") > -1) {
-        if (arAnswersCompleted[0] != true){
-                console.log("here");
-        }
-        console.log("dankbuffer");
-        if (arsKeyWords.indexOf("constant") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("frequent") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("stuck") < arsKeyWords.indexOf("buffering") || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("forever") > arsKeyWords.indexOf("buffers")) || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("buffers"))) {
-            for (var i = 0; i < arsBuffering.length; i++) {
-                if (i === 16) {
-                    console.log(bLog);
-                    if (!bLog) {
+        if (arAnswersCompleted[0] != true) {
+            console.log("in Buffering, arAnswersCompleted[0]!=true");
+            console.log("dankbuffer");
+            if (arsKeyWords.indexOf("constant") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("frequent") < arsKeyWords.indexOf("buffering") || arsKeyWords.indexOf("stuck") < arsKeyWords.indexOf("buffering") || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("forever") > arsKeyWords.indexOf("buffers")) || (arsKeyWords.indexOf("buffers") > -1 && arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("buffers"))) {
+                for (var i = 0; i < arsBuffering.length; i++) {
+                    if (i === 16) {
+                        console.log(bLog);
+                        if (!bLog) {
+                            sAns += arsBuffering[i];
+                        }
+                    } else {
                         sAns += arsBuffering[i];
                     }
-                } else {
-                    sAns += arsBuffering[i];
-                }
 
+                }
+                //console.log("hello");
+                //LOOK FOR IN SAME ROOM, ACCROSS ROOM, RIGHT BESIDE EACH OTHER, ETC.        COULD BE IN A DIFFERENT SENTENCE.  MAKE EACH RESPONSE AN ARRAY, TOGGLE BTWN 1 AND 0, HAVE A FINAL PRINT FUNCTION...
+                //printAnswer(sAns);
             }
-            //console.log("hello");
-            //LOOK FOR IN SAME ROOM, ACCROSS ROOM, RIGHT BESIDE EACH OTHER, ETC.        COULD BE IN A DIFFERENT SENTENCE.  MAKE EACH RESPONSE AN ARRAY, TOGGLE BTWN 1 AND 0, HAVE A FINAL PRINT FUNCTION...
-            //printAnswer(sAns);
+            if (arsKeyWords.indexOf("loading") > -1) {
+                sAns += "Just making sure here, are you stuck on the buffering screen or the loading screen?";
+            }
+            arAnswersCompleted[0] = true;
         }
-        if (arsKeyWords.indexOf("loading") > -1) {
-            sAns += "Just making sure here, are you stuck on the buffering screen or the loading screen?";
-        }
-        arAnswersCompleted[0] = true;
+
     }
 
 
@@ -898,56 +899,71 @@ function testwords(arsKeyWords) {
     /*========  FIREWALL BLOCKING VIDEOSTREAM  ========*/
     else if ((arsKeyWords.indexOf("firewall") > -1 && (Math.max(arsKeyWords.indexOf("blocking"), arsKeyWords.indexOf("blocks")) > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("blocked") > -1 || (arsKeyWords.indexOf("get") > -1 && arsKeyWords.indexOf("fixed") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("blocking") > -1 && arsKeyWords.indexOf("content") > -1) || arsKeyWords.indexOf("repair") > -1 && Math.max(arsKeyWords.indexOf("freezing"), arsKeyWords.indexOf("stuck"))) || (arsKeyWords.indexOf("help") > -1 && arsKeyWords.indexOf("with") > -1)) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
         console.log("dankfirewall");
+        if (arAnswersCompleted[1] != true) {
+            console.log("in firewall, arAnswersCompleted[1]!=true");
+            if ((arsKeyWords.indexOf("mac") > -1 || arsKeyWords.indexOf("osx") > -1 || (arsKeyWords.indexOf("os") > -1 && arsKeyWords[arsKeyWords.indexOf("os") + 1] === "x") || arsKeyWords.indexOf("macbook") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
+                sAns += sFirewall;
+                sAns += sFirewall2;
+                for (var i = 1; i < arsFirewallMac.length; i++) {
+                    sAns += arsFirewallMac[i];
+                }
+            }
+            else if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
+                sAns += sFirewall;
+                sAns += sFirewall2;
+                for (var i = 1; i < arsFirewallWindows.length; i++) {
+                    sAns += arsFirewallWindows[i];
+                }
+            } else {
+                sAns += sFirewall;
+                //sAns += sFirewall2;
+                sAns += "I'm not sure whether you are using a PC or Mac, so I'll give you solutions for both: \n \n";
+                sAns += "For Mac: \n"
+                for (var i = 1; i < arsFirewallMac.length; i++) {
+                    sAns += arsFirewallMac[i];
+                }
+                sAns += "\nFor Windows:\n";
+                for (var i = 1; i < arsFirewallWindows.length; i++) {
+                    sAns += arsFirewallWindows[i];
+                }
+            }
+            arAnswersCompleted[1] = true;
+        }
 
-        if ((arsKeyWords.indexOf("mac") > -1 || arsKeyWords.indexOf("osx") > -1 || (arsKeyWords.indexOf("os") > -1 && arsKeyWords[arsKeyWords.indexOf("os") + 1] === "x") || arsKeyWords.indexOf("macbook") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
-            sAns += sFirewall;
-            sAns += sFirewall2;
-            for (var i = 1; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
-            }
-        }
-        if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac")) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
-            sAns += sFirewall;
-            sAns += sFirewall2;
-            for (var i = 1; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
-        } else {
-            sAns += sFirewall;
-            //sAns += sFirewall2;
-            sAns += "I'm not sure whether you are using a PC or Mac, so I'll give you solutions for both: \n \n";
-            sAns += "For Mac: \n"
-            for (var i = 1; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
-            }
-            sAns += "\nFor Windows:\n";
-            for (var i = 1; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
-        }
-        arAnswersCompleted[1] = true;
     }
 
     /*========  REFUND  ========*/
     else if (arsKeyWords.indexOf("refund") > -1 || (arsKeyWords.indexOf("money") > -1 && arsKeyWords[arsKeyWords.indexOf("money") + 1] === "back")) {
-        console.log("dankrefund");
-        sAns += sRefund;
-        arAnswersCompleted[2] = true;
+        if (arAnswersCompleted[2] != true) {
+            console.log("in refund, arAnswersCompleted[2]!=true");
+            console.log("dankrefund");
+            sAns += sRefund;
+            arAnswersCompleted[2] = true;
+        }
+
     }
 
     /*========  UPGRADE TO LIFETIME  ========*/
     else if ((arsKeyWords.indexOf("upgrade") > -1 && arsKeyWords.indexOf("lifetime") > arsKeyWords.indexOf("upgrade")) || Math.max(arsKeyWords.indexOf("monthly"), arsKeyWords.indexOf("yearly"), arsKeyWords.indexOf("annual")) > -1 && arsKeyWords.indexOf("lifetime") > -1) {
-        console.log("dankupgrade");
-        sAns += sToLifetimeNoSale;
-        arAnswersCompleted[3] = true;
+        if (arAnswersCompleted[3] != true) {
+            console.log("in upgrade to lifetime, arAnswersCompleted[3]!=true");
+            console.log("dankupgrade");
+            sAns += sToLifetimeNoSale;
+            arAnswersCompleted[3] = true;
+        }
+
     }
 
 
     /*========  CANCEL SUBSCRIPTION  ========*/
     else if ((Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) > -1 && (arsKeyWords.indexOf("subscription") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("premium") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")) || arsKeyWords.indexOf("charge") > Math.max(arsKeyWords.indexOf("cancel"), arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end")))) || Math.max(arsKeyWords.indexOf("stop"), arsKeyWords.indexOf("end"), arsKeyWords.indexOf("cancel")) > -1 && arsKeyWords.indexOf("payment") > -1 || Math.max(arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("membership"), arsKeyWords.indexOf("service")) > -1 && arsKeyWords.indexOf("cancel") > -1) {
-        console.log("dankcancel");
-        sAns += sCancelPremium;
-        arAnswersCompleted[4] = true;
+        if (arAnswersCompleted[4] != true) {
+            console.log("in cancel subscription, arAnswersCompleted[4]!=true");
+            console.log("dankcancel");
+            sAns += sCancelPremium;
+            arAnswersCompleted[4] = true;
+        }
+
     }
     //return sAns;
 
@@ -955,21 +971,37 @@ function testwords(arsKeyWords) {
     // else if  &&  {
     // console.log("dankpremium");
     else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && ((arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("detected"), arsKeyWords.indexOf("detecting"), arsKeyWords.indexOf("recognized")) > -1) || (arsKeyWords.indexOf("greyed") > -1 && Math.max(arsKeyWords.indexOf("features"), arsKeyWords.indexOf("choices")) > -1) || (Math.max(arsKeyWords.indexOf("change"), arsKeyWords.indexOf("new"), arsKeyWords.indexOf("other")) > -1 && Math.max(arsKeyWords.indexOf("laptop"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("computer")) > -1) || arsKeyWords.indexOf("doesnt") > -1 && arsKeyWords.indexOf("work") > -1 || arsKeyWords.indexOf("how") > -1 && arsKeyWords.indexOf("linked") > -1)) {
-        console.log("premiumnotworking: ", arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("not"))
-        sAns += sPremiumNotWorking;
-        arAnswersCompleted[5] = true;
+        if (arAnswersCompleted[5] != true) {
+            console.log("in premiumnotworking, arAnswersCompleted[5]!=true");
+            console.log("premiumnotworking: ", arsKeyWords.indexOf("premium"), arsKeyWords.indexOf("subscription"), arsKeyWords.indexOf("not"))
+            sAns += sPremiumNotWorking;
+            arAnswersCompleted[5] = true;
+        }
+
     } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(Math.max(arsKeyWords.indexOf("issue"), arsKeyWords.indexOf("problem")) > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("would") > -1 && arsKeyWords.indexOf("be") === arsKeyWords.indexOf("would") + 1)) && (arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("advantages") > -1 || arsKeyWords.indexOf("difference") > -1)) {
-        console.log("sPremiumFeatures");
-        sAns += sPremiumFeatures
-        arAnswersCompleted[6] = true;
+        if (arAnswersCompleted[6] != true) {
+            console.log("in sPremiumFeatures, arAnswersCompleted[6]!=true");
+            console.log("sPremiumFeatures");
+            sAns += sPremiumFeatures
+            arAnswersCompleted[6] = true;
+        }
+
     } else if ((((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound")) > -1) && !(arsKeyWords.indexOf("opensubtitles") > -1))) && (arsKeyWords.indexOf("how") > -1 || Math.max(arsKeyWords.indexOf("upgrade"), arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("get")) > -1)) {
-        console.log("sGetPremium");
-        sAns += sGetPremium;
-        arAnswersCompleted[7] = true;
+        if (arAnswersCompleted[7] != true) {
+            console.log("in sGetPremium, arAnswersCompleted[7]!=true");
+            console.log("sGetPremium");
+            sAns += sGetPremium;
+            arAnswersCompleted[7] = true;
+        }
+
     } else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1)) && (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1)) {
-        console.log("sDisplayContentSuggestions");
-        sAns += sDisplayContentSuggestions;
-        arAnswersCompleted[8] = true;
+        if (arAnswersCompleted[8] != true) {
+            console.log("in sDisplayContentSuggestions, arAnswersCompleted[8]!=true");
+            console.log("sDisplayContentSuggestions");
+            sAns += sDisplayContentSuggestions;
+            arAnswersCompleted[8] = true;
+        }
+
     }
     // else if (((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1)) && arsKeyWords.indexOf("new")>-1 && arsKeyWords.indexOf("computer")>-1) //else if (arsKeyWords.indexOf("email") > -1) {
 
@@ -979,52 +1011,76 @@ function testwords(arsKeyWords) {
 
     /*========  INSTALL CAST EXTENSION  ========*/
     else if ((arsKeyWords.indexOf("google") < arsKeyWords.indexOf("cast") && arsKeyWords.indexOf("google") > -1) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords.indexOf("extension") > -1)) {
-        console.log("dankcast");
-        sAns += sInstallCast;
-        arAnswersCompleted[9] = true;
+        if (arAnswersCompleted[9] != true) {
+            console.log("in sInstallCast, arAnswersCompleted[9]!=true");
+            console.log("dankcast");
+            sAns += sInstallCast;
+            arAnswersCompleted[9] = true;
+        }
+
     }
 
     /*========  VIDDIT  ========*/
     else if (arsKeyWords.indexOf("viddit") > -1) {
-        console.log("dankviddit");
-        sAns += sViddit;
-        arAnswersCompleted[10] = true;
+        if (arAnswersCompleted[10] != true) {
+            console.log("in viddit, arAnswersCompleted[10]!=true");
+            console.log("dankviddit");
+            sAns += sViddit;
+            arAnswersCompleted[10] = true;
+        }
+
     }
 
     /*========  ITUNES DRM  ========*/ //MAYBE MAKE ARRAY OF STUFF WITH DRM ON IT AND LOOP THROUGH?
     else if (arsKeyWords.indexOf("itunes") > -1 && arsKeyWords.indexOf("play") > -1) {
-        console.log("dankdrm");
-        sAns += sDRMiTunes;
-        arAnswersCompleted[11] = true;
+        if (arAnswersCompleted[11] != true) {
+            console.log("in iTunes drm, arAnswersCompleted[11]!=true");
+            console.log("dankdrm");
+            sAns += sDRMiTunes;
+            arAnswersCompleted[11] = true;
+        }
+
     }
 
     /*========  AUDIO THROUGH HEADPHONES OR CHROMECAST AUDIO, VIDEO THROUGH CHROMECAST  ========*/
     else if (((Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound"), arsKeyWords.indexOf("listen")) > -1 && (arsKeyWords.indexOf("headphones") > -1 || Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("laptop")) > -1 || arsKeyWords.indexOf("phone") > -1 || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("chromecast"))))) || ((arsKeyWords.indexOf("connect") > -1 && arsKeyWords.indexOf("stereo") > -1 && arsKeyWords.indexOf("headphones") > -1))) {
-        console.log("dankaudio");
-        sAns += sHeadphoneAudio;
-        arAnswersCompleted[12] = true;
+        if (arAnswersCompleted[12] != true) {
+            console.log("in sHeadphoneAudio, arAnswersCompleted[12]!=true");
+            console.log("dankaudio");
+            sAns += sHeadphoneAudio;
+            arAnswersCompleted[12] = true;
+        }
+
     }
 
     /*========  VIDEO BUT NO AUDIO  ========*/
     else if (((arsKeyWords.indexOf("no") > -1 || (Math.max(arsKeyWords.indexOf("doesnt"), arsKeyWords.indexOf("wont")) > -1 && Math.max(arsKeyWords.indexOf("cast"), arsKeyWords.indexOf("play")) > -1)) && (arsKeyWords.indexOf("audio") > arsKeyWords.indexOf("no") || arsKeyWords.indexOf("sound") > arsKeyWords.indexOf("no"))) || (Math.max(arsKeyWords.indexOf("sound"), arsKeyWords.indexOf("audio")) > -1 && arsKeyWords.indexOf("does") > -1 && arsKeyWords.indexOf("not") > -1 && arsKeyWords.indexOf("works") > -1)) {
-        console.log("dankvideo");
-        for (var i = 0; i < arsVideoNoAudio.length; i++) {
-            if (i === 1) {
-                if (!bLog) {
+        if (arAnswersCompleted[13] != true) {
+            console.log("in arsVideoNoAudio, arAnswersCompleted[13]!=true");
+            console.log("dankvideo");
+            for (var i = 0; i < arsVideoNoAudio.length; i++) {
+                if (i === 1) {
+                    if (!bLog) {
+                        sAns += arsVideoNoAudio[i];
+                    }
+                } else {
                     sAns += arsVideoNoAudio[i];
                 }
-            } else {
-                sAns += arsVideoNoAudio[i];
-            }
 
+            }
+            arAnswersCompleted[13] = true;
         }
-        arAnswersCompleted[13] = true;
+
     }
     /*========  SELECT MULTIPLE VIDEOS  ========*/
     else if (Math.max(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) > -1 && Math.max(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several")) > Math.min(arsKeyWords.indexOf("select"), arsKeyWords.indexOf("loading")) && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("episodes")) > Math.min(arsKeyWords.indexOf("multiple"), arsKeyWords.indexOf("several"))) {
-        console.log("dankmultiple");
-        sAns += sSelectMultipleVideos;
-        arAnswersCompleted[14] = true;
+        if (arAnswersCompleted[14] != true) {
+            console.log("in sSelectMultipleVideos, arAnswersCompleted[14]!=true");
+            console.log("dankmultiple");
+            sAns += sSelectMultipleVideos;
+            arAnswersCompleted[14] = true;
+        }
+
     }
 
 
@@ -1032,32 +1088,48 @@ function testwords(arsKeyWords) {
 
     /*========  ANDROID APP SKIPPING BACK TO TOP  ========*/
     else if ((Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")) > -1 && arsKeyWords.indexOf("back") > -1 && ((arsKeyWords.indexOf("top") > -1) || arsKeyWords.indexOf("beginnning") > Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("list")))) || (Math.max(arsKeyWords.indexOf("repeated"), arsKeyWords.indexOf("constant"), arsKeyWords.indexOf("frequent")) > -1 && arsKeyWords.indexOf("scanning") > -1)) {
-        console.log("dankandroidbug");
-        sAns += sSearchBackToTop;
-        arAnswersCompleted[15] = true;
+        if (arAnswersCompleted[15] != true) {
+            console.log("in sSearchBackToTop, arAnswersCompleted[15]!=true");
+            console.log("dankandroidbug");
+            sAns += sSearchBackToTop;
+            arAnswersCompleted[15] = true;
+        }
+
     }
 
 
     //console.log("alkdfjakljfakldfalkakjla");
     /*========  DVD  ========*/
     else if (arsKeyWords.indexOf("dvd") > -1 || arsKeyWords.indexOf("iso") > -1) {
-        console.log("kdlfajdkjfaldfjakfjd0");
-        sAns += sDVD;
-        arAnswersCompleted[16] = true;
+        if (arAnswersCompleted[16] != true) {
+            console.log("in sDVD, arAnswersCompleted[16]!=true");
+            console.log("kdlfajdkjfaldfjakfjd0");
+            sAns += sDVD;
+            arAnswersCompleted[16] = true;
+        }
+
     }
 
 
     /*========  VIDEOSTREAM WINDOWS APPLICATION  ========*/
     else if (arsKeyWords.indexOf("videostream") > -1 && (arsKeyWords.indexOf("windows") > -1 && arsKeyWords.indexOf("application") > arsKeyWords.indexOf("windows")) || arsKeyWords.indexOf("standalone") > -1) {
-        console.log("wndowsapp");
-        sAns += sWindowsApp;
-        arAnswersCompleted[17] = true;
+        if (arAnswersCompleted[17] != true) {
+            console.log("in sWindowsApp, arAnswersCompleted[17]!=true");
+            console.log("wndowsapp");
+            sAns += sWindowsApp;
+            arAnswersCompleted[17] = true;
+        }
+
     }
     /*========  VIDEOSTREAM RIGHT CLICK MENU  ========*/
     else if (arsKeyWords.indexOf("videostream") > -1 && arsKeyWords.indexOf("right") > -1 && arsKeyWords[arsKeyWords.indexOf("right") + 1] === "click") {
-        console.log("dankrightclick");
-        sAns += sWindowsRightClick;
-        arAnswersCompleted[18] = true;
+        if (arAnswersCompleted[18] != true) {
+            console.log("in sWindowsRightClick, arAnswersCompleted[18]!=true");
+            console.log("dankrightclick");
+            sAns += sWindowsRightClick;
+            arAnswersCompleted[18] = true;
+        }
+
     }
 
 
@@ -1065,93 +1137,145 @@ function testwords(arsKeyWords) {
 
     /*========  RESOLUTION GRAINY  ========*/
     else if ((arsKeyWords.indexOf("resolution") > -1 || arsKeyWords.indexOf("video") > -1) && arsKeyWords.indexOf("grainy") > -1) {
-        console.log("dankres");
-        sAns += sBitrateProblem;
-        arAnswersCompleted[19] = true;
+        if (arAnswersCompleted[19] != true) {
+            console.log("in sBitrateProblem, arAnswersCompleted[19]!=true");
+            console.log("dankres");
+            sAns += sBitrateProblem;
+            arAnswersCompleted[19] = true;
+        }
+
     }
 
     /*========  SIGN IN TAB OPENS VIDEOSTREAM  ========*/
     else if (arsKeyWords.indexOf("sign") > -1 && arsKeyWords.indexOf("in") === arsKeyWords.indexOf("sign") + 1 && (arsKeyWords.indexOf("tab") > arsKeyWords.indexOf("in") || arsKeyWords.indexOf("window") > arsKeyWords.indexOf("in")) && arsKeyWords.indexOf("open") > -1) {
-        console.log("sSignInTabOpens");
-        sAns += sSignInTabOpens;
-        arAnswersCompleted[20] = true;
+        if (arAnswersCompleted[20] != true) {
+            console.log("in sSignInTabOpens, arAnswersCompleted[20]!=true");
+            console.log("sSignInTabOpens");
+            sAns += sSignInTabOpens;
+            arAnswersCompleted[20] = true;
+        }
+
     }
     /*========  COMPUTER SLEEP STOPS VIDEO  ========*/
     else if (arsKeyWords.indexOf("computer") > -1 && arsKeyWords.indexOf("sleep") > -1 && arsKeyWords.indexOf("stops") > -1 && arsKeyWords.indexOf("videos") > -1) {
-        console.log(sComputerSleepsStopsVideo);
-        sAns += sComputerSleepsStopsVideo;
-        arAnswersCompleted[21] = true;
+        if (arAnswersCompleted[21] != true) {
+            console.log("in sComputerSleepsStopsVideo, arAnswersCompleted[21]!=true");
+            console.log(sComputerSleepsStopsVideo);
+            sAns += sComputerSleepsStopsVideo;
+            arAnswersCompleted[21] = true;
+        }
+
     }
     /*========  ADD SUBTITLE FILES  ========*/
     else if (arsKeyWords.indexOf("add") > -1 && arsKeyWords.indexOf("subtitle") > arsKeyWords.indexOf("add") && !(arsKeyWords.indexOf("ads") > -1)) {
-        console.log("sAddSubtitleFiles");
-        sAns += sAddSubtitleFiles;
-        arAnswersCompleted[22] = true;
+        if (arAnswersCompleted[22] != true) {
+            console.log("in sAddSubtitleFiles, arAnswersCompleted[22]!=true");
+            console.log("sAddSubtitleFiles");
+            sAns += sAddSubtitleFiles;
+            arAnswersCompleted[22] = true;
+        }
+
     }
     /*========  PLAYLIST SUPPORT  ========*/
     else if (((sMaxLetterPos > -1 && (arsKeyWords.indexOf("support") > sMaxLetterPos || arsKeyWords.indexOf("for") > sMaxLetterPos && arsKeyWords[arsKeyWords.indexOf("for") + 1] === "premium")) || (arsKeyWords.indexOf("videos") > arsKeyWords.indexOf("play") && arsKeyWords.indexOf("play") > -1) || (arsKeyWords.indexOf("multiple") > sMaxLetterPos && (arsKeyWords.indexOf("files") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("video") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("movie") > arsKeyWords.indexOf("multiple")))) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("iphone") > -1)) {
-        console.log("sPlaylistSupport");
-        sAns += sPlaylistSupport;
-        arAnswersCompleted[23] = true;
+        if (arAnswersCompleted[23] != true) {
+            console.log("in sPlaylistSupport, arAnswersCompleted[23]!=true");
+            console.log("sPlaylistSupport");
+            sAns += sPlaylistSupport;
+            arAnswersCompleted[23] = true;
+        }
+
     }
     /*========  PLAYLIST NOT WORKING  ========*/
     else if (arsKeyWords.indexOf("playlist") > -1 && Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("wont")) > -1 && (Math.max(arsKeyWords.indexOf("working"), arsKeyWords.indexOf("showing")) > -1 || arsKeyWords.indexOf("show") > -1 && arsKeyWords[arsKeyWords.indexOf("show") + 1] === "up")) {
-        console.log("playlist not working");
-        for (var i = 0; i < arsPlaylistNotShowing.length; i++) {
-            sAns += arsPlaylistNotShowing[i];
+        if (arAnswersCompleted[24] != true) {
+            console.log("in arsPlaylistNotShowing, arAnswersCompleted[24]!=true");
+            console.log("playlist not working");
+            for (var i = 0; i < arsPlaylistNotShowing.length; i++) {
+                sAns += arsPlaylistNotShowing[i];
+            }
+            arAnswersCompleted[24] = true;
         }
-        arAnswersCompleted[24] = true;
+
 
     } else if (arsKeyWords.indexOf("playlist") > -1 && (Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone"), arsKeyWords.indexOf("mobile")) > -1 && arsKeyWords.indexOf("app") > -1)) {
-        console.log("playlist mobile app");
-        sAns += sPlaylistMobile;
-        arAnswersCompleted[25] = true;
+        if (arAnswersCompleted[25] != true) {
+            console.log("in sPlaylistMobile, arAnswersCompleted[25]!=true");
+            console.log("playlist mobile app");
+            sAns += sPlaylistMobile;
+            arAnswersCompleted[25] = true;
+        }
+
     }
     /*========  UPNP/DLNA  ========*/
     else if (arsKeyWords.indexOf("upnp") > -1 || arsKeyWords.indexOf("dlna") > -1) {
-        console.log("sUPNPDLNA");
-        sAns += sUPNPDLNA;
-        arAnswersCompleted[26] = true;
+        if (arAnswersCompleted[26] != true) {
+            console.log("in sUPNPDLNA, arAnswersCompleted[26]!=true");
+            console.log("sUPNPDLNA");
+            sAns += sUPNPDLNA;
+            arAnswersCompleted[26] = true;
+        }
+
     }
 
 
 
     /*========  IOS LIKE ANDROID  ========*/
     else if ((arsKeyWords.indexOf("iphone") > -1 || arsKeyWords.indexOf("ios") > -1) && ((arsKeyWords.indexOf("android") > -1 || arsKeyWords.indexOf("android") > -1) || (Math.max(arsKeyWords.indexOf("video"), arsKeyWords.indexOf("media"), arsKeyWords.indexOf("browse")) > -1 && arsKeyWords.indexOf("library") > Math.max(arsKeyWords.indexOf("video"), arsKeyWords.indexOf("media"))) || arsKeyWords.indexOf("playlist") > -1 || (Math.max(arsKeyWords.indexOf("connect"), arsKeyWords.indexOf("pair")) > -1 && Math.max(arsKeyWords.indexOf("desktop"), arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("mac")) > -1)) || (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("ios")) > -1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("start"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("find")) > -1 && Math.max(arsKeyWords.indexOf("files"), arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("movie"), arsKeyWords.indexOf("film")) > -1)) { // && ((arsKeyWords.indexOf("features") > -1 || arsKeyWords.indexOf("like") > -1)
-        console.log("here butts lie");
-        //if  {
-        sAns += sIOSAndroid;
-        //}
-        arAnswersCompleted[27] = true;
+        if (arAnswersCompleted[27] != true) {
+            console.log("in sIOSAndroid, arAnswersCompleted[27]!=true");
+            console.log("here butts lie");
+            //if  {
+            sAns += sIOSAndroid;
+            //}
+            arAnswersCompleted[27] = true;
+        }
+
     }
 
     /*========  INTERNET USAGE  ========*/
     else if ((arsKeyWords.indexOf("internet") > -1 && arsKeyWords.indexOf("usage") > arsKeyWords.indexOf("internet")) || (arsKeyWords.indexOf("data") > -1 && arsKeyWords.indexOf("cap") > arsKeyWords.indexOf("data"))) {
-        sAns += sDownloadCap;
-        console.log("poop");
-        arAnswersCompleted[28] = true;
+        if (arAnswersCompleted[28] != true) {
+            console.log("in sDownloadCap, arAnswersCompleted[28]!=true");
+            sAns += sDownloadCap;
+            console.log("poop");
+            arAnswersCompleted[28] = true;
+        }
+
     }
 
     /*========  DELETED FILES STILL SHOWING UP  ========*/
     else if (Math.max(arsKeyWords.indexOf("deleted"), arsKeyWords.indexOf("removed")) > -1 && Math.max(arsKeyWords.indexOf("files"), arsKeyWords.indexOf("videos")) > -1 && arsKeyWords.indexOf("android") > -1) {
-        for (var i = 0; i < arsDeletedOnAndroidStillThere.length; i++) {
-            sAns += arsDeletedOnAndroidStillThere[i];
+        if (arAnswersCompleted[29] != true) {
+            console.log("in arsDeletedOnAndroidStillThere, arAnswersCompleted[29]!=true");
+            for (var i = 0; i < arsDeletedOnAndroidStillThere.length; i++) {
+                sAns += arsDeletedOnAndroidStillThere[i];
+            }
+            console.log("poossss");
+            arAnswersCompleted[29] = true;
         }
-        console.log("poossss");
-        arAnswersCompleted[29] = true;
+
     }
     /*========  PHONE VIDEOS ON SIDE WHEN VIEWED WITH VIDEOSTREAM  ========*/
     else if (Math.max(arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("phone")) > -1 && arsKeyWords.indexOf("videos") > -1 && arsKeyWords.indexOf("side") > -1) {
-        console.log("sPhoneVideosOnSide");
-        sAns += sPhoneVideosOnSide;
-        arAnswersCompleted[30] = true;
+        if (arAnswersCompleted[30] != true) {
+            console.log("in sPhoneVideosOnSide, arAnswersCompleted[30]!=true");
+            console.log("sPhoneVideosOnSide");
+            sAns += sPhoneVideosOnSide;
+            arAnswersCompleted[30] = true;
+        }
+
     }
 
     /*========  CHROMECAST EXTEND TIMEOUT  ========*/
     else if (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords.indexOf("extend") > -1 && arsKeyWords.indexOf("timeout") > arsKeyWords.indexOf("extend")) {
-        console.log("sChromecastTimeout");
-        sAns += sChromecastTimeout;
-        arAnswersCompleted[31] = true;
+        if (arAnswersCompleted[31] != true) {
+            console.log("in sChromecastTimeout, arAnswersCompleted[31]!=true");
+            console.log("sChromecastTimeout");
+            sAns += sChromecastTimeout;
+            arAnswersCompleted[31] = true;
+        }
+
     }
 
 
@@ -1159,50 +1283,82 @@ function testwords(arsKeyWords) {
 
     /*========  CONTENT SUGGESTIONS  ========*/
     else if (Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("between") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads")) && arsKeyWords.indexOf("videos") > Math.max(arsKeyWords.indexOf("image"), arsKeyWords.indexOf("ads"))) {
-        console.log("sDisplayContentSuggestions");
-        sAns += sDisplayContentSuggestions;
-        arAnswersCompleted[32] = true;
-    } else if (Math.max(arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("opensubtitles") > -1) {
-        console.log("opensubtitles ads");
-        sAns += sOpenSubtitlesAds;
-        arAnswersCompleted[33] = true;
-    } else if (arsKeyWords.indexOf("how") > -1 && Math.max(arsKeyWords.indexOf("make"), arsKeyWords.indexOf("create")) > -1 && arsKeyWords.indexOf("playlist") > -1) {
-        console.log("make playlist");
-        sAns += sHowToMakeAPlaylist;
-        arAnswersCompleted[34] = true;
-    } else if ((Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && ((Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("stopped")) > -1 && Math.max(arsKeyWords.indexOf("loading"), arsKeyWords.indexOf("display"), arsKeyWords.indexOf("working"), arsKeyWords.indexOf("streaming")) > -1) || (arsKeyWords.indexOf("display") > -1 && Math.max(arsKeyWords.indexOf("correctly"), arsKeyWords.indexOf("right")) > -1) || (arsKeyWords.indexOf("cut") > -1 && arsKeyWords.indexOf("off") > -1) || arsKeyWords.indexOf("problem") > -1 && arsKeyWords[arsKeyWords.indexOf("problem") + 1] === "with") || arsKeyWords.indexOf("disappear") > -1) || ((Math.max(arsKeyWords.indexOf("opensubtitles"), arsKeyWords.indexOf("subtitle")) > -1) && Math.max(arsKeyWords.indexOf("wont"), arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt")) > -1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works")) > -1) || (Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && arsKeyWords.indexOf("no") > -1 && arsKeyWords.indexOf("files") > -1 && arsKeyWords.indexOf("have") > -1)) {
-        console.log("here");
-        //        for (var i = 0; i < arsSubtitlesNotLoading.length; i++) {
-        //          sAns += arsSubtitlesNotLoading[i];
-        //    }
-        for (var i = 0; i < arsSubtitlesCutOff.length; i++) {
-            sAns += arsSubtitlesCutOff[i];
+        if (arAnswersCompleted[32] != true) {
+            console.log("in sDisplayContentSuggestions, arAnswersCompleted[32]!=true");
+            console.log("sDisplayContentSuggestions");
+            sAns += sDisplayContentSuggestions;
+            arAnswersCompleted[32] = true;
         }
-        arAnswersCompleted[35] = true;
+
+    } else if (Math.max(arsKeyWords.indexOf("ads")) > -1 && arsKeyWords.indexOf("opensubtitles") > -1) {
+        if (arAnswersCompleted[33] != true) {
+            console.log("in sOpenSubtitlesAds, arAnswersCompleted[33]!=true");
+            console.log("opensubtitles ads");
+            sAns += sOpenSubtitlesAds;
+            arAnswersCompleted[33] = true;
+        }
+
+    } else if (arsKeyWords.indexOf("how") > -1 && Math.max(arsKeyWords.indexOf("make"), arsKeyWords.indexOf("create")) > -1 && arsKeyWords.indexOf("playlist") > -1) {
+        if (arAnswersCompleted[34] != true) {
+            console.log("in sHowToMakeAPlaylist, arAnswersCompleted[34]!=true");
+            console.log("make playlist");
+            sAns += sHowToMakeAPlaylist;
+            arAnswersCompleted[34] = true;
+        }
+
+    } else if ((Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && ((Math.max(arsKeyWords.indexOf("not"), arsKeyWords.indexOf("stopped")) > -1 && Math.max(arsKeyWords.indexOf("loading"), arsKeyWords.indexOf("display"), arsKeyWords.indexOf("working"), arsKeyWords.indexOf("streaming")) > -1) || (arsKeyWords.indexOf("display") > -1 && Math.max(arsKeyWords.indexOf("correctly"), arsKeyWords.indexOf("right")) > -1) || (arsKeyWords.indexOf("cut") > -1 && arsKeyWords.indexOf("off") > -1) || arsKeyWords.indexOf("problem") > -1 && arsKeyWords[arsKeyWords.indexOf("problem") + 1] === "with") || arsKeyWords.indexOf("disappear") > -1) || ((Math.max(arsKeyWords.indexOf("opensubtitles"), arsKeyWords.indexOf("subtitle")) > -1) && Math.max(arsKeyWords.indexOf("wont"), arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("couldnt"), arsKeyWords.indexOf("doesnt")) > -1 && Math.max(arsKeyWords.indexOf("load"), arsKeyWords.indexOf("find"), arsKeyWords.indexOf("play"), arsKeyWords.indexOf("works")) > -1) || (Math.max(arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1 && arsKeyWords.indexOf("no") > -1 && arsKeyWords.indexOf("files") > -1 && arsKeyWords.indexOf("have") > -1)) {
+        if (arAnswersCompleted[35] != true) {
+            console.log("in arsSubtitlesCutOff, arAnswersCompleted[35]!=true");
+            console.log("here");
+            //        for (var i = 0; i < arsSubtitlesNotLoading.length; i++) {
+            //          sAns += arsSubtitlesNotLoading[i];
+            //    }
+            for (var i = 0; i < arsSubtitlesCutOff.length; i++) {
+                sAns += arsSubtitlesCutOff[i];
+            }
+            arAnswersCompleted[35] = true;
+        }
+
     } else if (arsKeyWords.indexOf("chromium") > -1 && ((arsKeyWords.indexOf("native") > -1 && arsKeyWords[arsKeyWords.indexOf("native") + 1] === 'client') || arsKeyWords.indexOf("nacl") > -1)) {
-        //console.log("nacl");
-        sAns += sNaClLinux;
-        //console.log(sAns, " done");
-        arAnswersCompleted[36] = true;
+        if (arAnswersCompleted[36] != true) {
+            console.log("in sNaClLinux, arAnswersCompleted[36]!=true");
+            //console.log("nacl");
+            sAns += sNaClLinux;
+            //console.log(sAns, " done");
+            arAnswersCompleted[36] = true;
+        }
+
     }
 
     /*========  CAST FILES FROM ANDROID  ========*/
     else if (Math.max(arsKeyWords.indexOf("cast"), arsKeyWords.indexOf("watch")) > -1 && Math.max(arsKeyWords.indexOf("videos"), arsKeyWords.indexOf("files")) > -1 && Math.max(arsKeyWords.indexOf("from"), arsKeyWords.indexOf("with")) > -1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone")) > -1) {
-        sAns += sCastFromPhone;
-        arAnswersCompleted[37] = true;
+        if (arAnswersCompleted[37] != true) {
+            console.log("in sCastFromPhone, arAnswersCompleted[37]!=true");
+            sAns += sCastFromPhone;
+            arAnswersCompleted[37] = true;
+        }
+
     }
 
     /*========  .m2ts  ========*/
     else if (arsKeyWords.indexOf("m2ts") > -1) {
-        console.log("m2ts");
-        sAns += sM2TS;
-        arAnswersCompleted[38] = true;
+        if (arAnswersCompleted[38] != true) {
+            console.log("in sM2TS, arAnswersCompleted[38]!=true");
+            console.log("m2ts");
+            sAns += sM2TS;
+            arAnswersCompleted[38] = true;
+        }
+
     }
 
     /*========  AUDIO NORMALIZATION  ========*/
     else if (arsKeyWords.indexOf("audio") > -1 && arsKeyWords.indexOf("normalization") > -1) {
-        sAns += sAudioNormalization;
-        arAnswersCompleted[39] = true;
+        if (arAnswersCompleted[39] != true) {
+            console.log("in sAudioNormalization, arAnswersCompleted[39]!=true");
+            sAns += sAudioNormalization;
+            arAnswersCompleted[39] = true;
+        }
+
     }
 
     /*========= OPENSUBTITLES NOT WORKING =========*/
@@ -1210,63 +1366,91 @@ function testwords(arsKeyWords) {
             sAns+=sOpenSubtitlesBroken;
         }*/
     else if (Math.max(arsKeyWords.indexOf("uninstall"), arsKeyWords.indexOf("delete"), arsKeyWords.indexOf("remove")) > -1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("videostream"), arsKeyWords.indexOf("program")) > -1) {
-        sAns += sUninstallInstructions;
-        arAnswersCompleted[40] = true;
+        if (arAnswersCompleted[40] != true) {
+            console.log("in sUninstallInstructions, arAnswersCompleted[40]!=true");
+            sAns += sUninstallInstructions;
+            arAnswersCompleted[40] = true;
+        }
+
     } else if (arsKeyWords.indexOf("subtitle") > -1 && (arsKeyWords.indexOf("change") > -1 && arsKeyWords.indexOf("size") > -1 || arsKeyWords.indexOf("smaller") > -1 || Math.max(arsKeyWords.indexOf("larger"), arsKeyWords.indexOf("bigger")) > -1)) {
-        sAns += sSubtitleSize;
-        arAnswersCompleted[41] = true;
+        if (arAnswersCompleted[41] != true) {
+            console.log("in sSubtitleSize, arAnswersCompleted[41]!=true");
+            sAns += sSubtitleSize;
+            arAnswersCompleted[41] = true;
+        }
+
     } else if (arsKeyWords.indexOf("windows") > -1 && Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile")) > -1 && Math.max(arsKeyWords.indexOf("app"), arsKeyWords.indexOf("program"), arsKeyWords.indexOf("videostream")) > -1) {
-        sAns += sWindowsPhone;
-        arAnswersCompleted[42] = true;
+        if (arAnswersCompleted[42] != true) {
+            console.log("in sWindowsPhone, arAnswersCompleted[42]!=true");
+            sAns += sWindowsPhone;
+            arAnswersCompleted[42] = true;
+        }
+
     } else if (Math.max(arsKeyWords.indexOf("loop"), arsKeyWords.indexOf("repeat")) > -1 && arsKeyWords.indexOf("videos") > -1) {
-        sAns += sRepeatVideos;
-        arAnswersCompleted[43] = true;
+        if (arAnswersCompleted[43] != true) {
+            console.log("in sRepeatVideos, arAnswersCompleted[43]!=true");
+            sAns += sRepeatVideos;
+            arAnswersCompleted[43] = true;
+        }
+
     } else if (Math.max(arsKeyWords.indexOf("google")) > -1 && Math.max(arsKeyWords.indexOf("credit"), arsKeyWords.indexOf("play")) > -1 && Math.max(arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("buy"), arsKeyWords.indexOf("purchase")) > -1) {
-        sAns += sGooglePlayCredit;
-        arAnswersCompleted[44] = true;
+        if (arAnswersCompleted[44] != true) {
+            console.log("in sGooglePlayCredit, arAnswersCompleted[44]!=true");
+            sAns += sGooglePlayCredit;
+            arAnswersCompleted[44] = true;
+        }
+
     }
 
     /*========  PHONE CAN'T FIND VIDEOSTREAM  ========*/
     else if ((Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("smartphone"), arsKeyWords.indexOf("mobile")) > -1 || arsKeyWords.indexOf("videostream") > -1 && arsKeyWords[arsKeyWords.indexOf("videostream") + 1] === "mobile" || arsKeyWords.indexOf("mobile") > -1 && arsKeyWords[arsKeyWords.indexOf("mobile") + 1] === "app") && ((Math.max(arsKeyWords.indexOf("cant"), arsKeyWords.indexOf("cannot"), arsKeyWords.indexOf("doesnt")) > -1 && Math.max(arsKeyWords.indexOf("find"), arsKeyWords.indexOf("detect"), arsKeyWords.indexOf("connect"), arsKeyWords.indexOf("pair"), arsKeyWords.indexOf("sync")) > -1) || (arsKeyWords.indexOf("lose") > -1 && arsKeyWords.indexOf("connection") > -1)) && Math.max(arsKeyWords.indexOf("computer"), arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox"), arsKeyWords.indexOf("macbook")) > -1) {
-        sAns += sPhoneCantFindVideostream;
-        sAns += sPhoneCantFindVideostream2;
-        var bFound = false;
-        if (Math.max(arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("windows")) > -1) {
-            sAns += sPhoneCantFindVideostream3;
-            bFound = true;
-        }
-        if (Math.max(arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("osx"), arsKeyWords.indexOf("macbook")) > -1) {
-            sAns += sPhoneCantFindVideostream4;
-            bFound = true;
-        }
-        if (Math.max(arsKeyWords.indexOf("linux"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox"), arsKeyWords.indexOf("mint"), arsKeyWords.indexOf("fedora")) > -1) {
-            sAns += sPhoneCantFindVideostream5;
-            bFound = true;
-        }
-        if (arsKeyWords.indexOf("ubuntu") > -1) {
-            sAns += sPhoneCantFindVideostream6;
-            bFound = true;
-        }
-        if (bFound) {
-            for (var i = 6; i < arsPhoneCantFindVideostream.length; i++) {
-                sAns += arsPhoneCantFindVideostream[i];
+        if (arAnswersCompleted[45] != true) {
+            console.log("in arsPhoneCantFindVideostream, arAnswersCompleted[45]!=true");
+            sAns += sPhoneCantFindVideostream;
+            sAns += sPhoneCantFindVideostream2;
+            var bFound = false;
+            if (Math.max(arsKeyWords.indexOf("pc"), arsKeyWords.indexOf("windows")) > -1) {
+                sAns += sPhoneCantFindVideostream3;
+                bFound = true;
             }
-        } else {
-            for (var i = 2; i < arsPhoneCantFindVideostream.length; i++) {
-                sAns += arsPhoneCantFindVideostream[i];
+            if (Math.max(arsKeyWords.indexOf("mac"), arsKeyWords.indexOf("osx"), arsKeyWords.indexOf("macbook")) > -1) {
+                sAns += sPhoneCantFindVideostream4;
+                bFound = true;
             }
+            if (Math.max(arsKeyWords.indexOf("linux"), arsKeyWords.indexOf("chromebook"), arsKeyWords.indexOf("chromebox"), arsKeyWords.indexOf("mint"), arsKeyWords.indexOf("fedora")) > -1) {
+                sAns += sPhoneCantFindVideostream5;
+                bFound = true;
+            }
+            if (arsKeyWords.indexOf("ubuntu") > -1) {
+                sAns += sPhoneCantFindVideostream6;
+                bFound = true;
+            }
+            if (bFound) {
+                for (var i = 6; i < arsPhoneCantFindVideostream.length; i++) {
+                    sAns += arsPhoneCantFindVideostream[i];
+                }
+            } else {
+                for (var i = 2; i < arsPhoneCantFindVideostream.length; i++) {
+                    sAns += arsPhoneCantFindVideostream[i];
+                }
+            }
+            arAnswersCompleted[45] = true;
         }
-        arAnswersCompleted[45] = true;
+
     }
 
 
     /*========  CHROMECAST NOT IN DROPDOWN  ========*/
     else if ((arsKeyWords.indexOf("chromecast") > -1 && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1) && (arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("dropdown")))) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords[arsKeyWords.indexOf("cast") - 1] === "no" && arsKeyWords[arsKeyWords.indexOf("cast") + 1] === "device") || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords[arsKeyWords.indexOf("chromecast") - 1] === "no" && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1))) {
-        console.log("nocastdevicesfound");
-        for (var i = 0; i < arsNoCastFound.length; i++) {
-            sAns += arsNoCastFound[i];
+        if (arAnswersCompleted[46] != true) {
+            console.log("in arAnswersCompleted, arAnswersCompleted[46]!=true");
+            console.log("nocastdevicesfound");
+            for (var i = 0; i < arsNoCastFound.length; i++) {
+                sAns += arsNoCastFound[i];
+            }
+            arAnswersCompleted[46] = true;
         }
-        arAnswersCompleted[46] = true;
+
         //sAns+= sNoCastFound;
     }
 
@@ -1274,32 +1458,36 @@ function testwords(arsKeyWords) {
 
     /*========  STUCK ON LOADING SCREEN  ========*/
     else if (arsKeyWords.indexOf("loading") > -1 && !(arsKeyWords.indexOf("subtitle") > -1)) {
-        console.log("dankloading");
-        sAns += "Super sorry to hear your video is stuck on the loading screen!  A few things: \n 1. Is it just one or a few files that are doing this?  If so do you mind checking to see if it plays in VLC? \n 2. If you are having trouble with all of them, then it's probably a problem with your firewall.  \n \n";
-        if ((arsKeyWords.indexOf("mac") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc"))) {
-            for (var i = 0; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
+        if (arAnswersCompleted[47] != true) {
+            console.log("in arsFirewallMac/arsFirewallWindows, arAnswersCompleted[47]!=true");
+            console.log("dankloading");
+            sAns += "Super sorry to hear your video is stuck on the loading screen!  A few things: \n 1. Is it just one or a few files that are doing this?  If so do you mind checking to see if it plays in VLC? \n 2. If you are having trouble with all of them, then it's probably a problem with your firewall.  \n \n";
+            if ((arsKeyWords.indexOf("mac") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc"))) {
+                for (var i = 0; i < arsFirewallMac.length; i++) {
+                    sAns += arsFirewallMac[i];
+                }
             }
+            if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac"))) {
+                for (var i = 0; i < arsFirewallWindows.length; i++) {
+                    sAns += arsFirewallWindows[i];
+                }
+            } else {
+                sAns += "Not sure whether you have a PC or a Mac, so I'm going to give you fixes for both of them :P \n \n"
+                for (var i = 0; i < arsFirewallMac.length; i++) {
+                    sAns += arsFirewallMac[i];
+                }
+                sAns += "\n";
+                for (var i = 0; i < arsFirewallWindows.length; i++) {
+                    sAns += arsFirewallWindows[i];
+                }
+            }
+            sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n";
+            arAnswersCompleted[47] = true;
         }
-        if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac"))) {
-            for (var i = 0; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
-        } else {
-            sAns += "Not sure whether you have a PC or a Mac, so I'm going to give you fixes for both of them :P \n \n"
-            for (var i = 0; i < arsFirewallMac.length; i++) {
-                sAns += arsFirewallMac[i];
-            }
-            sAns += "\n";
-            for (var i = 0; i < arsFirewallWindows.length; i++) {
-                sAns += arsFirewallWindows[i];
-            }
-        }
-        sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n";
-        arAnswersCompleted[47] = true;
+
     }
 
-    console.log("done");
+    console.log("done: ", arAnswersCompleted);
 
 }
 
@@ -1309,7 +1497,18 @@ function checkifseenbefore(array) {
 
     console.log("Question: ", arQuestions, " Answer: ", arAnswers);
     for (var i = 0; i < array.length; i++) {
-        for (var j = 0; j < arQuestions.length; j++) {
+        for (var j = 1; j < arQuestions.length; j++) {
+            var arQuestionWords = arQuestions[j];
+            var arNotPresent = [];
+            for (var m = 0; m < arQuestions[j].length; m++) {
+                if (arQuestions[j][m].indexOf("!") > -1) {
+                    arNotPresent.push(arQuestions[j][m].replace("!", ""));
+                    arQuestions.splice(m, 1);
+                    m--;
+                }
+            }
+            console.log("arQuestions: ", arQuestions, " arNotPresent: ", arNotPresent);
+
             if (array[i] === arQuestions[j][0]) {
                 var bFound = false;
                 var k = 0,
@@ -1322,14 +1521,17 @@ function checkifseenbefore(array) {
                         k++;
                     }
                 }
-                if (k >= l && k >= arQuestions[j].length) {
+                if (k >= l && l >= arQuestions[j].length - 1) {
                     bFound = true;
                 }
             }
             if (bFound) {
                 console.log("Found an answer...", arAnswers[j], " based on ", arQuestions[j]);
-                sAns += arAnswers[j];
-                break;
+                if (sAns.indexOf(arAnswers[j]) === -1) {
+                    sAns += arAnswers[j];
+                    break;
+                }
+
             }
         }
         if (bFound) {

@@ -658,6 +658,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
     } else if (requesttrans.job === "displaystuff") {
         console.log(requesttrans.questions, " ", requesttrans.answers, " ", requesttrans.keywords);
     } else if (requesttrans.job === "inject") {
+        console.log("requesttrans.job is inject lololol");
         sAns = requesttrans.text;
         printAnswer(sAns);
     } else if (requesttrans.job === "query") {
@@ -898,7 +899,7 @@ function testwords(arsKeyWords) {
 
     /*========  FIREWALL BLOCKING VIDEOSTREAM  ========*/
     else if ((arsKeyWords.indexOf("firewall") > -1 && (Math.max(arsKeyWords.indexOf("blocking"), arsKeyWords.indexOf("blocks")) > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("blocked") > -1 || (arsKeyWords.indexOf("get") > -1 && arsKeyWords.indexOf("fixed") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("blocking") > -1 && arsKeyWords.indexOf("content") > -1) || arsKeyWords.indexOf("repair") > -1 && Math.max(arsKeyWords.indexOf("freezing"), arsKeyWords.indexOf("stuck"))) || (arsKeyWords.indexOf("help") > -1 && arsKeyWords.indexOf("with") > -1)) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
-        console.log("dankfirewall");
+        console.log("dankfirewall ", sAns);
         if (arAnswersCompleted[1] != true) {
             console.log("in firewall, arAnswersCompleted[1]!=true");
             if ((arsKeyWords.indexOf("mac") > -1 || arsKeyWords.indexOf("osx") > -1 || (arsKeyWords.indexOf("os") > -1 && arsKeyWords[arsKeyWords.indexOf("os") + 1] === "x") || arsKeyWords.indexOf("macbook") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
@@ -907,8 +908,7 @@ function testwords(arsKeyWords) {
                 for (var i = 1; i < arsFirewallMac.length; i++) {
                     sAns += arsFirewallMac[i];
                 }
-            }
-            else if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
+            } else if ((arsKeyWords.indexOf("pc") > -1 || arsKeyWords.indexOf("computer") > -1 || arsKeyWords.indexOf("windows") > -1) && (!(arsKeyWords.indexOf("mac") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("mac")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
                 sAns += sFirewall;
                 sAns += sFirewall2;
                 for (var i = 1; i < arsFirewallWindows.length; i++) {
@@ -928,6 +928,7 @@ function testwords(arsKeyWords) {
                 }
             }
             arAnswersCompleted[1] = true;
+            console.log("Current Answer at firewall spot: ", sAns);
         }
 
     }
@@ -1495,38 +1496,57 @@ function testwords(arsKeyWords) {
 function checkifseenbefore(array) {
     var bFound;
 
-    console.log("Question: ", arQuestions, " Answer: ", arAnswers);
+    console.log("Question: ", arQuestions, " Answer: ", arAnswers, " DankAnswer: ", sAns);
     for (var i = 0; i < array.length; i++) {
         for (var j = 1; j < arQuestions.length; j++) {
-            var arQuestionWords = arQuestions[j];
+            var arQuestionWords = arQuestions[j].slice();
             var arNotPresent = [];
-            for (var m = 0; m < arQuestions[j].length; m++) {
-                if (arQuestions[j][m].indexOf("!") > -1) {
-                    arNotPresent.push(arQuestions[j][m].replace("!", ""));
-                    arQuestions.splice(m, 1);
+            var bFound = false;
+            // console.log("arQuestions: ", arQuestions, " arNotPresent, ", arNotPresent);
+            for (var m = 0; m < arQuestionWords.length; m++) {
+                if (arQuestionWords[m].indexOf("!") > -1) {
+                    //    console.log("ehre");
+                    arNotPresent.push(arQuestionWords[m].replace("!", ""));
+                    arQuestionWords.splice(m, 1);
+                  //  console.log("Here, ", arQuestionWords, " ", arNotPresent);
                     m--;
                 }
             }
-            console.log("arQuestions: ", arQuestions, " arNotPresent: ", arNotPresent);
+          //  console.log("arNotPresent: ", arNotPresent, " ", i, " ", j, " dklfjakljdgfadkljg ", arQuestionWords, " array: ", array, " ", array[i], " ", arQuestionWords[0], " ", array[i] === arQuestionWords[0]);
+            //console.log("arQuestions: ", arQuestions, " arNotPresent: ", arNotPresent, " ", arQuestionWords);
 
-            if (array[i] === arQuestions[j][0]) {
-                var bFound = false;
+
+            if (array[i] === arQuestionWords[0]) {
+            //    console.log("first word matches fuck everything");
                 var k = 0,
                     l = 0;
-                while (k < arQuestions[j].length && (i + k) < array.length) {
-                    if (array[i + k] === arQuestions[j][l]) {
+                while (l < arQuestionWords.length && (i + k) < array.length) {
+                   //     console.log("l: ", l, " array[i+k]: ", array[i+k], " i+k ", (i+k), " arsQuestionWords[l]: ", arQuestionWords[l]);
+                    if (array[i + k] === arQuestionWords[l]) {
                         k++;
                         l++;
                     } else {
                         k++;
                     }
                 }
-                if (k >= l && l >= arQuestions[j].length - 1) {
+             //   console.log("done: here's l ", l, " ", arQuestionWords.length);
+                if (l >= arQuestionWords.length) { /*k >= l && */
                     bFound = true;
+               //     console.log("dankness too high fuck this shit i want to go to bed");
+                    for (var m = 0; m < arNotPresent.length; m++) {
+                //        console.log("here: ", arNotPresent, " dkjfaljdfka ", i);
+                        if (array.indexOf(arNotPresent[m]) > -1) {
+                 //           console.log("dis answer is not gonna work...");
+                            bFound = false;
+                            break;
+
+                        }
+                    }
                 }
             }
+
             if (bFound) {
-                console.log("Found an answer...", arAnswers[j], " based on ", arQuestions[j]);
+                console.log("Found an answer...", arAnswers[j], " based on ", arQuestionWords);
                 if (sAns.indexOf(arAnswers[j]) === -1) {
                     sAns += arAnswers[j];
                     break;
@@ -1535,10 +1555,11 @@ function checkifseenbefore(array) {
             }
         }
         if (bFound) {
+            console.log("Current Answer: ", sAns);
             return;
         }
     }
-    /*    for (var i = 1; i < arQuestions.length; i++) {
+    /*    for (var i = 1; i < arQuestions.length; i++) {11
             for (var j = 0; j < array.length; j++) {
                 console.log("arQuestions[i][0]: ", arQuestions[i][0], " array[j]: ", array[j]);
                 if (array[j] === arQuestions[i][0]) {

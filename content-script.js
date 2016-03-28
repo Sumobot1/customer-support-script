@@ -234,70 +234,193 @@ var arsKeyTot;
 var arQuestions, arAnswers;
 var bKeywordslistpresent;
 var arsWords;
+var sStartIndexForEachLength;
 console.log("poo");
 //chrome.runtime.sendMessage({ action: "open", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
 
 chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
     console.log("type: ", type);
     if (type === "ticketlist") {
-        console.log("dlkjflakjdflakjfa;ldjdklg herp derp");
-        var arTickets = document.getElementsByClassName("subject_style"); //document.getElementById("ticket-list").children[0].children[0].children;
-        for (var i = 0; i < arTickets.length; i++) {
-            if (!(arTickets[i].classList.contains("customer_responded") || arTickets[i].classList.contains("customer_responded_overdue"))) {
-                console.log("Conversation Start: ", i);
-                var item = arTickets[i].parentNode.parentNode.children;
-                console.log(arTickets[i].parentNode.parentNode.children);
-                for (var j = 0; j < item.length; j++) {
-                    if (item[j].classList.contains("td-ticket-details")) {
-                        console.log(item[j].children[0].children);
-                        var details = item[j].children[0].children;
-                        for (var k = 0; k < details.length; k++) {
-                            if (details[k].classList.contains("ticket-description-tip")) {
-                                console.log(details[k].children[0].getAttribute("href"));
-                                chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
+        /*        console.log("dlkjflakjdflakjfa;ldjdklg herp derp");
+                var arTickets = document.getElementsByClassName("subject_style"); //document.getElementById("ticket-list").children[0].children[0].children;
+                for (var i = 0; i < arTickets.length; i++) {
+                    if (!(arTickets[i].classList.contains("customer_responded") || arTickets[i].classList.contains("customer_responded_overdue"))) {
+                        console.log("Conversation Start: ", i);
+                        var item = arTickets[i].parentNode.parentNode.children;
+                        console.log(arTickets[i].parentNode.parentNode.children);
+                        for (var j = 0; j < item.length; j++) {
+                            if (item[j].classList.contains("td-ticket-details")) {
+                                console.log(item[j].children[0].children);
+                                var details = item[j].children[0].children;
+                                for (var k = 0; k < details.length; k++) {
+                                    if (details[k].classList.contains("ticket-description-tip")) {
+                                        console.log(details[k].children[0].getAttribute("href"));
+                                        chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
 
+                                    }
+                                }
                             }
                         }
+                        //chrome.runtime.sendMessage({url: }, function(){console.log("done");});
                     }
-                }
-                //chrome.runtime.sendMessage({url: }, function(){console.log("done");});
-            }
-        }
+                }*/
 
     } else if (type === "translate") {
-        console.log("kdlafjlkafajl");
-        chrome.runtime.sendMessage({ state: "ready" }, function() {});
+        /*        console.log("kdlafjlkafajl");
+                chrome.runtime.sendMessage({ state: "ready" }, function() {});*/
 
     } else if (type === "attachment") {
-        console.log("knows its an attachment lol");
-        var sUsefulInfo = [],
-            nMaxBitRate = 0,
-            nNoCast = 0;
-        var sThing = document.getElementsByTagName("pre")[0].innerText.split("\n");
-        //I DONT KNOW WHAT I NEED HERE YET - NEED MORE LOG FILES TO LOOK THROUGH...
-        for (var i = 0; i < sThing.length; i++) {
-            console.log("sThing[i]: ", sThing[i], " sThing[i] stuff ", sThing[i].indexOf("VideostreamApplication: Platform:"), " ", sThing[i].indexOf("VideostreamApplication: UserAgent:"), " ", sThing[i].indexOf("User CPU:"), " ", sThing[i].indexOf("Found cast extension:"));
-            if (sThing[i].indexOf("VideostreamApplication: Platform:") > -1) {
-                sThing[i] = sThing[i].replace("[info]  ", "");
+        /*        console.log("knows its an attachment lol");
+                var sUsefulInfo = [],
+                    nMaxBitRate = 0,
+                    nNoCast = 0;
+                var sThing = document.getElementsByTagName("pre")[0].innerText.split("\n");
+                //I DONT KNOW WHAT I NEED HERE YET - NEED MORE LOG FILES TO LOOK THROUGH...
+                for (var i = 0; i < sThing.length; i++) {
+                    console.log("sThing[i]: ", sThing[i], " sThing[i] stuff ", sThing[i].indexOf("VideostreamApplication: Platform:"), " ", sThing[i].indexOf("VideostreamApplication: UserAgent:"), " ", sThing[i].indexOf("User CPU:"), " ", sThing[i].indexOf("Found cast extension:"));
+                    if (sThing[i].indexOf("VideostreamApplication: Platform:") > -1) {
+                        sThing[i] = sThing[i].replace("[info]  ", "");
+                        var newDiv = document.createElement("pre");
+                        var newContent = document.createTextNode(sThing[i]);
+                        newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                        if (sThing[i].indexOf("Linux x86_64") > -1) {
+                            newDiv.style.color = "orange";
+                        } else {
+                            newDiv.style.color = "green";
+                        }
+
+                        // add the newly created element and its content into the DOM 
+                        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                        document.body.insertBefore(newDiv, currentDiv);
+                        sUsefulInfo.push(sThing[i]);
+                    } else if (sThing[i].indexOf("VideostreamApplication: UserAgent:") > -1) {
+                        sThing[i] = sThing[i].replace("[info]  ", "");
+                        var newDiv = document.createElement("pre");
+                        var newContent = document.createTextNode(sThing[i]);
+                        newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                        if (sThing[i].indexOf("CrOS") > -1) {
+                            newDiv.style.color = "red";
+                        } else {
+                            newDiv.style.color = "green";
+                        }
+                        // add the newly created element and its content into the DOM 
+                        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                        document.body.insertBefore(newDiv, currentDiv);
+                        sUsefulInfo.push(sThing[i]);
+                    } else if (sThing[i].indexOf("User CPU:") > -1) {
+                        sThing[i] = sThing[i].replace("[log]   ", "");
+                        var newDiv = document.createElement("pre");
+                        var newContent = document.createTextNode(sThing[i]);
+                        newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                        if (sThing[i].indexOf("Intel") > -1) {
+                            if ((sThing[i].indexOf("i3") > -1 || sThing.indexOf("i5") > -1 || sThing.indexOf("i7") > -1)) {
+                                sThing[i] = sThing[i].split(" ");
+                                for (var j = 0; j < sThing[i].length; j++) {
+                                    if (sThing[i][j].indexOf("GHz") > -1) {
+                                        sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                        break;
+                                    }
+                                }
+                                if (sThing[i][j] >= 2) {
+                                    newDiv.color = "green";
+                                } else {
+                                    newDiv.color = "orange";
+                                }
+                            } else {
+                                sThing[i] = sThing[i].split(" ");
+                                for (var j = 0; j < sThing[i].length; j++) {
+                                    if (sThing[i][j].indexOf("GHz") > -1) {
+                                        sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                        break;
+                                    }
+                                }
+                                if (sThing[i][j] >= 2) {
+                                    newDiv.color = "orange";
+                                } else {
+                                    newDiv.color = "red";
+                                }
+                            }
+
+                        } else if (sThing[i].indexOf("AMD") > -1) {
+                            if (sThing[i].indexOf("FX") > -1 || sThing.indexOf("A8") > -1 || sThing.indexOf("A10") > -1) {
+                                sThing[i] = sThing[i].split(" ");
+                                for (var j = 0; j < sThing[i].length; j++) {
+                                    if (sThing[i][j].indexOf("GHz") > -1) {
+                                        sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                        break;
+                                    }
+                                }
+                                if (sThing[i][j] >= 2) {
+                                    newDiv.color = "green";
+                                } else {
+                                    newDiv.color = "orange";
+                                }
+                            } else {
+                                newDiv.color = "red";
+                            }
+                        }
+
+                        // add the newly created element and its content into the DOM 
+                        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                        document.body.insertBefore(newDiv, currentDiv);
+                        sUsefulInfo.push(sThing[i]);
+                    } else if (sThing[i].indexOf("[log]   [Desktop], Found cast extension:") > -1) {
+                        sThing[i] = sThing[i].replace("[log]   [Desktop], ", "");
+                        var newDiv = document.createElement("pre");
+                        newDiv.style.color = "green";
+                        var newContent = document.createTextNode(sThing[i]);
+                        newDiv.appendChild(newContent); //add the text node to the newly created div. 
+
+                        // add the newly created element and its content into the DOM 
+                        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                        document.body.insertBefore(newDiv, currentDiv);
+                        sUsefulInfo.push(sThing[i]);
+                    } else if (sThing[i].indexOf("NativeTaskController.isAlive") > -1) {
+                        sThing[i] = sThing[i].replace("[log]   ", "");
+                        var newDiv = document.createElement("pre");
+                        newDiv.style.color = "red";
+                        var newContent = document.createTextNode(sThing[i]);
+                        newDiv.appendChild(newContent); //add the text node to the newly created div. 
+
+                        // add the newly created element and its content into the DOM 
+                        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                        document.body.insertBefore(newDiv, currentDiv);
+                        sUsefulInfo.push(sThing[i]);
+                    } else if (sThing[i].indexOf("kBits/s") > -1) {
+                        var sPlayback = sThing[i].split(", ");
+                        for (var j = 0; j < sPlayback.length; j++) {
+                            if (sPlayback[j].indexOf("kBits/s") > -1) {
+                                sPlayback[j] = parseInt(sPlayback[j].replace(/kBits\/s/g, ""));
+                                if (sPlayback[j] > nMaxBitRate) {
+                                    nMaxBitRate = sPlayback[j];
+                                }
+                            }
+                        }
+                    } else if (sThing[i].indexOf("No cast extension found") > -1) {
+                        nNoCast += 1;
+                    }
+                }
+                sUsefulInfo.push("Max Bitrate: " + nMaxBitRate);
+                sUsefulInfo.push("No Cast Extension Found: " + nNoCast);
+                console.log(sThing);
+                console.log("Useful Info: ", sUsefulInfo);
                 var newDiv = document.createElement("pre");
-                var newContent = document.createTextNode(sThing[i]);
-                newDiv.appendChild(newContent); //add the text node to the newly created div. 
-                if (sThing[i].indexOf("Linux x86_64") > -1) {
+                var newContent = document.createTextNode("Max Bitrate: " + nMaxBitRate + "\n");
+                newDiv.appendChild(newContent); //add the text node to the newly created div.
+                if (nMaxBitRate <= 5000) {
+                    newDiv.style.color = "green";
+                } else if (nMaxBitRate <= 7000) {
                     newDiv.style.color = "orange";
                 } else {
-                    newDiv.style.color = "green";
+                    newDiv.style.color = "red";
                 }
-
-                // add the newly created element and its content into the DOM 
                 var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
                 document.body.insertBefore(newDiv, currentDiv);
-                sUsefulInfo.push(sThing[i]);
-            } else if (sThing[i].indexOf("VideostreamApplication: UserAgent:") > -1) {
-                sThing[i] = sThing[i].replace("[info]  ", "");
+
                 var newDiv = document.createElement("pre");
-                var newContent = document.createTextNode(sThing[i]);
-                newDiv.appendChild(newContent); //add the text node to the newly created div. 
-                if (sThing[i].indexOf("CrOS") > -1) {
+                var newContent = document.createTextNode("No Cast Extension Found: " + nNoCast);
+                newDiv.appendChild(newContent); //add the text node to the newly created div.
+                if (nNoCast > 0) {
                     newDiv.style.color = "red";
                 } else {
                     newDiv.style.color = "green";
@@ -305,188 +428,62 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
                 // add the newly created element and its content into the DOM 
                 var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
                 document.body.insertBefore(newDiv, currentDiv);
-                sUsefulInfo.push(sThing[i]);
-            } else if (sThing[i].indexOf("User CPU:") > -1) {
-                sThing[i] = sThing[i].replace("[log]   ", "");
+
                 var newDiv = document.createElement("pre");
-                var newContent = document.createTextNode(sThing[i]);
+                var newContent = document.createTextNode("================================================================  LOG FILE STARTS HERE  ================================================================");
+                newDiv.style.color = "purple";
                 newDiv.appendChild(newContent); //add the text node to the newly created div. 
-                if (sThing[i].indexOf("Intel") > -1) {
-                    if ((sThing[i].indexOf("i3") > -1 || sThing.indexOf("i5") > -1 || sThing.indexOf("i7") > -1)) {
-                        sThing[i] = sThing[i].split(" ");
-                        for (var j = 0; j < sThing[i].length; j++) {
-                            if (sThing[i][j].indexOf("GHz") > -1) {
-                                sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
-                                break;
-                            }
-                        }
-                        if (sThing[i][j] >= 2) {
-                            newDiv.color = "green";
-                        } else {
-                            newDiv.color = "orange";
-                        }
-                    } else {
-                        sThing[i] = sThing[i].split(" ");
-                        for (var j = 0; j < sThing[i].length; j++) {
-                            if (sThing[i][j].indexOf("GHz") > -1) {
-                                sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
-                                break;
-                            }
-                        }
-                        if (sThing[i][j] >= 2) {
-                            newDiv.color = "orange";
-                        } else {
-                            newDiv.color = "red";
-                        }
-                    }
-
-                } else if (sThing[i].indexOf("AMD") > -1) {
-                    if (sThing[i].indexOf("FX") > -1 || sThing.indexOf("A8") > -1 || sThing.indexOf("A10") > -1) {
-                        sThing[i] = sThing[i].split(" ");
-                        for (var j = 0; j < sThing[i].length; j++) {
-                            if (sThing[i][j].indexOf("GHz") > -1) {
-                                sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
-                                break;
-                            }
-                        }
-                        if (sThing[i][j] >= 2) {
-                            newDiv.color = "green";
-                        } else {
-                            newDiv.color = "orange";
-                        }
-                    } else {
-                        newDiv.color = "red";
-                    }
-                }
-
                 // add the newly created element and its content into the DOM 
                 var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
-                document.body.insertBefore(newDiv, currentDiv);
-                sUsefulInfo.push(sThing[i]);
-            } else if (sThing[i].indexOf("[log]   [Desktop], Found cast extension:") > -1) {
-                sThing[i] = sThing[i].replace("[log]   [Desktop], ", "");
-                var newDiv = document.createElement("pre");
-                newDiv.style.color = "green";
-                var newContent = document.createTextNode(sThing[i]);
-                newDiv.appendChild(newContent); //add the text node to the newly created div. 
-
-                // add the newly created element and its content into the DOM 
-                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
-                document.body.insertBefore(newDiv, currentDiv);
-                sUsefulInfo.push(sThing[i]);
-            } else if (sThing[i].indexOf("NativeTaskController.isAlive") > -1) {
-                sThing[i] = sThing[i].replace("[log]   ", "");
-                var newDiv = document.createElement("pre");
-                newDiv.style.color = "red";
-                var newContent = document.createTextNode(sThing[i]);
-                newDiv.appendChild(newContent); //add the text node to the newly created div. 
-
-                // add the newly created element and its content into the DOM 
-                var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
-                document.body.insertBefore(newDiv, currentDiv);
-                sUsefulInfo.push(sThing[i]);
-            } else if (sThing[i].indexOf("kBits/s") > -1) {
-                var sPlayback = sThing[i].split(", ");
-                for (var j = 0; j < sPlayback.length; j++) {
-                    if (sPlayback[j].indexOf("kBits/s") > -1) {
-                        sPlayback[j] = parseInt(sPlayback[j].replace(/kBits\/s/g, ""));
-                        if (sPlayback[j] > nMaxBitRate) {
-                            nMaxBitRate = sPlayback[j];
-                        }
-                    }
-                }
-            } else if (sThing[i].indexOf("No cast extension found") > -1) {
-                nNoCast += 1;
-            }
-        }
-        sUsefulInfo.push("Max Bitrate: " + nMaxBitRate);
-        sUsefulInfo.push("No Cast Extension Found: " + nNoCast);
-        console.log(sThing);
-        console.log("Useful Info: ", sUsefulInfo);
-        var newDiv = document.createElement("pre");
-        var newContent = document.createTextNode("Max Bitrate: " + nMaxBitRate + "\n");
-        newDiv.appendChild(newContent); //add the text node to the newly created div.
-        if (nMaxBitRate <= 5000) {
-            newDiv.style.color = "green";
-        } else if (nMaxBitRate <= 7000) {
-            newDiv.style.color = "orange";
-        } else {
-            newDiv.style.color = "red";
-        }
-        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
-        document.body.insertBefore(newDiv, currentDiv);
-
-        var newDiv = document.createElement("pre");
-        var newContent = document.createTextNode("No Cast Extension Found: " + nNoCast);
-        newDiv.appendChild(newContent); //add the text node to the newly created div.
-        if (nNoCast > 0) {
-            newDiv.style.color = "red";
-        } else {
-            newDiv.style.color = "green";
-        }
-        // add the newly created element and its content into the DOM 
-        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
-        document.body.insertBefore(newDiv, currentDiv);
-
-        var newDiv = document.createElement("pre");
-        var newContent = document.createTextNode("================================================================  LOG FILE STARTS HERE  ================================================================");
-        newDiv.style.color = "purple";
-        newDiv.appendChild(newContent); //add the text node to the newly created div. 
-        // add the newly created element and its content into the DOM 
-        var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
-        document.body.insertBefore(newDiv, currentDiv);
+                document.body.insertBefore(newDiv, currentDiv);*/
 
 
     } else if (type === "info") {
-        console.log("info page is loaded");
-        chrome.runtime.sendMessage({ tab: "info", state: "loaded" }, function() { console.log("send message loaded") });
+        /*        console.log("info page is loaded");
+                chrome.runtime.sendMessage({ tab: "info", state: "loaded" }, function() { console.log("send message loaded") });*/
     } else if (type === "generatetypos") {
-        console.log("type is generatetypos");
-        var vWait = window.setInterval(function() {
-            if (document.getElementsByTagName("textarea").length > 0) {
-                setTimeout(function() { chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() { console.log("typos loaded"); }); }, 00);
-                clearInterval(vWait);
-            }
-        }, 200);
+        /*        console.log("type is generatetypos");
+                var vWait = window.setInterval(function() {
+                    if (document.getElementsByTagName("textarea").length > 0) {
+                        setTimeout(function() { chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() { console.log("typos loaded"); }); }, 00);
+                        clearInterval(vWait);
+                    }
+                }, 200);*/
 
 
     } else if (type === "ticket") {
-        console.log("TYPE IS A TICKET LOLOLOLOL");
+//        console.log("TYPE IS A TICKET LOLOLOLOL");
         // setTimeout(function() {
         //     console.log("kladfkaf;aflkafdkljaflkda dank");
-
-
-        chrome.runtime.sendMessage({ action: "query", data: "database" });
-
+  //      chrome.runtime.sendMessage({ action: "query", data: "database" });
         /*=====================================================================  MAIN PROGRAM  =====================================================================*/
-        var sRequestTitle = document.getElementsByClassName('subject')[0].innerText.toLowerCase();
-        var sRequestBody = document.getElementById('ticket_original_request').innerText.toLowerCase();
-        var listOfTools = document.getElementsByClassName("attach_content");
-        console.log("listOfTools: ", listOfTools);
-        bLog = false;
-        for (var i = 0; i < listOfTools.length; i++) {
-            var contentOfList = listOfTools[i].children;
-            for (var j = 0; j < contentOfList.length; j++) {
-                if (contentOfList[j].classList.contains("ellipsis")) {
-                    console.log("found ellipsis class in attachment");
-                    console.log("contentOfList[j].children[0]: ", contentOfList[j].children[0], " ", contentOfList[j].children[0].tagName);
-                    for (var k = 0; k < contentOfList[j].children.length; k++) {
-                        if (contentOfList[j].children[k].tagName === "A") {
-                            if (contentOfList[j].children[k].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt") {
-                                bLog = true;
-                            }
-                            console.log(contentOfList[j].children[k].getAttribute("href"));
+    //    var sRequestTitle = document.getElementsByClassName('subject')[0].innerText.toLowerCase();
+      //  var sRequestBody = document.getElementById('ticket_original_request').innerText.toLowerCase();
+        //var listOfTools = document.getElementsByClassName("attach_content");
+//        console.log("listOfTools: ", listOfTools);
+  //      bLog = false;
+    //    for (var i = 0; i < listOfTools.length; i++) {
+      //      var contentOfList = listOfTools[i].children;
+        //    for (var j = 0; j < contentOfList.length; j++) {
+          //      if (contentOfList[j].classList.contains("ellipsis")) {
+            //        console.log("found ellipsis class in attachment");
+              //      console.log("contentOfList[j].children[0]: ", contentOfList[j].children[0], " ", contentOfList[j].children[0].tagName);
+                //    for (var k = 0; k < contentOfList[j].children.length; k++) {
+                  //      if (contentOfList[j].children[k].tagName === "A") {
+                    //        if (contentOfList[j].children[k].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt") {
+                      //          bLog = true;
+                        //    }
+                          //  console.log(contentOfList[j].children[k].getAttribute("href"));
                             //window.open(contentOfList[j].children[k].getAttribute("href"), "_blank");
                             //chrome.tabs.create({url: contentOfList[j].children[k].getAttribute("href")}, function(){});
                             //chrome.tabs.create({url: "http://www.stackoverflow.com"});
-                            chrome.runtime.sendMessage({ action: "openvs", url: contentOfList[j].children[k].getAttribute("href") }, function() { console.log("done"); });
-                            //chrome.extension.getBackgroundPage().sayHello();
-                        }
-                    }
-
-                }
-            }
-
+//                            chrome.runtime.sendMessage({ action: "openvs", url: contentOfList[j].children[k].getAttribute("href") }, function() { console.log("done"); });
+  //                          //chrome.extension.getBackgroundPage().sayHello();
+    //                    }
+      //              }
+//
+  //              }
+    //        }
             /*        if (listOfTools[i].hasAttribute("data-original-title")){
                             console.log("hasAttribute - data-original-title ", listOfTools[i]);
                             if (listOfTools[i].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt"){
@@ -504,25 +501,21 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
             //              console.log(components[j].children);
             //}
 
-        }
-
-
-
-        if (sRequestBody === "") {
-            checkForKeyWords(sRequestTitle);
-            if (!bCheck)
-                printAnswer(sBlankEmail);
-        }
-
+//        }
+  //      if (sRequestBody === "") {
+    //        checkForKeyWords(sRequestTitle);
+      //      if (!bCheck)
+        //        printAnswer(sBlankEmail);
+        //}
         //chrome.runtime.sendMessage({ action: "open", url: "https://translate.google.com/" }, function() { console.log("LEARL: "); });
-        console.log("blkadklfadklfajljkad ", bLog);
+//        console.log("blkadklfadklfajljkad ", bLog);
         /*chrome.runtime.sendMessage({ action: "translate", text: sRequestTitle, type: "title" }, function() {
             console.log("finished translating title: ");
 
         });*/
-        chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestTitle, type: "title" }, function() { console.log("finished not translating title"); });
-        //chrome.runtime.sendMessage({ action: "translate", text: sRequestBody, type: "body" }, function() { console.log("finished translating body: "); });
-        chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestBody, type: "body" }, function() { console.log("finished not translating body"); });
+  //      chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestTitle, type: "title" }, function() { console.log("finished not translating title"); });
+    //    //chrome.runtime.sendMessage({ action: "translate", text: sRequestBody, type: "body" }, function() { console.log("finished translating body: "); });
+      //  chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestBody, type: "body" }, function() { console.log("finished not translating body"); });
         //}, 5000);
         /*        chrome.runtime.sendMessage({action: "search", url: "https://translate.google.com/"}, function(id, bFoundURLInTab){
                 console.log("bFoundURLInTab: ", bFoundURLInTab);
@@ -532,63 +525,287 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
                         console.log("found");
                 }
         });*/
-
-
-
-
-
         //alert("here");
         /*CHANGE ALL NEWLINES TO SPACES*/
 
         /*        if (!confirm("was this dank")) {
                     printAnswer("\n");
                 }*/
-
-
         //console.log(sInstallCast);
         //console.log(sRequestBody);
         //console.log(sRequestTitle);
         //document.write('poop');
-
         //return;
         // }
-
         /*
-
         document.getElementsByClassName("submit_btn").onclick() = function(){alert("kdafjakljsadlf")}
-
-
         var lol = document.getElementById("TicketPseudoReply").children
-
         lol.FwdButton.click()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         */
-
-
-
-
-
     }
 });
 var bTitle = false;
 var bBody = false;
+var sRequestBody, sRequestTitle;
 chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendResponsetrans) {
     console.log("info: ", requesttrans, " ", sendertrans);
-    if (requesttrans.job === "solve") {
+    if (requesttrans.job === "urlresponse") {
+        if (requesttrans.type === "ticket") {
+            console.log("recieved message from background - ticket");
+            console.log("TYPE IS A TICKET LOLOLOLOL");
+            chrome.runtime.sendMessage({ action: "query", data: "database" });
+            sRequestTitle = document.getElementsByClassName('subject')[0].innerText.toLowerCase();
+            sRequestBody = document.getElementById('ticket_original_request').innerText.toLowerCase();
+            var listOfTools = document.getElementsByClassName("attach_content");
+            console.log("listOfTools: ", listOfTools);
+            bLog = false;
+            for (var i = 0; i < listOfTools.length; i++) {
+                var contentOfList = listOfTools[i].children;
+                for (var j = 0; j < contentOfList.length; j++) {
+                    if (contentOfList[j].classList.contains("ellipsis")) {
+                        console.log("found ellipsis class in attachment");
+                        console.log("contentOfList[j].children[0]: ", contentOfList[j].children[0], " ", contentOfList[j].children[0].tagName);
+                        for (var k = 0; k < contentOfList[j].children.length; k++) {
+                            if (contentOfList[j].children[k].tagName === "A") {
+                                if (contentOfList[j].children[k].getAttribute("data-original-title") === "Videostream-ATTACH-ME.txt") {
+                                    bLog = true;
+                                }
+                                console.log(contentOfList[j].children[k].getAttribute("href"));
+                                chrome.runtime.sendMessage({ action: "openvs", url: contentOfList[j].children[k].getAttribute("href") }, function() { console.log("done"); });
+                            }
+                        }
+
+                    }
+                }
+            }
+            if (sRequestBody === "") {
+                if (bKeywordslistpresent){
+                        checkForKeyWords(sRequestTitle);
+                }
+                
+                if (!bCheck)
+                    printAnswer(sBlankEmail);
+            }
+            console.log("blkadklfadklfajljkad ", bLog);
+            chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestTitle, type: "title" }, function() { console.log("finished not translating title"); });
+            chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestBody, type: "body" }, function() { console.log("finished not translating body"); });
+        } else if (requesttrans.type === "ticketlist") {
+            console.log("recieved message from background - ticketlist");
+            console.log("dlkjflakjdflakjfa;ldjdklg herp derp");
+            var arTickets = document.getElementsByClassName("subject_style"); //document.getElementById("ticket-list").children[0].children[0].children;
+            for (var i = 0; i < arTickets.length; i++) {
+                if (!(arTickets[i].classList.contains("customer_responded") || arTickets[i].classList.contains("customer_responded_overdue"))) {
+                    console.log("Conversation Start: ", i);
+                    var item = arTickets[i].parentNode.parentNode.children;
+                    console.log(arTickets[i].parentNode.parentNode.children);
+                    for (var j = 0; j < item.length; j++) {
+                        if (item[j].classList.contains("td-ticket-details")) {
+                            console.log(item[j].children[0].children);
+                            var details = item[j].children[0].children;
+                            for (var k = 0; k < details.length; k++) {
+                                if (details[k].classList.contains("ticket-description-tip")) {
+                                    console.log(details[k].children[0].getAttribute("href"));
+                                    chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href") }, function() { console.log("opened ticket: ", i); });
+
+                                }
+                            }
+                        }
+                    }
+                    //chrome.runtime.sendMessage({url: }, function(){console.log("done");});
+                }
+            }
+            //chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href")}, function() { console.log("opened ticket: ", i); });                           //NEED TO STATE ORIGIN AND STUFF LOOL
+        } else if (requesttrans.type === "translate") {
+            console.log("recieved message from background - translate");
+            console.log("kdlafjlkafajl");
+            chrome.runtime.sendMessage({ state: "ready" }, function() {});
+            //chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href")}, function() { console.log("opened ticket: ", i); });
+        } else if (requesttrans.type === "attachment") {
+            console.log("revieved message from background - attachment");
+            console.log("knows its an attachment lol");
+            var sUsefulInfo = [],
+                nMaxBitRate = 0,
+                nNoCast = 0;
+            var sThing = document.getElementsByTagName("pre")[0].innerText.split("\n");
+            //I DONT KNOW WHAT I NEED HERE YET - NEED MORE LOG FILES TO LOOK THROUGH...
+            for (var i = 0; i < sThing.length; i++) {
+                console.log("sThing[i]: ", sThing[i], " sThing[i] stuff ", sThing[i].indexOf("VideostreamApplication: Platform:"), " ", sThing[i].indexOf("VideostreamApplication: UserAgent:"), " ", sThing[i].indexOf("User CPU:"), " ", sThing[i].indexOf("Found cast extension:"));
+                if (sThing[i].indexOf("VideostreamApplication: Platform:") > -1) {
+                    sThing[i] = sThing[i].replace("[info]  ", "");
+                    var newDiv = document.createElement("pre");
+                    var newContent = document.createTextNode(sThing[i]);
+                    newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                    if (sThing[i].indexOf("Linux x86_64") > -1) {
+                        newDiv.style.color = "orange";
+                    } else {
+                        newDiv.style.color = "green";
+                    }
+
+                    // add the newly created element and its content into the DOM 
+                    var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                    document.body.insertBefore(newDiv, currentDiv);
+                    sUsefulInfo.push(sThing[i]);
+                } else if (sThing[i].indexOf("VideostreamApplication: UserAgent:") > -1) {
+                    sThing[i] = sThing[i].replace("[info]  ", "");
+                    var newDiv = document.createElement("pre");
+                    var newContent = document.createTextNode(sThing[i]);
+                    newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                    if (sThing[i].indexOf("CrOS") > -1) {
+                        newDiv.style.color = "red";
+                    } else {
+                        newDiv.style.color = "green";
+                    }
+                    // add the newly created element and its content into the DOM 
+                    var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                    document.body.insertBefore(newDiv, currentDiv);
+                    sUsefulInfo.push(sThing[i]);
+                } else if (sThing[i].indexOf("User CPU:") > -1) {
+                    sThing[i] = sThing[i].replace("[log]   ", "");
+                    var newDiv = document.createElement("pre");
+                    var newContent = document.createTextNode(sThing[i]);
+                    newDiv.appendChild(newContent); //add the text node to the newly created div. 
+                    if (sThing[i].indexOf("Intel") > -1) {
+                        if ((sThing[i].indexOf("i3") > -1 || sThing.indexOf("i5") > -1 || sThing.indexOf("i7") > -1)) {
+                            sThing[i] = sThing[i].split(" ");
+                            for (var j = 0; j < sThing[i].length; j++) {
+                                if (sThing[i][j].indexOf("GHz") > -1) {
+                                    sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                    break;
+                                }
+                            }
+                            if (sThing[i][j] >= 2) {
+                                newDiv.color = "green";
+                            } else {
+                                newDiv.color = "orange";
+                            }
+                        } else {
+                            sThing[i] = sThing[i].split(" ");
+                            for (var j = 0; j < sThing[i].length; j++) {
+                                if (sThing[i][j].indexOf("GHz") > -1) {
+                                    sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                    break;
+                                }
+                            }
+                            if (sThing[i][j] >= 2) {
+                                newDiv.color = "orange";
+                            } else {
+                                newDiv.color = "red";
+                            }
+                        }
+
+                    } else if (sThing[i].indexOf("AMD") > -1) {
+                        if (sThing[i].indexOf("FX") > -1 || sThing.indexOf("A8") > -1 || sThing.indexOf("A10") > -1) {
+                            sThing[i] = sThing[i].split(" ");
+                            for (var j = 0; j < sThing[i].length; j++) {
+                                if (sThing[i][j].indexOf("GHz") > -1) {
+                                    sThing[i][j] = parseInt(sThing[i][j].replace("GHz", ""));
+                                    break;
+                                }
+                            }
+                            if (sThing[i][j] >= 2) {
+                                newDiv.color = "green";
+                            } else {
+                                newDiv.color = "orange";
+                            }
+                        } else {
+                            newDiv.color = "red";
+                        }
+                    }
+
+                    // add the newly created element and its content into the DOM 
+                    var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                    document.body.insertBefore(newDiv, currentDiv);
+                    sUsefulInfo.push(sThing[i]);
+                } else if (sThing[i].indexOf("[log]   [Desktop], Found cast extension:") > -1) {
+                    sThing[i] = sThing[i].replace("[log]   [Desktop], ", "");
+                    var newDiv = document.createElement("pre");
+                    newDiv.style.color = "green";
+                    var newContent = document.createTextNode(sThing[i]);
+                    newDiv.appendChild(newContent); //add the text node to the newly created div. 
+
+                    // add the newly created element and its content into the DOM 
+                    var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                    document.body.insertBefore(newDiv, currentDiv);
+                    sUsefulInfo.push(sThing[i]);
+                } else if (sThing[i].indexOf("NativeTaskController.isAlive") > -1) {
+                    sThing[i] = sThing[i].replace("[log]   ", "");
+                    var newDiv = document.createElement("pre");
+                    newDiv.style.color = "red";
+                    var newContent = document.createTextNode(sThing[i]);
+                    newDiv.appendChild(newContent); //add the text node to the newly created div. 
+
+                    // add the newly created element and its content into the DOM 
+                    var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+                    document.body.insertBefore(newDiv, currentDiv);
+                    sUsefulInfo.push(sThing[i]);
+                } else if (sThing[i].indexOf("kBits/s") > -1) {
+                    var sPlayback = sThing[i].split(", ");
+                    for (var j = 0; j < sPlayback.length; j++) {
+                        if (sPlayback[j].indexOf("kBits/s") > -1) {
+                            sPlayback[j] = parseInt(sPlayback[j].replace(/kBits\/s/g, ""));
+                            if (sPlayback[j] > nMaxBitRate) {
+                                nMaxBitRate = sPlayback[j];
+                            }
+                        }
+                    }
+                } else if (sThing[i].indexOf("No cast extension found") > -1) {
+                    nNoCast += 1;
+                }
+            }
+            sUsefulInfo.push("Max Bitrate: " + nMaxBitRate);
+            sUsefulInfo.push("No Cast Extension Found: " + nNoCast);
+            console.log(sThing);
+            console.log("Useful Info: ", sUsefulInfo);
+            var newDiv = document.createElement("pre");
+            var newContent = document.createTextNode("Max Bitrate: " + nMaxBitRate + "\n");
+            newDiv.appendChild(newContent); //add the text node to the newly created div.
+            if (nMaxBitRate <= 5000) {
+                newDiv.style.color = "green";
+            } else if (nMaxBitRate <= 7000) {
+                newDiv.style.color = "orange";
+            } else {
+                newDiv.style.color = "red";
+            }
+            var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+            document.body.insertBefore(newDiv, currentDiv);
+
+            var newDiv = document.createElement("pre");
+            var newContent = document.createTextNode("No Cast Extension Found: " + nNoCast);
+            newDiv.appendChild(newContent); //add the text node to the newly created div.
+            if (nNoCast > 0) {
+                newDiv.style.color = "red";
+            } else {
+                newDiv.style.color = "green";
+            }
+            // add the newly created element and its content into the DOM 
+            var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+            document.body.insertBefore(newDiv, currentDiv);
+
+            var newDiv = document.createElement("pre");
+            var newContent = document.createTextNode("================================================================  LOG FILE STARTS HERE  ================================================================");
+            newDiv.style.color = "purple";
+            newDiv.appendChild(newContent); //add the text node to the newly created div. 
+            // add the newly created element and its content into the DOM 
+            var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
+            document.body.insertBefore(newDiv, currentDiv);
+            //chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href")}, function() { console.log("opened ticket: ", i); });
+        } else if (requesttrans.type === "generatetypos") {
+            console.log("recieved message from background - generatetypos");
+            console.log("type is generatetypos");
+            var vWait = window.setInterval(function() {
+                if (document.getElementsByTagName("textarea").length > 0) {
+                    setTimeout(function() { chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() { console.log("typos loaded"); }); }, 00);
+                    clearInterval(vWait);
+                }
+            }, 200);
+            //chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href")}, function() { console.log("opened ticket: ", i); });
+        } else if (requesttrans.type === "info") {
+            console.log("recieved message from background - info");
+            console.log("info page is loaded");
+            chrome.runtime.sendMessage({ tab: "info", state: "loaded" }, function() { console.log("send message loaded") });
+            //chrome.runtime.sendMessage({ action: "openvs", url: details[k].children[0].getAttribute("href")}, function() { console.log("opened ticket: ", i); });
+        }
+    } else if (requesttrans.job === "solve") {
         document.getElementById('source').innerText = requesttrans.string;
         document.getElementById("gt-submit").click();
         //while (document.getElementById("result_box").children[0] === undefined){}
@@ -667,7 +884,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         chrome.runtime.sendMessage({ action: "gotKeyWords", sender: requesttrans, text: arsKeyTot, text2: document.getElementsByClassName("redactor_editor")[0].children[1].children[2].innerText, origin: requesttrans.origin }, function() { console.log("done sending keywords back"); })
     } else if (requesttrans.job === "keywordsreturned") {
         var vDank = window.setInterval(function() {
-            if (bKeywordslistpresent) {
+            if (bKeywordslistpresent === true) {
                 console.log(requesttrans.question, " ", requesttrans.answer);
                 arQuestions = requesttrans.question.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
                 for (var i = 0; i < arQuestions.length; i++) {
@@ -708,10 +925,22 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                     console.log(sAns);
                 }
                 window.clearInterval(vDank);
+            }else{
+                console.log("what the fucking shit");
             }
         }, 500);
 
     } else if (requesttrans.job === "keywordslistreturned") {
+
+        sStartIndexForEachLength = requesttrans.positions;
+        //console.log("requesttrans.positions ", requesttrans.positions);
+        console.log("Starting Index for each length: ", sStartIndexForEachLength);
+        sStartIndexForEachLength = sStartIndexForEachLength.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex    newarraydklfdaslkfakflasdkljadsfjknewarray  ");
+        sStartIndexForEachLength.splice(sStartIndexForEachLength.length-1, 1);
+        for (var i = 0; i < sStartIndexForEachLength.length; i++) {
+            sStartIndexForEachLength[i] = sStartIndexForEachLength[i].split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
+        }
+        console.log("Starting Index for each length array: ", sStartIndexForEachLength);
         // console.log(requesttrans.info);
         arsWords = requesttrans.info;
         //   console.log("arsWords: ", arsWords, " String: ", String(arsWords));
@@ -1508,20 +1737,20 @@ function checkifseenbefore(array) {
                     //    console.log("ehre");
                     arNotPresent.push(arQuestionWords[m].replace("!", ""));
                     arQuestionWords.splice(m, 1);
-                  //  console.log("Here, ", arQuestionWords, " ", arNotPresent);
+                    //  console.log("Here, ", arQuestionWords, " ", arNotPresent);
                     m--;
                 }
             }
-          //  console.log("arNotPresent: ", arNotPresent, " ", i, " ", j, " dklfjakljdgfadkljg ", arQuestionWords, " array: ", array, " ", array[i], " ", arQuestionWords[0], " ", array[i] === arQuestionWords[0]);
+            //  console.log("arNotPresent: ", arNotPresent, " ", i, " ", j, " dklfjakljdgfadkljg ", arQuestionWords, " array: ", array, " ", array[i], " ", arQuestionWords[0], " ", array[i] === arQuestionWords[0]);
             //console.log("arQuestions: ", arQuestions, " arNotPresent: ", arNotPresent, " ", arQuestionWords);
 
 
             if (array[i] === arQuestionWords[0]) {
-            //    console.log("first word matches fuck everything");
+                //    console.log("first word matches fuck everything");
                 var k = 0,
                     l = 0;
                 while (l < arQuestionWords.length && (i + k) < array.length) {
-                   //     console.log("l: ", l, " array[i+k]: ", array[i+k], " i+k ", (i+k), " arsQuestionWords[l]: ", arQuestionWords[l]);
+                    //     console.log("l: ", l, " array[i+k]: ", array[i+k], " i+k ", (i+k), " arsQuestionWords[l]: ", arQuestionWords[l]);
                     if (array[i + k] === arQuestionWords[l]) {
                         k++;
                         l++;
@@ -1529,14 +1758,14 @@ function checkifseenbefore(array) {
                         k++;
                     }
                 }
-             //   console.log("done: here's l ", l, " ", arQuestionWords.length);
+                //   console.log("done: here's l ", l, " ", arQuestionWords.length);
                 if (l >= arQuestionWords.length) { /*k >= l && */
                     bFound = true;
-               //     console.log("dankness too high fuck this shit i want to go to bed");
+                    //     console.log("dankness too high fuck this shit i want to go to bed");
                     for (var m = 0; m < arNotPresent.length; m++) {
-                //        console.log("here: ", arNotPresent, " dkjfaljdfka ", i);
+                        //        console.log("here: ", arNotPresent, " dkjfaljdfka ", i);
                         if (array.indexOf(arNotPresent[m]) > -1) {
-                 //           console.log("dis answer is not gonna work...");
+                            //           console.log("dis answer is not gonna work...");
                             bFound = false;
                             break;
 
@@ -1555,7 +1784,7 @@ function checkifseenbefore(array) {
             }
         }
         if (bFound) {
-            console.log("Current Answer: ", sAns);
+            //console.log("Current Answer: ", sAns);
             return;
         }
     }
@@ -1597,9 +1826,28 @@ function checkForKeyWords(arsTest) {
         console.log("i, ", i);
         //}
         //bCheck = true;
+        var nStartCheck, nEndCheck;
+        console.log("sStartIndexForEachLength: ", sStartIndexForEachLength);
         for (var j = 0; j < arsTest[i].length; j++) { //LOOP THROUGH EMAIL BODY
+            if ((arsTest[i][j].length - 3) > 0 && (arsTest[i][j].length + 3) < sStartIndexForEachLength.length - 1) {
+                console.log("arsTest[i][j]: ", arsTest[i][j], " arsTest[i][j].length: ", arsTest[i][j].length, " sStartIndexForEachLength[arsTest[i][j].length-3]: ", sStartIndexForEachLength[arsTest[i][j].length - 3], " sStartIndexForEachLength[arsTest[i][j].length+3]: ", sStartIndexForEachLength[arsTest[i][j].length + 3]);
+                nStartCheck = sStartIndexForEachLength[arsTest[i][j].length - 3][1];
+                nEndCheck = sStartIndexForEachLength[arsTest[i][j].length + 3][1];
+            } else if ((arsTest[i][j].length - 3) <= 0) {
+                console.log("Word is too fkin small... ", "arsTest[i][j]: ", arsTest[i][j], " arsTest[i][j].length: ", arsTest[i][j].length, " sStartIndexForEachLength[arsTest[i][j].length-3]: ", sStartIndexForEachLength[0], " sStartIndexForEachLength[arsTest[i][j].length+3]: ", sStartIndexForEachLength[arsTest[i][j].length + 3]);
+                nStartCheck = sStartIndexForEachLength[1][1];
+                nEndCheck = sStartIndexForEachLength[arsTest[i][j].length + 3][1];
+            } else if (((arsTest[i][j].length+3)>sStartIndexForEachLength.length-1) && arsTest[i][j].length<sStartIndexForEachLength.length) { /* ((arsTest[i][j].length+3)>sStartIndexForEachLength.length-1)*/
+                console.log("Word is too fkin big... ", "arsTest[i][j]: ", arsTest[i][j], " arsTest[i][j].length: ", arsTest[i][j].length, " sStartIndexForEachLength[arsTest[i][j].length-3]: ", sStartIndexForEachLength[Math.max(arsTest[i][j].length - 3, 0)], " sStartIndexForEachLength[arsTest[i][j].length+3]: ", sStartIndexForEachLength[sStartIndexForEachLength.length - 1]);
+                nStartCheck = sStartIndexForEachLength[arsTest[i][j].length - 3][1];
+                nEndCheck = sStartIndexForEachLength[sStartIndexForEachLength.length - 1][1];
+            } else{
+                nStartCheck = 0;
+                nEndCheck = 0;
+            }
+            console.log("nStartCheck: ", nStartCheck, " nEndCheck: ", nEndCheck);
             console.log("j ", j);
-            for (var k = 0; k < arsWords.length; k++) { //LOOP THROUGH KEYWORD ARRAY
+            for (var k = nStartCheck; k < nEndCheck; k++) { //LOOP THROUGH KEYWORD ARRAY --> 0, arsWords.length
                 //console.log(k +" " +i+" "+j);
                 if (arsWords[k].indexOf(arsTest[i][j]) > -1) {
                     //console.log("poo");

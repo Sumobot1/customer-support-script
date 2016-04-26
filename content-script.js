@@ -68,7 +68,7 @@ var sVideoNoAudio5 = "- Try uninstalling and Reinstalling Videostream, as well a
 var sVideoNoAudio6 = "- Do you mind trying to play the video in VLC?  Sometimes the file itself is corrupt unfortunately :/  \n";
 var arsVideoNoAudio = [sVideoNoAudio1, sVideoNoAudio2, sVideoNoAudio3, sVideoNoAudio4, sVideoNoAudio5, sVideoNoAudio6];
 
-var sBuffering1 = "Super sorry you are having buffering issues!  The buffering may have to do with the file format you're trying to play (if other files work great this is almost definitely the case!). Because we play local videos unlike Netflix/Youtube/Etc. we actually need to convert the videos in real-time into a format the chromecast can read! If you have videos in a format that is tougher to convert you sometimes get buffering if your router or computer cannot handle the conversion fast enough :( There are a few things to try though! \n \nBasic Fixes...  \n";
+var sBuffering1 = "Alright, really sorry about the incoming email blast!  There's a lot of stuff in this email because buffering can be pretty complicated.  If you're having trouble though, let me know and we'll go through it together :)  The buffering may have to do with the file format you're trying to play (if other files work great this is almost definitely the case!). Because we play local videos unlike Netflix/Youtube/Etc. we actually need to convert the videos in real-time into a format the chromecast can read! If you have videos in a format that is tougher to convert you sometimes get buffering if your router or computer cannot handle the conversion fast enough :( There are a few things to try though! \n \nBasic Fixes...  \n";
 var sBuffering2 = "Router:  \n";
 var sBuffering3 = "- Make sure the router is close to your Chromecast and computer  \n";
 var sBuffering4 = "- Plug your computer into your router with an ethernet cable  \n";
@@ -87,7 +87,7 @@ var sBuffering16 = "\n Logs & Hardware:  \n";
 var sBuffering17 = "- Next time it buffers, can you please send us logs? Hit 'Help' then 'Click to email the Team' - that'll download a log file to your computer that you can send to me that'll help a TON!!!! Make sure you do it after you get the problem :)  \n";
 var sBuffering18 = "- What model is your computer and router?  \n";
 var sBuffering19 = "In the end, you may just need to lower the quality of the video you are playing. This will make the streaming easier on your computer and your network.  \n";
-var sBuffering20 = "My sincere apologies for this long list of todo's. Buffering is our toughest problem to fix so please let me know how this goes and I'll have a better idea how to help you!  \n";
+var sBuffering20 = "Really sorry about the long email!  There's a ton of stuff that could be causing the buffering unfortunately so I tried to give you as many ideas as I could. Please let me know if you have any trouble!  We can go through this stuff together :)  Otherwise though please let me know what happens!  It'll give me a better idea of what's going on here :)  \n";
 var arsBuffering = [sBuffering1, sBuffering2, sBuffering3, sBuffering4, sBuffering5, sBuffering6, sBuffering7, sBuffering8, sBuffering9, sBuffering10, sBuffering11, sBuffering12, sBuffering13, sBuffering14, sBuffering15, sBuffering16, sBuffering17, sBuffering18, sBuffering19, sBuffering20];
 
 
@@ -100,7 +100,7 @@ var sChangeEmail2 = "  Do you mind sending me an email just confirming that is w
 
 var sHeadphoneAudio = "Unfortunately we don't have this feature yet, but we'd like to have it :)  We've been getting a lot of requests for audio streaming directly to a phone or PC or Chromecast Audio with the video only going to the Chromecast.  As a small team we can't guarantee anything as far as how soon we can bring this feature to Videosteam but we will definitely work on it :) \n";
 
-var sRefund = "We have absolutely no problem with refunding you.  If you have Paypal, go onto your Paypal account and dispute the transaction. If you have Stripe, do you mind forwarding us the last email receipt you got?  We will grant a refund asap!  \n";
+var sRefund = "We have absolutely no problem with refunding you.  If you have Paypal and are within their 180 day dispute policy, go onto your Paypal account and dispute the transaction. If you have Stripe, do you mind forwarding us the last email receipt you got?  We will grant a refund asap!  \n";
 
 //var sToLifetimeSale = "Thank you so much for supporting (and feeding) us through Videostream Premium!  We really appreciate it :D  To change to a lifetime subscription, go to the help button in Videostream.  There will be a subscription options button there.  Click on that to cancel your current subscription.  When you have done that, follow this link: https://www.paypal.me/videostream/24.99USD  \n";
 var sToLifetimeNoSale = "Thank you so much for supporting (and feeding) us through Videostream Premium!  We really appreciate it :D  To change to a lifetime subscription, go to the help button in Videostream.  There will be a subscription options button there.  Click on that to cancel your current subscription.  When you have done that, follow this link: https://www.paypal.me/videostream/34.99USD  \n";
@@ -210,7 +210,7 @@ var sUninstallInstructions = "To uninstall Videostream, go to chrome://extension
 
 var sSubtitleSize = "You're in luck!  Changing the size of subtitles is a feature of Videostream Premium and can be accessed through Settings -> Subtitles.  We offer a monthly subscription for $1.49 per month if you want to check it out to decide if you like it :)  \n \nHope that helps!  Let me know if you have any more questions!"
 
-var sRepeatVideos = "Super sorry!  Right now we don't really have a function specifically to repeat one video.  The best way to do this would probably be with the Playlist functions in Videostream Premium.  You could try putting the video into its own playlist and put the playlist itself on repeat.  \n \n  Let me know if that helps!";
+var sRepeatVideos = "The best way to do this would probably be with the Playlist functions in Videostream Premium!  With playlists, you can repeat one video individually, or loop all of them together :).  One thing to watch out for though might be our splash screens!  We transcode your videos on the fly, so every time a new video is played (or the current one is repeated), we need a bit of time to load it.  In this time, we show movie suggestions from our dev team!  If you're trying to use Videostream in a professional setting, you might not want this.  In that case, you should be able to turn this feature off in Settings -> More -> Disable 'Show content suggestions'!  \n \n  Let me know if that helps!";
 
 var sSubtitlesCutOff1 = "Really sorry about that!  The Chromecast got a firmware update a few days ago and it broke a bunch of stuff with our subtitles :(  We just found out about this problem yesterday evening and we're working on a fix as fast as we can.  Do you mind trying doing some stuff to help us out? \n";
 var sSubtitlesCutOff2 = "1. Do you mind sending us your firmware?  You can do this by clicking on the Google Cast icon, clicking options, clicking 'Manage Cast Devices', and clicking your Chromecast.  From there you should get sent to a screen that shows you the details of the Chromecast.  Do you mind taking a screenshot of that and sending it to us? \n";
@@ -530,7 +530,8 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                 console.log("Title: ", sRequestTitle, " Body: ", sRequestBody); 
                 checkForKeyWords(sRequestTitle);
                 if (!bCheck) {
-                    checkForKeyWords(sRequestBody);
+                	sRequestTitle = sRequestTitle.concat(sRequestBody);
+                    checkForKeyWords(sRequestTitle);
                     if (!bCheck) {
                         printAnswer("Super sorry!  I don't quite understand your question!  Do you mind giving me a bit more information?  If possible, screenshots would be appreciated :) \n \n Cheers!");
                     } else {
@@ -568,7 +569,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
         }
         if (bTitle && bBody) {
             var sEmails = "";
-            var arEnd = [",", "\/", "!", "&", ":", "\"", "\'", "{", "}", "=", "\-", "(", ")", "“", "”", "¿", " "]; //THIS IS THE PART WHERE WE DEAL WITH EMAILS... YEAH VERY IMPORTANT
+            var arEnd = [",", "\/", "!", "&", ":", "\"", "\'", "{", "}", "=", "\-", "(", ")", "“", "”", "¿", " ", "\n"]; //THIS IS THE PART WHERE WE DEAL WITH EMAILS... YEAH VERY IMPORTANT
             var sStart = sRequestBody.length,
                 sEnd, sSubstr, sEmail;
             for (var i = 0; i < sRequestBody.length; i++) {
@@ -586,7 +587,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                         sEnd = i;
                         i++;
                     }
-                    if (sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">") === -1 && sEmail.indexOf("<") === -1 && sEmail.indexOf("getvideostream") === -1 && sEmail.indexOf("freshdesk") === -1 && sEmail.length>5) {
+                    if (sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">") === -1 && sEmail.indexOf("<") === -1 && sEmail.indexOf("getvideostream") === -1 && sEmail.indexOf("freshdesk") === -1 && sEmail.indexOf("intl.paypal.com")===-1 && sEmail.length>5) {
                         sEmails += sEmail;
                         sEmails += " ";
                     }
@@ -675,7 +676,7 @@ function testwords(arsKeyWords) {
         }
     }
     /*========  FIREWALL BLOCKING VIDEOSTREAM  ========*/
-    else if ((arsKeyWords.indexOf("firewall") > -1 && (Math.max(arsKeyWords.indexOf("blocking"), arsKeyWords.indexOf("blocks")) > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("blocked") > -1 || (arsKeyWords.indexOf("get") > -1 && arsKeyWords.indexOf("fixed") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("blocking") > -1 && arsKeyWords.indexOf("content") > -1) || arsKeyWords.indexOf("repair") > -1 && Math.max(arsKeyWords.indexOf("freezing"), arsKeyWords.indexOf("stuck"))) || (arsKeyWords.indexOf("help") > -1 && arsKeyWords.indexOf("with") > -1)) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
+    else if (arsKeyWords.indexOf("firewall") > -1 && ((Math.max(arsKeyWords.indexOf("blocking"), arsKeyWords.indexOf("blocks")) > arsKeyWords.indexOf("firewall") || arsKeyWords.indexOf("problem") > arsKeyWords.indexOf("firewall") || (arsKeyWords.indexOf("get") > -1 && arsKeyWords.indexOf("get")<arsKeyWords.indexOf("firewall") && arsKeyWords.indexOf("fixed") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("blocking") > arsKeyWords.indexOf("firewall") && arsKeyWords.indexOf("content") > arsKeyWords.indexOf("firewall")) || (arsKeyWords.indexOf("repair") > -1 && Math.max(arsKeyWords.indexOf("freezing"), arsKeyWords.indexOf("stuck")))) || (arsKeyWords.indexOf("help") > -1 && arsKeyWords.indexOf("with") > -1)) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
         if (arAnswersCompleted[1] != true) {
             console.log("in firewall, arAnswersCompleted[1]!=true");
             if ((arsKeyWords.indexOf("mac") > -1 || arsKeyWords.indexOf("osx") > -1 || (arsKeyWords.indexOf("os") > -1 && arsKeyWords[arsKeyWords.indexOf("os") + 1] === "x") || arsKeyWords.indexOf("macbook") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc")) && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("iphone")) > -1)) {
@@ -742,7 +743,7 @@ function testwords(arsKeyWords) {
             sAns += sPremiumFeatures
             arAnswersCompleted[6] = true;
         }
-    } else if ((((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("ads") > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound")) > -1) && !(arsKeyWords.indexOf("opensubtitles") > -1))) && (arsKeyWords.indexOf("how") > -1 || Math.max(arsKeyWords.indexOf("upgrade"), arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("get")) > -1)) {
+    } else if ((((arsKeyWords.indexOf("premium") > -1 || arsKeyWords.indexOf("subscription") > -1) && !(arsKeyWords.indexOf("not")>-1 && arsKeyWords.indexOf("working")>-1) && !(arsKeyWords.indexOf("cuts")>-1 && arsKeyWords.indexOf("off")>-1) && !(arsKeyWords.indexOf("ads") > -1) && !(arsKeyWords.indexOf("subtitle") > -1) && !(Math.max(arsKeyWords.indexOf("audio"), arsKeyWords.indexOf("sound")) > -1) && !(arsKeyWords.indexOf("opensubtitles") > -1))) && (arsKeyWords.indexOf("how") > -1 || Math.max(arsKeyWords.indexOf("upgrade"), arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("get")) > -1)) {
         if (arAnswersCompleted[7] != true) {
             console.log("in sGetPremium, arAnswersCompleted[7]!=true");
             sAns += sGetPremium;
@@ -884,9 +885,11 @@ function testwords(arsKeyWords) {
     /*========  PLAYLIST SUPPORT  ========*/
     else if (((sMaxLetterPos > -1 && (arsKeyWords.indexOf("support") > sMaxLetterPos || arsKeyWords.indexOf("for") > sMaxLetterPos && arsKeyWords[arsKeyWords.indexOf("for") + 1] === "premium")) || (arsKeyWords.indexOf("videos") > arsKeyWords.indexOf("play") && arsKeyWords.indexOf("play") > -1) || (arsKeyWords.indexOf("multiple") > sMaxLetterPos && (arsKeyWords.indexOf("files") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("video") > arsKeyWords.indexOf("multiple") || arsKeyWords.indexOf("movie") > arsKeyWords.indexOf("multiple")))) && !(arsKeyWords.indexOf("subtitle") > -1) && !(arsKeyWords.indexOf("iphone") > -1)) {
         if (arAnswersCompleted[23] != true) {
-            console.log("in sPlaylistSupport, arAnswersCompleted[23]!=true");
+        	if (!(arsKeyWords.indexOf("repeat")>-1 && arsKeyWords.indexOf("video")>-1)){
+        		            console.log("in sPlaylistSupport, arAnswersCompleted[23]!=true");
             sAns += sPlaylistSupport;
             arAnswersCompleted[23] = true;
+        	}
         }
     }
     /*========  PLAYLIST NOT WORKING  ========*/
@@ -1103,7 +1106,7 @@ function testwords(arsKeyWords) {
         }
     }
     /*========  CHROMECAST NOT IN DROPDOWN  ========*/
-    else if ((arsKeyWords.indexOf("chromecast") > -1 && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1) && (arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("dropdown")))) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords[arsKeyWords.indexOf("cast") - 1] === "no" && arsKeyWords[arsKeyWords.indexOf("cast") + 1] === "device") || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords[arsKeyWords.indexOf("chromecast") - 1] === "no" && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles")) > -1))) {
+    else if ((arsKeyWords.indexOf("chromecast") > -1 && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles"), arsKeyWords.indexOf("headphones")) > -1) && (arsKeyWords.indexOf("not") > -1 && Math.max(arsKeyWords.indexOf("found"), arsKeyWords.indexOf("dropdown")))) || (arsKeyWords.indexOf("cast") > -1 && arsKeyWords[arsKeyWords.indexOf("cast") - 1] === "no" && arsKeyWords[arsKeyWords.indexOf("cast") + 1] === "device") || (arsKeyWords.indexOf("chromecast") > -1 && arsKeyWords[arsKeyWords.indexOf("chromecast") - 1] === "no" && !(Math.max(arsKeyWords.indexOf("phone"), arsKeyWords.indexOf("mobile"), arsKeyWords.indexOf("iphone"), arsKeyWords.indexOf("android"), arsKeyWords.indexOf("cell"), arsKeyWords.indexOf("subtitle"), arsKeyWords.indexOf("opensubtitles"), arsKeyWords.indexOf("headphones")) > -1))) {
         if (arAnswersCompleted[46] != true) {
             console.log("in arAnswersCompleted, arAnswersCompleted[46]!=true");
             for (var i = 0; i < arsNoCastFound.length; i++) {
@@ -1116,7 +1119,7 @@ function testwords(arsKeyWords) {
     else if (arsKeyWords.indexOf("loading") > -1 && !(arsKeyWords.indexOf("subtitle") > -1)) {
         if (arAnswersCompleted[47] != true) {
             console.log("in arsFirewallMac/arsFirewallWindows, arAnswersCompleted[47]!=true");
-            sAns += "Super sorry to hear your video is stuck on the loading screen!  A few things: \n 1. Is it just one or a few files that are doing this?  If so do you mind checking to see if it plays in VLC? \n 2. If you are having trouble with all of them, then it's probably a problem with your firewall.  \n \n";
+            sAns += "Super sorry to hear your video is stuck on the loading screen!  A few things: \n 1. Is it just one or a few files that are doing this?  If so do you mind checking to see if it plays in VLC? \n 2. If you are having trouble with all of them, then it might be a problem with your firewall.  \n \n";
             if ((arsKeyWords.indexOf("mac") > -1) && (!(arsKeyWords.indexOf("pc") > -1) || arsKeyWords.indexOf("not") < arsKeyWords.indexOf("pc"))) {
                 for (var i = 0; i < arsFirewallMac.length; i++) {
                     sAns += arsFirewallMac[i];
@@ -1136,7 +1139,7 @@ function testwords(arsKeyWords) {
                     sAns += arsFirewallWindows[i];
                 }
             }
-            sAns += "\nOne more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n";
+            sAns += "\n3. Are you running any sort of antivirus?  It may be blocking part of videostream!  Try turning it off, restarting, and uninstalling/reinstalling Videostream again!\n4. One more thing to check, is that your Native Client is present and enabled.  You can find it in chrome://plugins \n\nLet me know if that stuff helps!  If not, it might be a problem on our end in which case do you mind sending me the file on Google Drive or something please?  It would help us out a lot :)";
             arAnswersCompleted[47] = true;
         }
     }

@@ -15,7 +15,8 @@
     "default_title": "Click here!"
   },
   "permissions": [
-  "tabs"
+  "tabs",
+  "unlimitedStorage"
 
   ],
    "content_scripts": [ {

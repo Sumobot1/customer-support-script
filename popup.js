@@ -38,7 +38,7 @@ window.onload = function() {
         answertext += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
         answertext += document.getElementById("current-answer").innerText;
         localStorage.setItem("answer", answertext);
-        chrome.runtime.sendMessage({action: "submit", text: document.getElementById("current-keyword-array").innerText, answer: document.getElementById("current-answer").innerText});
+        chrome.runtime.sendMessage({action: "submit", letext: document.getElementById("current-keyword-array").innerText, answer: document.getElementById("current-answer").innerText});
     });
     document.getElementById("submit-new-answer").addEventListener("click", function() {
         if (localStorage.getItem("question") === null) {
@@ -47,15 +47,15 @@ window.onload = function() {
         if (localStorage.getItem("answer") === null) {
             localStorage.setItem("answer", "start");
         }
-        var questiontextquestion = localStorage.getItem("question");
+/*        var questiontextquestion = localStorage.getItem("question");
         questiontextquestion += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
         questiontextquestion += document.getElementById("input-field").value;
         localStorage.setItem("question", questiontextquestion);
         var answertext = localStorage.getItem("answer");
         answertext += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
         answertext += document.getElementById("current-answer").innerText;
-        localStorage.setItem("answer", answertext);
-        chrome.runtime.sendMessage({action: "submit", text: document.getElementById("input-field").value, answer: document.getElementById("current-answer").innerText});
+        localStorage.setItem("answer", answertext);*/
+        chrome.runtime.sendMessage({action: "submit", letext: document.getElementById("input-field").value, answer: document.getElementById("current-answer").innerText});
     });
     document.getElementById("show-db").addEventListener("click", function() {
         chrome.runtime.sendMessage({action: "query", data: "database-printout"});

@@ -587,7 +587,8 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                         sEnd = i;
                         i++;
                     }
-                    if (sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">") === -1 && sEmail.indexOf("<") === -1 && sEmail.indexOf("getvideostream") === -1 && sEmail.indexOf("freshdesk") === -1 && sEmail.indexOf("intl.paypal.com")===-1 && sEmail.length>5) {
+                    console.log("sEmail: ", sEmail, ", sEmails: ", sEmails);
+                    if (sEmail != sEmails && sEmail.indexOf(sEmails) === -1 && sEmails.indexOf(sEmail) === -1 && sEmail.indexOf(">") === -1 && sEmail.indexOf("<") === -1 && sEmail.indexOf("getvideostream") === -1 && sEmail.indexOf("freshdesk") === -1 && sEmail.indexOf("intl.paypal.com")===-1 && sEmail.length>5) {
                         sEmails += sEmail;
                         sEmails += " ";
                     }
@@ -597,13 +598,13 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
             sEmails = sEmails.split(" ");
             sSubstr = sRequestBody.substring(sStart, sEnd + 1).split(" ");
             if (sEmails.length === 2) { //THIS WILL WORK FOR NOW BUT WILL NEED TO BE FIXED AT SOME POINT... IT ONLY WORKS FOR 2 EMAILS RIGHT NOW...  ALSO NEED TO BLACKLIST CERTAIN EMAILS - @getvideostream, watch out for twitter handles as well
-                if (sSubstr.indexOf("to") > -1) {
+              //  if (sSubstr.indexOf("to") > -1) {
                     sAns += sChangeEmail + "from " + sEmails[0] + " to " + sEmails[1] + sChangeEmail2;
                     printAnswer(sAns);
-                } else {
-                    sAns += sChangeEmail + "from " + sEmails[1] + " to " + sEmails[0] + sChangeEmail2;
-                    printAnswer(sAns);
-                }
+              //  } else {
+            //        sAns += sChangeEmail + "from " + sEmails[1] + " to " + sEmails[0] + sChangeEmail2;
+             //       printAnswer(sAns);
+            //    }
                 console.log("Final i: ", i, " sEmails: ", sEmails, " Substring: ", sRequestBody.substring(sStart, sEnd + 1));
             } else {
                 sRequestTitle = sRequestTitle.replace(/(\r\n|\n|\r)/gm, " ");
@@ -1063,7 +1064,7 @@ function testwords(arsKeyWords) {
         }
     } 
     /*========  PAY WITH GOOGLE PLAY CREDITS  ========*/
-    else if (Math.max(arsKeyWords.indexOf("google")) > -1 && Math.max(arsKeyWords.indexOf("credit"), arsKeyWords.indexOf("play")) > -1 && Math.max(arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("buy"), arsKeyWords.indexOf("purchase")) > -1) {
+    else if (Math.max(arsKeyWords.indexOf("google")) > -1 && Math.max(arsKeyWords.indexOf("credit"), arsKeyWords.indexOf("play")) > -1 && Math.max(arsKeyWords.indexOf("pay"), arsKeyWords.indexOf("buy"), arsKeyWords.indexOf("purchase")) > -1 && arsKeyWords.indexOf("billed") === -1) {
         if (arAnswersCompleted[44] != true) {
             console.log("in sGooglePlayCredit, arAnswersCompleted[44]!=true");
             sAns += sGooglePlayCredit;
@@ -1148,7 +1149,7 @@ function testwords(arsKeyWords) {
 /*=====================================================================  CHECKIFSEENBEFORE - CHECK QUESTION AND ANSWER ARRAYS  =====================================================================*/
 function checkifseenbefore(array) {
     var bFound;
-    console.log("Question: ", arQuestions, " Answer: ", arAnswers, " DankAnswer: ", sAns);
+    console.log("Question: ", arQuestions, " Answer: ", arAnswers, " DankAnswer: ", sAns, " Array: ", array);
     for (var i = 0; i < array.length; i++) {
         for (var j = 1; j < arQuestions.length; j++) {
             var arQuestionWords = arQuestions[j].slice();
@@ -1161,6 +1162,7 @@ function checkifseenbefore(array) {
                     m--;
                 }
             }
+            console.log("arNotPresent: ", arNotPresent, " arQuestionWords: ", arQuestionWords, " ", arQuestions.length, arAnswers.length);
             if (array[i] === arQuestionWords[0]) {
                 var k = 0,
                     l = 0;
@@ -1269,6 +1271,8 @@ function checkForKeyWords(arsTest) {
         }
         if (arsKeyWords.length > 0) {
             console.log("Checking if seen before arsKeyWords: ", arsKeyWords);
+         //  console.log("Checking if seen before arsKeyTot: ", arsKeyTot);
+          // checkifseenbefore(arsKeyTot);
             checkifseenbefore(arsKeyWords);
             testwords(arsKeyWords);
             arsKeyTot = arsKeyTot.concat(arsKeyWords);

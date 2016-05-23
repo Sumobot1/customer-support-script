@@ -1,1 +1,3 @@
 # customer-support-script
+
+Browser extension designed to parse and generate responses to common support questions on Freshdesk.  Due to the unexpected complexity of questions and responses, I also ended up adding a popup dialog to my extension allowing me to specify a list of keywords that must be present, or not present, and match the combination with a response.  The keyword combination and response, as well as any keywords not already in the database are recorded and saved through browser and computer restarts using the chrome storage API.  To try to delay the issue of my plugin becoming slow because of overly large dictionaries, I added algorithms to sort and search my database more efficiently.

@@ -3,7 +3,7 @@ var translating = false;
 var arKeywords, arTypostobefound, pluginSender;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log("sender: ", sender);
-    console.log("sender: ", sender.tab);
+    /*Ask for info from database*/
     if (request.action === "query") {
         if (request.type === "getURL") {
             if (sender.url.indexOf("https://videostream.freshdesk.com/helpdesk/tickets/") > -1) {
@@ -172,7 +172,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             pluginSender = sender;
             chrome.tabs.create({ url: "http://tools.seobook.com/spelling/keywords-typos.cgi" });
         }
-    } else if (request.action === "submit") {
+    } 
+
+    /*Submit Keyword/Response pair to database - Improvement would be to check and make sure that there is a Keyword AND Response to submit*/
+    else if (request.action === "submit") {
         console.log("Going to Submit: ", request.letext, " Keywords will generate: ", request.answer);
         var questiontextquestion = localStorage.getItem("question");
         questiontextquestion += "  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ";
@@ -204,24 +207,38 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             }
             sFin += "  newarraydklfdaslkfakflasdkljadsfjknewarray  ";
         }
-        console.log("sFin: ", sFin); //SFIN IS THE THING FOR THE KEYWORDS - ARRAY OF KEY WORDS PUT INTO STRING.  NEED BELOW STUFF TO PUT THE ARRAY OF LENGTHS INTO A STRING... LOL
+        console.log("sFin: ", sFin); //SFIN IS THE THING FOR THE KEYWORDS - ARRAY OF KEY WORDS PUT INTO STRING.  NEED BELOW STUFF TO PUT THE ARRAY OF LENGTHS INTO A STRING
         localStorage.setItem("keywordlist", sFin);
-    } else if (request.action === "inject") {
+    } 
+
+    /*Inject response into a single paragraph tag in Freshdesk response box*/
+    else if (request.action === "inject") {
         chrome.tabs.query({ windowType: "normal", active: true }, function(tabs) {
             chrome.tabs.sendMessage(tabs[0].id, { job: "inject", text: request.text }, function() { console.log('Text has been injected'); });
         });
     } else if (request.action === "gotKeyWords") {
         chrome.runtime.sendMessage(sender.id, { job: "gotstuff", origin: sender.id, text: request.text, text2: request.text2 }, function() { console.log("done dont something who knows what") });
-    } else if (request.action === "openvs") {
+    } 
+
+    /*Create tabs part of Freshdesk*/
+    else if (request.action === "openvs") {
         if (sender.url.indexOf("https://videostream.freshdesk.com/helpdesk/tickets") > -1) {
             chrome.tabs.create({ url: "https://videostream.freshdesk.com" + request.url, index: sender.tab.index + 1 });
         }
-    } else if (request.action === "open") {
+    } 
+
+    /*Create a new tab - not used yet*/
+    else if (request.action === "open") {
         chrome.tabs.create({ url: request.url, index: sender.tab.index + 1 });
     }
+
+    /*Open Google Translate tab - NOT IMPLEMENTED CURRENTLY BECAUSE MESSAGE PIPE WAS GETTING CONFUSED AND SENDING INFORMATION TO THE WRONG TABS - Would have used translate api but you have to pay for it I'm pretty sure*/
     else if (request.action === "translate") {
         queue.push([request.text, sender.tab.id, request.type]);
-    } else if (request.state === "ready") {
+    } 
+
+    /*Google Translate page ready - Send the string to be translated*/
+    else if (request.state === "ready") {
         var myVar = window.setInterval(function() {
             if (!(queue.length <= 0)) {
                 if (!translating) {
@@ -231,18 +248,30 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 }
             }
         }, 500);
-    } else if (request.action === "translatecomplete") {
+    } 
+
+    /*Google Translate of text is complete - Supposed to send back to origin tab.  Messaging pipe was getting mixed up here because tab ids change because of the way this script works*/
+    else if (request.action === "translatecomplete") {
         console.log("Translate Completed... request: ", request, " sender: ", sender);
         console.log("Going back: To: ", request.sender.origin, " text: ", request.text, " type: ", request.sender.type);
         translating = false;
         chrome.tabs.sendMessage(request.sender.origin, { job: "translationDoneFinishUp", text: request.text, type: request.sender.type });
-    } else if (request.action === "donttranslate") {
+    } 
+
+    /*Hacky code to bypass Google Translate feature feature because it clearly doesn't work*/
+    else if (request.action === "donttranslate") {
         chrome.tabs.sendMessage(sender.tab.id, { job: "translationDoneFinishUp", text: request.text, type: request.type })
-    } else if (request.tab === "info") {
+    } 
+
+    /*Blank page - For displaying curent db for manual backup (super manual)*/
+    else if (request.tab === "info") {
         if (request.state === "loaded") {
             chrome.tabs.sendMessage(sender.tab.id, { job: "displaystuff", questions: localStorage.getItem("questions"), answers: localStorage.getItem("answers"), keywords: localStorage.getItem("keywordlist") }); //SORT LIST, ADD THINGS USING BINARY SEARCH AND INSERT.  BEST
         }
-    } else if (request.tab === "typos") {
+    } 
+
+    /*Generate typos for the given list of words (uses an online typo generator)*/
+    else if (request.tab === "typos") {
         if (request.state === "loaded") {
             if (nCount === undefined) {
                 nCount = 0;
@@ -266,6 +295,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             var arFinishedStuff = request.finishedstuff.split("\n");
             console.log("arFinishedStuff: ", arFinishedStuff, " Original: ", request.original);
             var bCheck = true;
+            /*To avoid the case of a typo for one word being a word in the db*/
             for (var i = 0; i < arFinishedStuff.length; i++) { //FOR EACH TYPO
                 bCheck = true;
                 for (var j = 0; j < arKeywords.length; j++) { //FOR EACH KEYWORD
@@ -280,7 +310,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             }
             nCount++;
         }
-    } else if (request.action === "organize-db") {
+    } 
+
+    /*Organizing keyword database by word length, and providing a reference array with the starting index of each length of
+     word - this makes it easier to search for a specific word, by decreasing the search space.  A lot of problems would likely
+     be fixed if I had stored this information in a hashmap-like structure (Chrome localstorage, even an object maybe?)
+     O(1) lookup would remove need to sort and search database, making everything run much faster
+     http://stackoverflow.com/questions/8877666/how-is-a-javascript-hash-map-implemented*/
+    else if (request.action === "organize-db") {
         console.log(localStorage.getItem("question"));
         if (localStorage.getItem("question") === null) {
             var sQuestions = "";
@@ -350,7 +387,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             arsCurrentKeywordLengths.push([arsCurrentKeyWords[i][0].length, i]);
         }
         sortArrayByLength(arsCurrentKeywordLengths, 0, arsCurrentKeywordLengths.length, []);
-        /*A COUNTING SORT WOULD BE FASTER BUT I WANTED A CHANCE TO LEARN A MERGE SORT INSTEAD.  IF EFFICIENCY EVER BECOMES A PROBLEM THIS IS LIKELY THE WAY TO GO.*/
         var arFin = [];
         for (var i = 0; i < arsCurrentKeywordLengths.length; i++) {
             arFin.push(arsCurrentKeyWords[arsCurrentKeywordLengths[i][1]]);
@@ -369,6 +405,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 var nCount, bAnswered;
 var bFound;
 
+/*This is a pig... map would fix it - they also check for conflicts*/
 function checkForRepeatsTwoD(array) {
     for (var i = 0; i < array.length; i++) {
         for (var j = 1; j < array[i].length; j++) {
@@ -396,6 +433,7 @@ function checkForRepeatsTwoD(array) {
     return array;
 };
 
+/*Checking for null keywords - Mainly a debugging function*/
 function checkforBrokenKeywords(array){
     for (var i = 0;i<array.length;i++){
         if (array[i][0].indexOf(" ")>-1){
@@ -405,6 +443,7 @@ function checkforBrokenKeywords(array){
     }return array;
 }
 
+/*Chrome LocalStorage was only able to accept strings when I did this - not sure if anything has changed since...*/
 function arrayToLocalStorage(array) {
     var sFin = "";
     if (array[0].length === undefined) { //1D Array
@@ -422,7 +461,7 @@ function arrayToLocalStorage(array) {
     return sFin;
 };
 
-
+/*Indexing function to get length of each word in database - for sorting - Implementing map would mean this is unnecessary*/
 function getWordLengths(arKeyWordList) {
     var nLen = 1,
         arLengths = [];
@@ -440,7 +479,7 @@ function getWordLengths(arKeyWordList) {
     return arLengths;
 };
 
-
+/*Take strings from chrome localstorage and put into arrays to loop through in content script... map implementation would fix this*/
 function dbToTwoDArray(dbString) {
     dbString = dbString.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex    newarraydklfdaslkfakflasdkljadsfjknewarray  ");
     for (var i = 0; i < dbString.length; i++) {
@@ -452,6 +491,7 @@ function dbToTwoDArray(dbString) {
     return dbString;
 };
 
+
 function dbToOneDArray(dbString) {
     dbString = dbString.split("  newarrayindexaskldfaksfakdlfdjaklalkdkalnewarrayindex  ");
     if (dbString[dbString.length - 1] === "") {
@@ -460,7 +500,7 @@ function dbToOneDArray(dbString) {
     return dbString;
 };
 
-
+/*Binary Search Function - I don't even use this*/
 function binarySearch(length, nStart, nEnd) {
     var nMiddle = parseInt((nStart + nEnd) / 2) + 1;
     if (arsWordLengths[nMiddle] === length) {
@@ -478,7 +518,7 @@ function binarySearch(length, nStart, nEnd) {
 };
 
 
-//GOING TO USE A MERGE SORT HERE BECAUSE APPARENTLY IT'S EFFICIENT
+/*Merge Sort to sort keyword array by length.  Map implementation fixes this*/
 function sortArrayByLength(lengthArray, nStart, nEnd, workingArray) {
     if (nEnd - nStart < 2) {
         return;

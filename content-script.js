@@ -1,3 +1,5 @@
+/*Initial variable declaration - These are strings for answers based on set of rules declared below*/
+
 var sBlankEmail = "Is there a Videostream issue I can help you with? \n";
 
 var sInstallCast = "Videostream needs the Google Cast app to be able to talk properly with your Chromecast.  You can install the Google Cast extension here: https://chrome.google.com/webstore/detail/google-cast/boadgeojelhgndaghljhdicfkmllpafd?hl=en \n \nIf that one doesn't work, you can give the Cast Beta a shot: https://chrome.google.com/webstore/detail/google-cast-beta/dliochdbjfkdbacpmhlcpmleaejidimm?hl=en \n \nMake sure you open those links in Chrome! \n"
@@ -102,6 +104,7 @@ var sHeadphoneAudio = "Unfortunately we don't have this feature yet, but we'd li
 
 var sRefund = "We have absolutely no problem with refunding you.  If you have Paypal and are within their 180 day dispute policy, go onto your Paypal account and dispute the transaction. If you have Stripe, do you mind forwarding us the last email receipt you got?  We will grant a refund asap!  \n";
 
+/*Change this one depending on if the product is on sale*/
 //var sToLifetimeSale = "Thank you so much for supporting (and feeding) us through Videostream Premium!  We really appreciate it :D  To change to a lifetime subscription, go to the help button in Videostream.  There will be a subscription options button there.  Click on that to cancel your current subscription.  When you have done that, follow this link: https://www.paypal.me/videostream/24.99USD  \n";
 var sToLifetimeNoSale = "Thank you so much for supporting (and feeding) us through Videostream Premium!  We really appreciate it :D  To change to a lifetime subscription, go to the help button in Videostream.  There will be a subscription options button there.  Click on that to cancel your current subscription.  When you have done that, follow this link: https://www.paypal.me/videostream/34.99USD  \n";
 
@@ -110,6 +113,7 @@ var sGetPremium = "Thanks so much for your interest in supporting (and feeding) 
 var sPremiumFeatures = "Super stoked to hear you're interested in Videostream Premium!  Premium allows you to use the app to make playlists, change subtitle size and colour, and get notifications on Android when file finishes downloading, and grabs subtitles for you from opensubtitles.org!  To subscribe to Videostream Premium, click the 'Go Premium' button in the app.  You can pay through Paypal or Stripe (for credit cards).  More details can be found there :) \n \n Happy Streaming!";
 
 var sFirewall = "Super sorry that you're having issues with your firewall!  \nHere's some things that should help:  \n";
+/*Hacky fix solution because I didn't want to add this sentence to the response*/
 var sFirewall2 = ""; //"Do you live in an apartment building or near lots of other neighbours (and their routers)? Sometimes Wifi interference can be a big issue, try using this app (https://play.google.com/store/apps/details?id=com.farproc.wifi.analyzer&hl=en) to see if your network is running on the same channel as a lot of other local networks. If so, then changing to a less used channel may help a lot!  \n";
 var sFirewallWindows = "For Windows \n";
 var sFirewallWindows2 = "-Have you tried our new repair tool? https://github.com/GetVideostream/VideostreamPortFix/releases/download/1.0.6/VideostreamNetworkRepair.exe  \n";
@@ -251,7 +255,9 @@ chrome.runtime.sendMessage({ action: "query", type: "getURL" }, function(type) {
 
 chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendResponsetrans) {
     console.log("info: ", requesttrans, " ", sendertrans);
+    /*URL Response tells us what page we are on (Freshdesk main/Support Ticket/Typos/Attachment*/
     if (requesttrans.job === "urlresponse") {
+    	/*If we're currently looking at a support ticket*/
         if (requesttrans.type === "ticket") {
             console.log("recieved message from background - ticket");
             chrome.runtime.sendMessage({ action: "query", data: "database" });
@@ -259,6 +265,7 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
             sRequestBody = document.getElementById('ticket_original_request').innerText.toLowerCase();
             var listOfTools = document.getElementsByClassName("attach_content");
             bLog = false;
+            /*Look through page for a Log File Attachment - Open this in adjacent tab*/
             for (var i = 0; i < listOfTools.length; i++) {
                 var contentOfList = listOfTools[i].children;
                 for (var j = 0; j < contentOfList.length; j++) {
@@ -283,9 +290,13 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                 if (!bCheck)
                     printAnswer(sBlankEmail);
             }
+            /*Hacky send because my Google Translate idea didn't work*/
             chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestTitle, type: "title" }, function() {});
             chrome.runtime.sendMessage({ action: "donttranslate", text: sRequestBody, type: "body" }, function() {});
-        } else if (requesttrans.type === "ticketlist") {
+        } 
+
+        /*This means we're on the main support ticket page - shows a list of tickets that need to be resolved.  Loop through divs, open all new tickets in adjacent tabs*/
+        else if (requesttrans.type === "ticketlist") {
             var arTickets = document.getElementsByClassName("subject_style"); 
             for (var i = 0; i < arTickets.length; i++) {
                 if (!(arTickets[i].classList.contains("customer_responded") || arTickets[i].classList.contains("customer_responded_overdue"))) {
@@ -303,9 +314,15 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
                     }
                 }
             }
-        } else if (requesttrans.type === "translate") {
+        } 
+
+        /*This was originally for google translate tab - No longer really used*/
+        else if (requesttrans.type === "translate") {
             chrome.runtime.sendMessage({ state: "ready" }, function() {});
-        } else if (requesttrans.type === "attachment") {
+        } 
+
+        /*If we're looking at a log file, parse it, and put important information at the top (ex. System Specs, OS, Video Bitrate, etc.)*/
+        else if (requesttrans.type === "attachment") {
             var sUsefulInfo = [],
                 nMaxBitRate = 0,
                 nNoCast = 0;
@@ -459,7 +476,10 @@ chrome.runtime.onMessage.addListener(function(requesttrans, sendertrans, sendRes
             newDiv.appendChild(newContent); 
             var currentDiv = document.getElementsByTagName("pre")[document.getElementsByTagName("pre").length - 1];
             document.body.insertBefore(newDiv, currentDiv);
-        } else if (requesttrans.type === "generatetypos") {
+        } 
+
+        /*If We're on the typo page, need to make sure page is loaded - doing this by checking length of a div*/
+        else if (requesttrans.type === "generatetypos") {
             var vWait = window.setInterval(function() {
                 if (document.getElementsByTagName("textarea").length > 0) {
                     setTimeout(function() { chrome.runtime.sendMessage({ tab: "typos", state: "loaded" }, function() {}); }, 00);
